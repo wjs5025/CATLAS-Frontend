@@ -13,13 +13,11 @@ const Information = () => {
               <h1 className="Title noDrag">INFORMATION</h1>
             </div>
             <div className="menu_Nav noDrag">
-              <div className="circle2"></div>
               <ul>
-                <tr>
-                  <td>
-                    <Link to={"/Information/CATLAS"}>CATLAS</Link>
-                  </td>
-                </tr>
+                <td>
+                  <Link to={"/Information/CATLAS"}>CATLAS</Link>
+                </td>
+
                 <tr>
                   <td>
                     <Link to={"/Information/학과"}>학 과</Link>
@@ -59,7 +57,7 @@ export default Information;
 function FreeForum() {
   return (
     <>
-      <h1>프리포럼 1</h1>
+      <h1>프리포럼</h1>
     </>
   );
 }
