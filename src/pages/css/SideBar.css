@@ -1,0 +1,86 @@
+.container {
+  position: relative;
+  display: flex;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 85%;
+}
+
+.left {
+  position: relative;
+  display: block;
+  width: 320px;
+  margin-top: 5%;
+  margin-left: 7%;
+  /* border : 1px solid green; */
+}
+
+.right {
+  width: 75%;
+}
+
+.Header {
+  display: inline;
+  position: relative;
+  height: auto;
+}
+
+.Title {
+  font-size: 45px;
+  font-family: "SCDream9";
+  text-align: center;
+}
+
+.circle2 {
+  position: absolute;
+  margin-left: 16.5%;
+  width: 40px;
+  height: 40px;
+  border-radius: 75px;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px gray;
+  z-index: 1000;
+}
+
+.menu_Nav {
+  position: relative;
+  margin-top: 15%;
+  height: 85%;
+}
+
+.menu_Nav ul {
+  position: relative;
+  margin-left: 22%;
+  padding-top: 10%;
+  border-left: 1px solid rgb(200, 201, 202);
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  /* border: 1px solid red; */
+}
+
+/* 왼쪽 네브 호버 */
+.menu_Nav ul tr td {
+  position: relative;
+  vertical-align: middle;
+  font-size: 3vh;
+  font-family: "SCDream5";
+  height: 70px;
+  width: 175px;
+}
+
+.menu_Nav a:hover {
+  text-decoration: none;
+  position: relative;
+  vertical-align: middle;
+  font-size: 3.5vh;
+  font-family: "SCDream6";
+}
+
+.Main_Component {
+  display: inline-block;
+  border: 1px solid red;
+  width: 93%;
+  height: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+}

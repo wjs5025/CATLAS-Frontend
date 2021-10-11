@@ -1,38 +1,74 @@
-.App {
+@font-face {
+  font-family: "SCDream1";
+  src: url("./assets/Fonts/SCDream/SCDream1.otf");
+}
+@font-face {
+  font-family: "SCDream2";
+  src: url("./assets/Fonts/SCDream/SCDream2.otf");
+}
+@font-face {
+  font-family: "SCDream3";
+  src: url("./assets/Fonts/SCDream/SCDream3.otf");
+}
+@font-face {
+  font-family: "SCDream4";
+  src: url("./assets/Fonts/SCDream/SCDream4.otf");
+}
+@font-face {
+  font-family: "SCDream5";
+  src: url("./assets/Fonts/SCDream/SCDream5.otf");
+}
+@font-face {
+  font-family: "SCDream6";
+  src: url("./assets/Fonts/SCDream/SCDream6.otf");
+}
+@font-face {
+  font-family: "SCDream7";
+  src: url("./assets/Fonts/SCDream/SCDream7.otf");
+}
+@font-face {
+  font-family: "SCDream8";
+  src: url("./assets/Fonts/SCDream/SCDream8.otf");
+}
+@font-face {
+  font-family: "SCDream9";
+  src: url("./assets/Fonts/SCDream/SCDream9.otf");
+}
+#header {
+  display: inline-block;
+  text-align: center;
+}
+#topMenu {
+  position: relative;
+  height: 30px;
+}
+
+#topMenu ul li {
+  list-style: none;
+  color: white;
+  background-color: #2d2f2d;
+  float: left;
+  line-height: 30px;
+  vertical-align: middle;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#topMenu .menuLink {
+  width: 260px;
+  text-decoration: none;
   color: white;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "SCDream4";
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#topMenu .Sign {
+  width: 80px;
+  text-decoration: none;
+  color: white;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "SCDream4";
 }
