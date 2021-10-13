@@ -35,8 +35,9 @@
   src: url("./assets/Fonts/SCDream/SCDream9.otf");
 }
 #header {
+  max-width: 100vw !important;
   display: inline-block;
-  text-align: center;
+  text-align: center !important;
 }
 #topMenu {
   position: relative;
@@ -45,7 +46,6 @@
 
 #topMenu ul li {
   list-style: none;
-  color: white;
   background-color: #2d2f2d;
   float: left;
   line-height: 30px;

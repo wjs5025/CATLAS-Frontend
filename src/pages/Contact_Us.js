@@ -1,56 +1,44 @@
+import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
+import FreeForum from "./menu_Forums/자유게시판";
+
 function Contact_us() {
   return (
     <>
-      <div className="info_container">
-        <div className="left">
-          <div className="Information_Header">
-            <h1 className="Information_Title noDrag">CONTACT_US</h1>
+      <Router>
+        <div className="container">
+          <div className="left">
+            <div className="Header">
+              <h1 className="Title noDrag">CONTACT_US</h1>
+            </div>
+            <div className="menu_Nav noDrag">
+              <ul>
+                <li>
+                  <Link to={"/Contact_us/기술문제"}>기술문제</Link>
+                </li>{" "}
+                <li>
+                  <Link to={"/Contact_us/계정문의"}>계정문의</Link>
+                </li>{" "}
+                <li>
+                  <Link to={"/Contact_us/유저신고"}>유저신고</Link>
+                </li>{" "}
+                <li>
+                  <Link to={"/Contact_us/FAQ"}>FAQ</Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="menu_Nav noDrag">
-            <div className="circle2"></div>
-            <ul>
-              {/* <tr>
-                <td>
-                  <a className="a_tag" href="">
-                    기술문제
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a className="a_tag" href="#">
-                    계정문의
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a className="a_tag" href="#">
-                    유저신고
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a className="a_tag" href="#">
-                    이용규칙
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a className="a_tag" href="#">
-                    FAQ
-                  </a>
-                </td>
-              </tr> */}
-            </ul>
+          <div className="right">
+            <div className="Main_Component">
+              <Switch>
+                <Route path="/Contact_us/기술문제" component={FreeForum} />
+                <Route path="/Contact_us/계정문의" component={FreeForum} />
+                <Route path="/Contact_us/유저신고" component={FreeForum} />
+                <Route path="/Contact_us/FAQ" component={FreeForum} />
+              </Switch>
+            </div>
           </div>
         </div>
-        <div className="right">
-          <div className="Main_Component">Main</div>
-        </div>
-      </div>
+      </Router>
     </>
   );
 }
