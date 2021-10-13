@@ -1,47 +1,50 @@
+a {
+  text-decoration: none !important;
+}
+
 .container {
   display: flex;
   /* block로 바꾸면 상하로 */
   width: 100vw;
+  max-width: 100vw !important;
+  align-items: center;
 }
 
+/* 좌측영역 (Sidear) */
 .left {
   margin-right: 5vh;
   width: 15vw;
   border: 1px solid green;
 }
 
+/* 우측영역 (MainBar) */
 .right {
   width: 80vw;
-  float: left;
 }
 
+/* SideBar */
 .Header {
   position: relative;
-  height: auto;
 }
 
 .Title {
-  font-size: 35px;
+  font-size: 30px;
   font-family: "SCDream9";
   text-align: center;
-}
-
-.menu_Nav {
-  position: relative;
 }
 
 .menu_Nav ul {
   padding: 0;
   text-align: center;
 }
-/* 왼쪽 네브 호버 */
-.menu_Nav ul td {
+
+.menu_Nav ul li {
+  display: block;
   border: 1px solid blue;
-  vertical-align: middle;
   font-size: 1.5em;
   font-family: "SCDream5";
-  height: 70px;
-  width: fit-content;
+  line-height: 90px;
+  height: 90px;
 }
 
 .menu_Nav a:hover {
@@ -52,6 +55,7 @@
   font-family: "SCDream6";
 }
 
+/* 본문 */
 .Main_Component {
   border: 1px solid red;
   height: 90vh;

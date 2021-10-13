@@ -1,0 +1,46 @@
+.test {
+  font-size: 1.5em;
+  font-family: "SCDream7";
+  border: solid 1px red;
+}
+
+table {
+  width: 100%;
+  font-family: "SCDream7";
+}
+
+table > caption {
+  font-size: 30px;
+  color: grey;
+  border-bottom: white;
+  font-family: "SCDream7";
+}
+
+tbody > tr {
+  border-bottom: white;
+}
+
+tr {
+  font-family: "SCDream4";
+  text-align: center;
+}
+
+.Board_Num {
+  width: 10%;
+}
+
+.Board_Title {
+  width: 50%;
+}
+
+.Board_Date {
+  width: 15%;
+}
+
+.Board_Writer {
+  width: 15%;
+}
+
+.Board_Views {
+  width: 10%;
+}

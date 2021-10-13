@@ -14,36 +14,24 @@ const Forum = () => {
             <div className="menu_Nav noDrag">
               <div className="circle2"></div>
               <ul>
-                <tr>
-                  <td>
-                    <Link to={"/Forum/자유게시판"}>자유게시판</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link to={"/Forum/질문게시판"}>질문게시판</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link to={"/Forum/홍보게시판"}>홍보게시판</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link to={"/Forum/동아리게시판"}>동아리게시판</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link to={"/Forum/IT게시판"}>IT게시판</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link to={"/Forum/자료실"}>자료실</Link>
-                  </td>
-                </tr>
+                <li>
+                  <Link to={"/Forum/자유게시판"}>자유게시판</Link>
+                </li>
+                <li>
+                  <Link to={"/Forum/질문게시판"}>질문게시판</Link>
+                </li>
+                <li>
+                  <Link to={"/Forum/홍보게시판"}>홍보게시판</Link>
+                </li>
+                <li>
+                  <Link to={"/Forum/동아리게시판"}>동아리게시판</Link>
+                </li>
+                <li>
+                  <Link to={"/Forum/IT게시판"}>IT게시판</Link>
+                </li>
+                <li>
+                  <Link to={"/Forum/자료실"}>자료실</Link>
+                </li>
               </ul>
             </div>
           </div>

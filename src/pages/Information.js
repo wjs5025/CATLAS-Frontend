@@ -2,6 +2,7 @@ import "./css/SideBar.css";
 
 import React from "react";
 import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
+import FreeForum from "./menu_Forums/자유게시판";
 
 const Information = () => {
   return (
@@ -14,25 +15,18 @@ const Information = () => {
             </div>
             <div className="menu_Nav noDrag">
               <ul>
-                <td>
+                <li>
                   <Link to={"/Information/CATLAS"}>CATLAS</Link>
-                </td>
-
-                <tr>
-                  <td>
-                    <Link to={"/Information/학과"}>학 과</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link to={"/Information/학생회"}>학생회</Link>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link to={"/Information/교육과정"}>교육과정</Link>
-                  </td>
-                </tr>
+                </li>
+                <li>
+                  <Link to={"/Information/학과"}>학 과</Link>
+                </li>
+                <li>
+                  <Link to={"/Information/학생회"}>학생회</Link>
+                </li>
+                <li>
+                  <Link to={"/Information/교육과정"}>교육과정</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -53,14 +47,6 @@ const Information = () => {
 };
 
 export default Information;
-
-function FreeForum() {
-  return (
-    <>
-      <h1>프리포럼</h1>
-    </>
-  );
-}
 
 function FreeForum2() {
   return <h1>프리포럼 2</h1>;
