@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import Pagination from "../../components/Pagination";
 import { paginate } from "../../components/utils/paginate";
 import "bootstrap/dist/css/bootstrap.css";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const getDumys = () => {
-  const dumys = [
+  const posts = [
     {
       id: 1,
       title: "저니녁짱",
@@ -98,71 +99,99 @@ const getDumys = () => {
       views: 10,
     },
   ];
-  return dumys;
+  return posts;
 };
 
-const FreeForum = () => {
-  const [dumys, setDumy] = useState({
+const FreeForum = ({ history, match }) => {
+  const [posts, setDumy] = useState({
     data: getDumys(),
     pageSize: 10,
     currentPage: 1,
   });
 
   const handlePageChange = (page) => {
-    setDumy({ ...dumys, currentPage: page });
+    setDumy({ ...posts, currentPage: page });
   };
 
-  const { data, pageSize, currentPage } = dumys;
+  const { data, pageSize, currentPage } = posts;
   const pagedDumys = paginate(data, currentPage, pageSize); // 페이지 별로 아이템이 속한 배열을 얻어옴
 
-  const count = dumys.data.length;
+  const count = posts.data.length;
+
   if (count === 0) return <p>게시글이 없습니다.</p>;
 
   return (
     <>
-      <div className="Forum_container">
-        <h2 className="test">자유게시판</h2>
-        <p>{count} 개의 더미데이터가 있습니다.</p>;
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col" className="Board_Num">
-                NO.
-              </th>
-              <th scope="col" className="Board_Title">
-                TITLE
-              </th>
-              <th scope="col" className="Board_Date">
-                DATE
-              </th>
-              <th scope="col" className="Board_Write">
-                WRITER
-              </th>
-              <th scope="col" className="Board_Views">
-                VIEWS
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* 리스트 출력 */}
-            {pagedDumys.map((dumys) => (
-              <tr key={dumys.id}>
-                <td>{dumys.id}</td>
-                <td>{dumys.title}</td>
-                <td>{dumys.date}</td>
-                <td>{dumys.writer}</td>
-                <td>{dumys.views}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <Pagination
-          pageSize={dumys.pageSize}
-          itemsCount={count}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
-      </div>
+      <Router>
+        <div className="Forum_container">
+          {/* 게시글 헤더 */}
+          <div className="Board_Info">
+            <h2 className="test">{history.location.pathname}</h2>
+            <p>{count} 개의 게시글이 있습니다</p>
+          </div>
+          <div className="Board">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" className="Board_Num">
+                    NO.
+                  </th>
+                  <th scope="col" className="Board_Title">
+                    TITLE
+                  </th>
+                  <th scope="col" className="Board_Date">
+                    DATE
+                  </th>
+                  <th scope="col" className="Board_Write">
+                    WRITER
+                  </th>
+                  <th scope="col" className="Board_Views">
+                    VIEWS
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* 게시글 리스트 출력 */}
+                {pagedDumys.map((posts) => (
+                  <tr key={posts.id}>
+                    <td>{posts.id}</td>
+                    <td>
+                      <div
+                        onClick={() =>
+                          history.push({
+                            pathname: match.url + "/" + posts.id,
+                            data: {
+                              id: posts.id,
+                              title: posts.title,
+                              writer: posts.writer,
+                              date: posts.date,
+                              views: posts.views,
+                            },
+                          })
+                        }
+                      >
+                        {posts.title}
+                      </div>
+                    </td>
+                    <td>{posts.date}</td>
+                    <td>{posts.writer}</td>
+                    <td>{posts.views}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {/* 페이지 표시 */}
+          <div className="Board_paging">
+            <Pagination
+              pageSize={posts.pageSize}
+              itemsCount={count}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        </div>
+      </Router>
     </>
   );
 };

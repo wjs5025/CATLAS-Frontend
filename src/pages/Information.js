@@ -3,8 +3,9 @@ import "./css/SideBar.css";
 import React from "react";
 import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
 import FreeForum from "./menu_Forums/자유게시판";
+import Detail from "./menu_Forums/게시글상세";
 
-const Information = () => {
+const Information = ({ history }) => {
   return (
     <>
       <Router>
@@ -34,9 +35,14 @@ const Information = () => {
             <div className="Main_Component">
               <Switch>
                 <Route path="/Information/CATLAS" component={FreeForum} />
-                <Route path="/Information/학과" component={FreeForum2} />
+                <Route path="/Information/학과" component={FreeForum} />
                 <Route path="/Information/학생회" component={FreeForum} />
-                <Route path="/Information/교육과정" component={FreeForum2} />
+                <Route path="/Information/교육과정" component={FreeForum} />
+
+                <Route
+                  path={`${history.location.pathname}/:id`}
+                  component={Detail}
+                />
               </Switch>
             </div>
           </div>
@@ -47,7 +53,3 @@ const Information = () => {
 };
 
 export default Information;
-
-function FreeForum2() {
-  return <h1>프리포럼 2</h1>;
-}

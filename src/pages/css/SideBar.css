@@ -14,7 +14,6 @@ a {
 .left {
   margin-right: 5vh;
   width: 15vw;
-  border: 1px solid green;
 }
 
 /* 우측영역 (MainBar) */
@@ -28,7 +27,7 @@ a {
 }
 
 .Title {
-  font-size: 30px;
+  font-size: 40px;
   font-family: "SCDream9";
   text-align: center;
 }
@@ -40,7 +39,6 @@ a {
 
 .menu_Nav ul li {
   display: block;
-  border: 1px solid blue;
   font-size: 1.5em;
   font-family: "SCDream5";
   line-height: 90px;
@@ -57,6 +55,5 @@ a {
 
 /* 본문 */
 .Main_Component {
-  border: 1px solid red;
   height: 90vh;
 }
