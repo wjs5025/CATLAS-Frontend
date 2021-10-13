@@ -72,3 +72,10 @@
   font-weight: bold;
   font-family: "SCDream4";
 }
+.menuLink {
+  background-color: white;
+}
+.menuLink div {
+  color: black;
+  font-size: 1.1em;
+}

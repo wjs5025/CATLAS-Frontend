@@ -1,4 +1,4 @@
-import "../css/Main_Component.css";
+import "../css/Board.css";
 import React, { useState } from "react";
 import Pagination from "../../components/Pagination";
 import { paginate } from "../../components/utils/paginate";
@@ -98,11 +98,60 @@ const getDumys = () => {
       date: "2021-03-08",
       views: 10,
     },
+    {
+      id: 14,
+      title: "저니녁짱3",
+      writer: "저니녁3",
+      date: "2021-03-08",
+      views: 10,
+    },
+    {
+      id: 15,
+      title: "저니녁짱3",
+      writer: "저니녁3",
+      date: "2021-03-08",
+      views: 10,
+    },
+    {
+      id: 16,
+      title: "저니녁짱3",
+      writer: "저니녁3",
+      date: "2021-03-08",
+      views: 10,
+    },
+    {
+      id: 17,
+      title: "저니녁짱3",
+      writer: "저니녁3",
+      date: "2021-03-08",
+      views: 10,
+    },
+    {
+      id: 18,
+      title: "저니녁짱3",
+      writer: "저니녁3",
+      date: "2021-03-08",
+      views: 10,
+    },
+    {
+      id: 19,
+      title: "저니녁짱3",
+      writer: "저니녁3",
+      date: "2021-03-08",
+      views: 10,
+    },
+    {
+      id: 20,
+      title: "저니녁짱3",
+      writer: "저니녁3",
+      date: "2021-03-08",
+      views: 10,
+    },
   ];
   return posts;
 };
 
-const FreeForum = ({ history, match }) => {
+const FreeForum = ({ history, match, title }) => {
   const [posts, setDumy] = useState({
     data: getDumys(),
     pageSize: 10,
@@ -115,9 +164,7 @@ const FreeForum = ({ history, match }) => {
 
   const { data, pageSize, currentPage } = posts;
   const pagedDumys = paginate(data, currentPage, pageSize); // 페이지 별로 아이템이 속한 배열을 얻어옴
-
   const count = posts.data.length;
-
   if (count === 0) return <p>게시글이 없습니다.</p>;
 
   return (
@@ -126,7 +173,7 @@ const FreeForum = ({ history, match }) => {
         <div className="Forum_container">
           {/* 게시글 헤더 */}
           <div className="Board_Info">
-            <h2 className="test">{history.location.pathname}</h2>
+            <h5 className="Board_header">{history.location.pathname}</h5>
             <p>{count} 개의 게시글이 있습니다</p>
           </div>
           <div className="Board">

@@ -53,7 +53,7 @@ tr {
 }
 
 .Board {
-  flex-basis: 70%;
+  flex-basis: 65%;
 }
 
 .Board_paging {
@@ -73,4 +73,8 @@ tr {
 .page-item.active .page-link {
   font-size: 1.7em;
   font-family: "SCDream7";
+}
+
+.Board_header {
+  font-family: "SCDream8";
 }

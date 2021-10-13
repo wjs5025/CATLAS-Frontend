@@ -10,6 +10,7 @@ import ContactUs from "./pages/Contact_Us";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Information from "./pages/Information";
+import NotFound from "./pages/NotFound";
 
 // App.css
 import "./App.css";
@@ -22,38 +23,38 @@ const App = () => {
           <ul>
             <li>
               <Link className="menuLink" to="/">
-                HOME
+                <div>HOME</div>
               </Link>
             </li>
             <li>
               <Link className="menuLink" to="/Information">
-                INFORMATION
+                <div>INFORMATION</div>
               </Link>
             </li>
             <li>
               <Link className="menuLink" to="/Forum">
-                FORUM
+                <div>FORUM</div>
               </Link>
             </li>
 
             <li>
               <Link className="menuLink" to="/Bachelor">
-                BACHELOR
+                <div>BACHELOR</div>
               </Link>
             </li>
             <li>
               <Link className="menuLink" to="/ContactUs">
-                CONTACT US
+                <div>CONTACT US</div>
               </Link>
             </li>
             <li>
               <Link className="menuLink" to="/SignUp">
-                SIGN UP
+                <div>SIGN UP</div>
               </Link>
             </li>
             <li>
               <Link className="menuLink" to="/SignIn">
-                SIGN IN
+                <div>SIGN IN</div>
               </Link>
             </li>
           </ul>
@@ -69,6 +70,7 @@ const App = () => {
           <Route path="/ContactUs" component={ContactUs} />
           <Route path="/SignIn" component={SignIn} />
           <Route path="/SignUp" component={SignUp} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </main>
     </Router>

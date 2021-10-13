@@ -1,5 +1,5 @@
 import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
-import FreeForum from "./menu_Forums/자유게시판";
+import FreeForum from "./menu_Forums/Board";
 
 function Contact_us() {
   return (
