@@ -14,6 +14,24 @@ import Information from "./pages/Information";
 // App.css
 import "./App.css";
 
+//axios
+import axios from "axios";
+
+let Who = "Unknown";
+
+const WhoLogined = async () => {
+  try {
+    const res = await axios.get("api/WhoLogined");
+    return res;
+  } catch (err) {
+    return err;
+  }
+};
+WhoLogined().then(function (res) {
+  Who = res.data;
+  console.log("then ", res.data);
+});
+
 const App = () => {
   return (
     <Router>
@@ -56,6 +74,7 @@ const App = () => {
                 SIGN IN
               </Link>
             </li>
+            <li>{sessionStorage.getItem("user_id")} 님이 로그인 중!</li>
           </ul>
         </nav>
       </header>
