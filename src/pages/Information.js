@@ -2,8 +2,8 @@ import "./css/SideBar.css";
 
 import React from "react";
 import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
-import FreeForum from "./menu_Forums/자유게시판";
-import Detail from "./menu_Forums/게시글상세";
+import FreeForum from "./menu_Forums/Board";
+import Detail from "./menu_Forums/Detail";
 
 const Information = ({ history }) => {
   return (

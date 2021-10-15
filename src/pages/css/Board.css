@@ -21,11 +21,11 @@ tr {
 }
 
 .Board_Num {
-  width: 10%;
+  width: 7%;
 }
 
 .Board_Title {
-  width: 50%;
+  width: 53%;
 }
 
 .Board_Date {
@@ -53,7 +53,7 @@ tr {
 }
 
 .Board {
-  flex-basis: 70%;
+  flex-basis: 65%;
 }
 
 .Board_paging {
@@ -73,4 +73,8 @@ tr {
 .page-item.active .page-link {
   font-size: 1.7em;
   font-family: "SCDream7";
+}
+
+.Board_header {
+  font-family: "SCDream8";
 }

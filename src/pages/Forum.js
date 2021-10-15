@@ -1,8 +1,8 @@
 import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
-import FreeForum from "./menu_Forums/자유게시판";
 import "./css/SideBar.css";
-import Detail from "./menu_Forums/게시글상세";
-
+import FreeForum from "./menu_Forums/Board";
+import Detail from "./menu_Forums/Detail";
+import NotFound from "../pages/NotFound";
 const Forum = () => {
   return (
     <>
@@ -13,7 +13,6 @@ const Forum = () => {
               <h1 className="Title noDrag">FORUM</h1>
             </div>
             <div className="menu_Nav noDrag">
-              <div className="circle2"></div>
               <ul>
                 <li>
                   <Link to={"/Forum/자유게시판"}>자유게시판</Link>
@@ -52,6 +51,7 @@ const Forum = () => {
                 <Route path="/Forum/동아리게시판/:id" component={Detail} />
                 <Route path="/Forum/IT게시판/:id" component={Detail} />
                 <Route path="/Forum/자료실/:id" component={Detail} />
+                <Route path="*" component={NotFound} />
               </Switch>
             </div>
           </div>
