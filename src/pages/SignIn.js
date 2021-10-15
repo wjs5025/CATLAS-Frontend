@@ -26,11 +26,9 @@ const SignIn = () => {
       })
       .then((res) => {
         console.log(res.data);
-        console.log("res.data.userId :: ", res.data.name);
-        console.log("res.data.msg :: ", res.data.msg);
         if (res.data === "/") {
           alert("Login Success");
-          sessionStorage.setItem("Login", inputId);
+          sessionStorage.setItem("user_id", inputId);
         } else {
           alert("Login Error");
         }
@@ -45,6 +43,7 @@ const SignIn = () => {
     axios.post("/Signout").then((res) => {
       alert("logout!");
     });
+    document.location.href = "/";
   };
 
   useEffect(() => {
