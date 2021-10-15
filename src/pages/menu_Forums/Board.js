@@ -13,6 +13,7 @@ const getDumys = () => {
       writer: "저니녁",
       date: "2021-03-08",
       views: 15,
+      contents: "안녕 나는 인혁",
     },
     {
       id: 2,
@@ -20,6 +21,7 @@ const getDumys = () => {
       writer: "저니녁2",
       date: "2021-03-08",
       views: 16,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 3,
@@ -27,6 +29,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 4,
@@ -34,6 +37,7 @@ const getDumys = () => {
       writer: "저니녁",
       date: "2021-03-08",
       views: 15,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 5,
@@ -41,6 +45,7 @@ const getDumys = () => {
       writer: "저니녁2",
       date: "2021-03-08",
       views: 16,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 6,
@@ -48,6 +53,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 7,
@@ -55,6 +61,7 @@ const getDumys = () => {
       writer: "저니녁",
       date: "2021-03-08",
       views: 15,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 8,
@@ -62,6 +69,7 @@ const getDumys = () => {
       writer: "저니녁2",
       date: "2021-03-08",
       views: 16,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 9,
@@ -69,6 +77,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 10,
@@ -76,6 +85,7 @@ const getDumys = () => {
       writer: "저니녁",
       date: "2021-03-08",
       views: 15,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 11,
@@ -83,6 +93,7 @@ const getDumys = () => {
       writer: "저니녁2",
       date: "2021-03-08",
       views: 16,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 12,
@@ -90,6 +101,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 13,
@@ -97,6 +109,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 14,
@@ -104,6 +117,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 15,
@@ -111,6 +125,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 16,
@@ -118,6 +133,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 17,
@@ -125,6 +141,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 18,
@@ -132,6 +149,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 19,
@@ -139,6 +157,7 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
     {
       id: 20,
@@ -146,12 +165,13 @@ const getDumys = () => {
       writer: "저니녁3",
       date: "2021-03-08",
       views: 10,
+      contents: "안녕 나는 인혁2",
     },
   ];
   return posts;
 };
 
-const FreeForum = ({ history, match, title }) => {
+const FreeForum = ({ history, match }) => {
   const [posts, setDumy] = useState({
     data: getDumys(),
     pageSize: 10,
@@ -204,6 +224,7 @@ const FreeForum = ({ history, match, title }) => {
                     <td>{posts.id}</td>
                     <td>
                       <div
+                        style={{ textAlign: "start" }}
                         onClick={() =>
                           history.push({
                             pathname: match.url + "/" + posts.id,
@@ -213,6 +234,7 @@ const FreeForum = ({ history, match, title }) => {
                               writer: posts.writer,
                               date: posts.date,
                               views: posts.views,
+                              contents: posts.contents,
                             },
                           })
                         }

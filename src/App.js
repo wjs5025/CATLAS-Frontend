@@ -32,18 +32,18 @@ const App = () => {
               </Link>
             </li>
             <li>
-              <Link className="menuLink" to="/Forum">
+              <Link className="menuLink" to="/Forum/자유게시판">
                 <div>FORUM</div>
               </Link>
             </li>
 
             <li>
-              <Link className="menuLink" to="/Bachelor">
+              <Link className="menuLink" to="/Bachelor/공지사항">
                 <div>BACHELOR</div>
               </Link>
             </li>
             <li>
-              <Link className="menuLink" to="/ContactUs">
+              <Link className="menuLink" to="/Contact_us/기술문제">
                 <div>CONTACT US</div>
               </Link>
             </li>
@@ -67,7 +67,7 @@ const App = () => {
           <Route path="/Gallery" component={Gallery} />
           <Route path="/Bachelor" component={Bachelor} />
           <Route path="/Forum" component={Forum} />
-          <Route path="/ContactUs" component={ContactUs} />
+          <Route path="/Contact_us" component={ContactUs} />
           <Route path="/SignIn" component={SignIn} />
           <Route path="/SignUp" component={SignUp} />
           <Route path="*" component={NotFound} />

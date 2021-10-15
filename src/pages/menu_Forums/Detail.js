@@ -10,22 +10,36 @@ const Detail = (history) => {
       <>
         <div className="Forum_container">
           {/* 게시글 헤더 */}
-          <div className="Detail_Info">
+          <div className="Detail_address">
             <h5 className="Board_header">{history.location.pathname}</h5>
           </div>
-          <div className="Detail">
-            <div className="title">{data.title}</div>
-            <div>
-              {data.writer},{data.date},{data.views}
+
+          <div className="Detail_info">
+            <div className="title">
+              <div
+                style={{
+                  flexBasis: "60%",
+                  textAlign: "start",
+                  paddingLeft: "20px",
+                }}
+              >
+                {data.title}
+              </div>
+              <div style={{ flexBasis: "15%" }}>{data.date}</div>
+              <div style={{ flexBasis: "15%" }}>{data.writer}</div>
+              <div style={{ flexBasis: "10%" }}>{data.views} VIEWS</div>
             </div>
-            <div
-              style={{
-                height: "65%",
-                textOverflow: "scroll",
-                fontSize: "50px",
-              }}
-            >
-              텍스트탤텍스트탤텍탤텍스탤텍스트텍스트탤트탤텍탤텍스탤텍스트텍스트트탤텍탤텍스탤텍스트텍스트트탤텍탤텍스탤텍스트텍스트트탤텍탤텍스탤텍스트텍스트텍스탤텍스트텍스탤텍스트텍스트탤텍스탤텍스트탤텍스텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스트탤텍스
+            <div className="Detail_contents">
+              {data.contents}
+              <div>
+                <button
+                  onClick={() => {
+                    history.goBack();
+                  }}
+                >
+                  gd
+                </button>
+              </div>
             </div>
           </div>
         </div>

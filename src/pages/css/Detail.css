@@ -1,21 +1,31 @@
 .block {
   display: flex;
-  flex-direction: column;
   width: 100%;
   justify-content: flex-start;
 }
 
-.Detail_Info {
+.Detail_address {
   flex-basis: 5%;
 }
 
-.Detail {
+.Detail_info {
   flex-basis: 80%;
   max-height: 80%;
 }
 
 .title {
   border-top: 1px solid black;
-  font-size: 1.5em;
-  font-family: "SCDream6";
+  font-size: 1.3em;
+  text-align: center;
+  font-family: "SCDream5";
+  display: flex;
+}
+
+.Detail_contents {
+  padding: 20px;
+  height: 65%;
+  text-overflow: scroll;
+  font-size: 1.1em;
+  font-family: "SCDream4";
+  border-top: 1px solid black;
 }

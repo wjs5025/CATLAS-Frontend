@@ -12,14 +12,14 @@ a {
 
 /* 좌측영역 (Sidear) */
 .left {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin-right: 5vh;
   width: 15vw;
 }
 
 /* 우측영역 (MainBar) */
 .right {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 80vw;
   height: 100%;
 }
