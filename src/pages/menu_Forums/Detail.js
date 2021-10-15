@@ -1,7 +1,9 @@
 import NotFound from "../NotFound";
 import "../css/Detail.css";
+import { useHistory } from "react-router-dom";
 
-const Detail = (history) => {
+const Detail = () => {
+  const history = useHistory();
   const data = history.location.data;
   console.log(data);
   if (data === undefined) return <NotFound />;
