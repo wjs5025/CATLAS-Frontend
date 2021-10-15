@@ -81,13 +81,13 @@ const App = () => {
       <main style={{ display: "inline-block" }}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/Information" component={Information} />
-          <Route exact path="/Gallery" component={Gallery} />
-          <Route exact path="/Bachelor" component={Bachelor} />
-          <Route exact path="/Forum" component={Forum} />
-          <Route exact path="/ContactUs" component={ContactUs} />
-          <Route exact path="/SignIn" component={SignIn} />
-          <Route exact path="/SignUp" component={SignUp} />
+          <Route path="/Information" component={Information} />
+          <Route path="/Gallery" component={Gallery} />
+          <Route path="/Bachelor" component={Bachelor} />
+          <Route path="/Forum" component={Forum} />
+          <Route path="/ContactUs" component={ContactUs} />
+          <Route path="/SignIn" component={SignIn} />
+          <Route path="/SignUp" component={SignUp} />
         </Switch>
       </main>
     </Router>
