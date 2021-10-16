@@ -56,13 +56,13 @@ app.post("/", (req, res) => {
   console.log("post /");
 });
 
-router.route("/api/SignCheck").get(function (req, res) {
+router.route("/SignCheck").get(function (req, res) {
   console.log("isLogined =?  " + req.session.isLogined);
   if (req.session.isLogined == undefined) return res.send(false);
   else return res.send(true);
 });
 
-router.route("/api/WhoLogined").get(function (req, res) {
+router.route("/WhoLogined").get(function (req, res) {
   console.log("WhoLogined =?  " + req.session.name);
   return res.send(req.session.name);
 });
@@ -70,6 +70,10 @@ router.route("/api/WhoLogined").get(function (req, res) {
 app.use("/SignIn", (req, res, next) => {
   console.log("SignIn Page");
   next();
+});
+
+app.post("/SignIn", (req, res) => {
+  console.log("/SignIn _ POST");
 });
 
 //app.post("/SignIn", (req, res) => {
@@ -106,13 +110,14 @@ router.route("/SignIn").post(function (req, res) {
 });
 
 app.get("/Signout", (req, res) => {
+  console.log("/Signout _ GET");
   req.session.isLogined = false;
   req.session.destroy();
   res.redirect("/");
 });
 
 app.post("/Signout", (req, res) => {
-  console.log("LougTOUTOSUDFOUASDO");
+  console.log("/Signout _ POST");
   req.session.isLogined = false;
   req.session.destroy();
   res.redirect("/");

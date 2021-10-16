@@ -18,7 +18,7 @@ const SignIn = () => {
     console.log("ID : ", inputId);
     console.log("PW : ", inputEm);
     axios
-      .post("/SignIn", {
+      .post("api/SignIn", {
         params: {
           name: inputId,
           email: inputEm,
@@ -40,7 +40,7 @@ const SignIn = () => {
 
   const onClickLogout = () => {
     sessionStorage.removeItem("user_id");
-    axios.post("/Signout").then((res) => {
+    axios.post("api//Signout").then((res) => {
       alert("logout!");
     });
     document.location.href = "/";
