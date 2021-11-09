@@ -1,9 +1,13 @@
-const QuestionForm = () => {
+import "../css/Contact.css";
+
+const QuestionForm = ({ history, match }) => {
   return (
-    <div className="Board_Info">
-      <h5 className="Board_header">gdgd</h5>
-      <p> 개의 게시글이 있습니다</p>
-    </div>
+    <>
+      <div className="Contact_container">
+        <h5 className="Board_header">{history.location.pathname}</h5>
+      </div>
+      <div>문의하기</div>
+    </>
   );
 };
 

@@ -1,29 +1,15 @@
-import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
+import {
+  Switch,
+  NavLink,
+  Route,
+  BrowserRouter as Router,
+} from "react-router-dom";
 import "./css/SideBar.css";
 import FreeForum from "./menu_Forums/Board";
 import Detail from "./menu_Forums/Detail";
 import NotFound from "../pages/NotFound";
-import { useState } from "react";
 
-const Gallery = (history) => {
-  const [cate, setCate] = useState("자유게시판");
-  let nowIn;
-
-  switch (history.location.pathname) {
-    case "/Gallery/자유게시판":
-      nowIn = "자유게시판";
-    case "/Gallery/질문게시판":
-      nowIn = "질문게시판";
-    case "/Gallery/홍보게시판":
-      nowIn = "홍보게시판";
-    case "/Gallery/동아리게시판":
-      nowIn = "동아리게시판";
-    case "/Gallery/IT게시판":
-      nowIn = "IT게시판";
-    case "/Gallery/자료실":
-      nowIn = "자료실";
-  }
-
+const Gallery = () => {
   return (
     <>
       <Router>
@@ -35,19 +21,29 @@ const Gallery = (history) => {
             <div className="menu_Nav noDrag">
               <ul>
                 <li>
-                  <Link to={"/Gallery/2021"}>2021</Link>
+                  <NavLink to={"/Gallery/2021"} activeClassName="SideBarActive">
+                    2021
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to={"/Gallery/2020"}>2020</Link>
+                  <NavLink to={"/Gallery/2020"} activeClassName="SideBarActive">
+                    2020
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to={"/Gallery/2019"}>2019</Link>
+                  <NavLink to={"/Gallery/2019"} activeClassName="SideBarActive">
+                    2019
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to={"/Gallery/2017"}>2018</Link>
+                  <NavLink to={"/Gallery/2017"} activeClassName="SideBarActive">
+                    2018
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to={"/Gallery/Down"}>2017 ~</Link>
+                  <NavLink to={"/Gallery/Down"} activeClassName="SideBarActive">
+                    2017 ~
+                  </NavLink>
                 </li>
               </ul>
             </div>

@@ -1,4 +1,10 @@
-import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
+import {
+  Switch,
+  NavLink,
+  Link,
+  Route,
+  BrowserRouter as Router,
+} from "react-router-dom";
 import FreeForum from "./menu_Forums/Board";
 
 function Info() {
@@ -13,13 +19,28 @@ function Info() {
             <div className="menu_Nav noDrag">
               <ul>
                 <li>
-                  <Link to={"/Info/공지사항"}>공지사항</Link>
+                  <NavLink
+                    to={"/Info/공지사항"}
+                    activeClassName="SideBarActive"
+                  >
+                    공지사항
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to={"/Info/학사일정"}>학사일정</Link>
+                  <NavLink
+                    to={"/Info/학사일정"}
+                    activeClassName="SideBarActive"
+                  >
+                    학사일정
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to={"/Info/장학안내"}>장학안내</Link>
+                  <NavLink
+                    to={"/Info/장학안내"}
+                    activeClassName="SideBarActive"
+                  >
+                    장학안내
+                  </NavLink>
                 </li>
               </ul>
             </div>

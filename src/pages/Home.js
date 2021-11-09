@@ -18,19 +18,20 @@ const Home = () => {
               </p>
               <div className="home_LogoBadges noDrag">
                 <a
-                  href="https://newgh.gnu.ac.kr/main/main.do"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <img className="LogoBadge" src={GNU} height={80} alt="" />
-                </a>
-                <a
                   href="https://catlas.gnu.ac.kr/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <img className="LogoBadge" src={LogoON} height={80} alt="" />
                 </a>
+                <a
+                  href="https://newgh.gnu.ac.kr/main/main.do"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <img className="LogoBadge" src={GNU} height={80} alt="" />
+                </a>
+
                 <a href="http://usg.ac.kr/" target="_blank" rel="noreferrer">
                   <img className="LogoBadge" src={USG} height={80} alt="" />
                 </a>
@@ -40,14 +41,14 @@ const Home = () => {
             {/*공지영역(우측상단)*/}
 
             <div className="home_Notice">
-              <div className="circle_area">
-                <div className="circle" />
-              </div>
+              {/* <div className="circle_area"> */}
+              {/* <div className="circle" /> */}
+              {/* </div> */}
               <div className="notice_Header">
                 <h3 className="notice_Title noDrag">
                   NOTICE
-                  <a href={"/Bachelor/공지사항"}>
-                    <span className="notice_more">more..</span>
+                  <a href={"/Info/공지사항"}>
+                    <span className="notice_more">more {">"}</span>
                   </a>
                 </h3>
                 <div className="notice_posts">
@@ -110,7 +111,7 @@ const Home = () => {
                     <h4 className="forum_name noDrag">
                       FREE FORUM
                       <a href={"/Forum/자유게시판"}>
-                        <span className="notice_more">more..</span>
+                        <span className="notice_more">more {">"}</span>
                       </a>
                     </h4>
                     <a className="a_tag" href="http://naver.com">
@@ -138,7 +139,7 @@ const Home = () => {
                     <h4 className="forum_name noDrag">
                       QUESTION FORUM
                       <a href={"/Forum/질문게시판"}>
-                        <span className="notice_more">more..</span>
+                        <span className="notice_more">more {">"}</span>
                       </a>
                     </h4>
                     <a className="a_tag" href="http://naver.com">
@@ -166,7 +167,7 @@ const Home = () => {
                     <h4 className="forum_name noDrag">
                       ADVERTISING FORUM
                       <a href={"/Forum/홍보게시판"}>
-                        <span className="notice_more">more..</span>
+                        <span className="notice_more">more {">"}</span>
                       </a>
                     </h4>
                     <a className="a_tag" href="http://naver.com">
@@ -192,7 +193,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="home_Forum_circle">
-                <div className="circle yellow_circle" />
+                {/* <div className="circle yellow_circle" /> */}
               </div>
             </div>
           </div>

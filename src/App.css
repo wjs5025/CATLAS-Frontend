@@ -77,5 +77,18 @@
 }
 .menuLink div {
   color: black;
-  font-size: 1.1em;
+  font-size: 1.2em;
+  text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+  transition: text-decoration-color 500ms;
+}
+.menuLink:hover div {
+  color: #f6330a;
+  font-size: 1.2em;
+  text-decoration: underline 0.15em;
+}
+
+.MenuActive div {
+  color: #f6330a;
+  font-size: 1.2em;
+  text-decoration: underline 0.15em;
 }

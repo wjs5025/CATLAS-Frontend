@@ -34,6 +34,8 @@ a {
   font-size: 40px;
   font-family: "SCDream9";
   text-align: center;
+  text-decoration: underline;
+  text-decoration-color: #f6330a;
 }
 
 .menu_Nav ul {
@@ -53,9 +55,11 @@ a {
 }
 
 .menu_Nav a {
-  color: gray !important;
+  color: gray;
   vertical-align: middle;
+  transition: 100ms;
 }
+
 .menu_Nav a:hover {
   text-decoration: none;
   position: relative;
@@ -64,7 +68,17 @@ a {
   font-family: "SCDream6";
   color: black !important;
 }
+
 /* 본문 */
 .Main_Component {
   height: 90vh;
+}
+
+.SideBarActive {
+  text-decoration: none;
+  position: relative;
+  vertical-align: middle;
+  font-size: 1.3em !important;
+  font-family: "SCDream6";
+  color: black !important;
 }

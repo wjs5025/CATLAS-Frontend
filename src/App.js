@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 
 // Pages Import
 import Home from "./pages/Home";
@@ -40,40 +46,69 @@ const App = () => {
         <nav id="topMenu">
           <ul>
             <li>
-              <Link className="menuLink" to="/">
+              <NavLink
+                exact
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/"
+              >
                 <div>HOME</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/Info/공지사항">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Info/공지사항"
+              >
                 <div>INFO</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/Forum/자유게시판">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Forum/자유게시판"
+              >
                 <div>FORUM</div>
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link className="menuLink" to="/Gallery/2021">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Gallery/2021"
+              >
                 <div>GALLERY</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/Contact_us/문의하기">
-                <div>CONTACT US</div>
-              </Link>
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Contact/문의하기"
+              >
+                <div>CONTACT</div>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/SignUp">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/SignUp"
+              >
                 <div>SIGN UP</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/SignIn">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/SignIn"
+              >
                 <div>SIGN IN</div>
-              </Link>
+              </NavLink>
             </li>
 
             {/* <li>{sessionStorage.getItem("user_id")} 님이 로그인 중!</li> */}
@@ -86,7 +121,7 @@ const App = () => {
           <Route path="/Gallery" component={Gallery} />
           <Route path="/Info" component={Info} />
           <Route path="/Forum" component={Forum} />
-          <Route path="/Contact_us" component={ContactUs} />
+          <Route path="/Contact" component={ContactUs} />
           <Route path="/SignIn" component={SignIn} />
           <Route path="/SignUp" component={SignUp} />
           <Route path="*" component={NotFound} />

@@ -1,4 +1,9 @@
-import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
+import {
+  Switch,
+  NavLink,
+  Route,
+  BrowserRouter as Router,
+} from "react-router-dom";
 import QuestionForm from "./menu_Contact/QuestionForm";
 
 function Contact_us() {
@@ -8,12 +13,17 @@ function Contact_us() {
         <div className="container">
           <div className="left">
             <div className="Header">
-              <h1 className="Title noDrag">CONTACT_US</h1>
+              <h1 className="Title noDrag">CONTACT</h1>
             </div>
             <div className="menu_Nav noDrag">
               <ul>
                 <li>
-                  <Link to={"/Contact_us/문의하기"}>문의하기</Link>
+                  <NavLink
+                    to={"/Contact/문의하기"}
+                    activeClassName="SideBarActive"
+                  >
+                    문의하기
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -21,7 +31,7 @@ function Contact_us() {
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route path="/Contact_us/문의하기" component={QuestionForm} />
+                <Route path="/Contact/문의하기" component={QuestionForm} />
               </Switch>
             </div>
           </div>
