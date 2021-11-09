@@ -4,12 +4,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // Pages Import
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
-import Bachelor from "./pages/Bachelor";
+import Info from "./pages/Info";
 import Forum from "./pages/Forum";
 import ContactUs from "./pages/Contact_Us";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Information from "./pages/Information";
 import NotFound from "./pages/NotFound";
 
 // App.css
@@ -28,6 +27,7 @@ const WhoLogined = async () => {
     return err;
   }
 };
+
 WhoLogined().then(function (res) {
   Who = res.data;
   console.log("then ", res.data);
@@ -45,8 +45,8 @@ const App = () => {
               </Link>
             </li>
             <li>
-              <Link className="menuLink" to="/Information">
-                <div>INFORMATION</div>
+              <Link className="menuLink" to="/Info/공지사항">
+                <div>INFO</div>
               </Link>
             </li>
             <li>
@@ -56,8 +56,8 @@ const App = () => {
             </li>
 
             <li>
-              <Link className="menuLink" to="/Bachelor/공지사항">
-                <div>BACHELOR</div>
+              <Link className="menuLink" to="/Gallery/2021">
+                <div>GALLERY</div>
               </Link>
             </li>
             <li>
@@ -75,16 +75,16 @@ const App = () => {
                 <div>SIGN IN</div>
               </Link>
             </li>
-            <li>{sessionStorage.getItem("user_id")} 님이 로그인 중!</li>
+
+            {/* <li>{sessionStorage.getItem("user_id")} 님이 로그인 중!</li> */}
           </ul>
         </nav>
       </header>
       <main style={{ display: "inline-block" }}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/Information" component={Information} />
           <Route path="/Gallery" component={Gallery} />
-          <Route path="/Bachelor" component={Bachelor} />
+          <Route path="/Info" component={Info} />
           <Route path="/Forum" component={Forum} />
           <Route path="/Contact_us" component={ContactUs} />
           <Route path="/SignIn" component={SignIn} />

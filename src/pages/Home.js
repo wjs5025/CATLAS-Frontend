@@ -1,4 +1,4 @@
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import LogoON from "../assets/Images/CATLAS LOCO/CATLAS Logo on.png";
 import GNU from "../assets/Images/GNU Logo.jpg";
 import USG from "../assets/Images/usg.png";

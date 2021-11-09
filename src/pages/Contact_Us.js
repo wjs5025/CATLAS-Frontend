@@ -14,15 +14,6 @@ function Contact_us() {
               <ul>
                 <li>
                   <Link to={"/Contact_us/기술문제"}>기술문제</Link>
-                </li>{" "}
-                <li>
-                  <Link to={"/Contact_us/계정문의"}>계정문의</Link>
-                </li>{" "}
-                <li>
-                  <Link to={"/Contact_us/유저신고"}>유저신고</Link>
-                </li>{" "}
-                <li>
-                  <Link to={"/Contact_us/FAQ"}>FAQ</Link>
                 </li>
               </ul>
             </div>
@@ -31,9 +22,6 @@ function Contact_us() {
             <div className="Main_Component">
               <Switch>
                 <Route path="/Contact_us/기술문제" component={FreeForum} />
-                <Route path="/Contact_us/계정문의" component={FreeForum} />
-                <Route path="/Contact_us/유저신고" component={FreeForum} />
-                <Route path="/Contact_us/FAQ" component={FreeForum} />
               </Switch>
             </div>
           </div>
