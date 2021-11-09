@@ -1,5 +1,5 @@
 import { Switch, Link, Route, BrowserRouter as Router } from "react-router-dom";
-import FreeForum from "./menu_Forums/Board";
+import QuestionForm from "./menu_Contact/QuestionForm";
 
 function Contact_us() {
   return (
@@ -13,7 +13,7 @@ function Contact_us() {
             <div className="menu_Nav noDrag">
               <ul>
                 <li>
-                  <Link to={"/Contact_us/기술문제"}>기술문제</Link>
+                  <Link to={"/Contact_us/문의하기"}>문의하기</Link>
                 </li>
               </ul>
             </div>
@@ -21,7 +21,7 @@ function Contact_us() {
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route path="/Contact_us/기술문제" component={FreeForum} />
+                <Route path="/Contact_us/문의하기" component={QuestionForm} />
               </Switch>
             </div>
           </div>

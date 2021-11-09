@@ -61,7 +61,7 @@ const App = () => {
               </Link>
             </li>
             <li>
-              <Link className="menuLink" to="/Contact_us/기술문제">
+              <Link className="menuLink" to="/Contact_us/문의하기">
                 <div>CONTACT US</div>
               </Link>
             </li>
