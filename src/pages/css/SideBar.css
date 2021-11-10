@@ -57,7 +57,7 @@ a {
 .menu_Nav a {
   color: gray;
   vertical-align: middle;
-  transition: 100ms;
+  transition: 150ms;
 }
 
 .menu_Nav a:hover {

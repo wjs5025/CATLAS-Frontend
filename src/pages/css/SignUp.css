@@ -1,0 +1,56 @@
+.SignUp_container {
+  font-family: "SCDream5";
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  text-align: center;
+}
+
+.SignUp_inner {
+  margin: auto;
+  width: 33vw;
+  flex-direction: column;
+}
+
+.SignUp_inner label {
+  float: left;
+  font-size: 1.2em;
+}
+
+.form {
+  display: inline-flex;
+}
+
+.inputBox_div {
+  margin-bottom: 20px;
+}
+.inputBox {
+  width: 100%;
+  height: 40px;
+}
+
+.inputBox_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.inputBox_div2 {
+  width: 48%;
+}
+
+.submitBtn {
+  width: 100%;
+  height: 45px;
+  background-color: #fff;
+  border: 1px solid #e7e7e7;
+  color: black;
+  transition: all 0.25s;
+}
+
+.submitBtn:hover {
+  background-color: #f6330a;
+  color: #fff;
+  border: none;
+}

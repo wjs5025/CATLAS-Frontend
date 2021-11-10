@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import FreeForum from "./menu_Forums/Board";
+import Detail from "./menu_Forums/Detail";
 
 function Info() {
   return (
@@ -48,9 +49,13 @@ function Info() {
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route path="/Info/공지사항" component={FreeForum} />
-                <Route path="/Info/학사일정" component={FreeForum} />
-                <Route path="/Info/장학안내" component={FreeForum} />
+                <Route exact path="/Info/공지사항" component={FreeForum} />
+                <Route exact path="/Info/학사일정" component={FreeForum} />
+                <Route exact path="/Info/장학안내" component={FreeForum} />
+
+                <Route path="/Info/공지사항/:id" component={Detail} />
+                <Route path="/Info/학사일정/:id" component={Detail} />
+                <Route path="/Info/장학안내/:id" component={Detail} />
               </Switch>
             </div>
           </div>

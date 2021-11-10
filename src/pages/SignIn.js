@@ -52,37 +52,59 @@ const SignIn = () => {
       .then((res) => console.log(res))
       .catch();
   }, []);
-
+  console.log(sessionStorage.getItem("user_id") + "님이 로그인 중");
   return (
     <div>
-      {sessionStorage.getItem("user_id")} 님이 로그인 중!
-      <p>SignIn</p>
-      <div>
-        <label htmlFor="input_id">ID : </label>
-        <input
-          type="text"
-          name="name"
-          value={inputId}
-          onChange={handleInputId}
-        />
-      </div>
-      <div>
-        <label htmlFor="input_pw">EMAIL : </label>
-        <input
-          type="text"
-          name="email"
-          value={inputEm}
-          onChange={handleInputEm}
-        />
-      </div>
-      <div>
-        <button type="button" onClick={onClickLogin}>
-          Login
-        </button>
-        <button type="button" onClick={onClickLogout}>
-          Logout
-        </button>
-      </div>
+      <>
+        <div className="SignUp_container noDrag">
+          <div className="SignUp_inner">
+            <div style={{ margin: "50px" }}>
+              <h1 style={{ fontFamily: "SCDream7" }}>로그인</h1>
+            </div>
+
+            <div className="inputBox_div">
+              <label>아이디 / id</label>
+              <input
+                className="inputBox"
+                type="text"
+                name="id"
+                value={inputId}
+                onChange={handleInputId}
+              />
+            </div>
+            <div className="inputBox_div">
+              <label>비밀번호 / password</label>
+              <input className="inputBox" type="text" name="pw" />
+              <p style={{ textAlign: "initial" }}></p>
+            </div>
+            {/*
+            <div className="inputBox_div">
+              <label>이메일 / e-mail</label>
+              <input
+                className="inputBox"
+                type="text"
+                name="email"
+                value={inputEm}
+                onChange={handleInputEm}
+              />
+            </div>
+            */}
+            <div className="inputBox_div">
+              <button className="submitBtn" onClick={onClickLogin}>
+                LOGIN
+              </button>
+            </div>
+            <a href="http://naver.com" target="_blank">
+              Forgot your ID/PW ?
+            </a>
+            {/*
+            <button type="button" onClick={onClickLogout}>
+              Logout
+            </button>
+            */}
+          </div>
+        </div>
+      </>
     </div>
   );
 };

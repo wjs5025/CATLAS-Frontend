@@ -1,22 +1,23 @@
 import "../css/Board.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Pagination from "../../components/Pagination";
 import { paginate } from "../../components/utils/paginate";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 
-const getData = async () => {
-  try {
-    await axios.get("http://172.18.3.23:8000/v1/conner/gets").then((res) => {
-      console.log(res.result);
-      return res;
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const getData = async () => {
+//   try {
+//     await axios.get("http://172.18.3.23:8000/v1/conner/gets").then((res) => {
+//       console.log(res.result);
+//       return res;
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
+//더미데이터 함수들(getDumys)
 const getDumys = () => {
   const posts = [
     {
@@ -306,23 +307,147 @@ const getDumys = () => {
   ];
   return posts;
 };
+const getDumys2 = () => {
+  const posts = [
+    {
+      id: 1,
+      title: "그런거없다",
+      writer: "없다고",
+      date: "2021/03/08",
+      views: 16,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 2,
+      title: "저니녁짱2 2번",
+      writer: "저니녁2",
+      date: "2021/03/08",
+      views: 16,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 3,
+      title: "저니녁짱2 3번",
+      writer: "저니녁2",
+      date: "2021/03/08",
+      views: 16,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 4,
+      title: "저니녁짱2 4번",
+      writer: "저니녁2",
+      date: "2021/03/08",
+      views: 16,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 5,
+      title: "저니녁짱2 5번",
+      writer: "저니녁2",
+      date: "2021/03/08",
+      views: 16,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 6,
+      title: "저니녁짱3 6번",
+      writer: "저니녁3",
+      date: "2021/03/08",
+      views: 10,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 7,
+      title: "저니녁짱 7번",
+      writer: "저니녁",
+      date: "2021/03/08",
+      views: 15,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 8,
+      title: "저니녁짱2 8번 ",
+      writer: "저니녁2",
+      date: "2021/03/08",
+      views: 16,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 9,
+      title: "저니녁짱3 9번",
+      writer: "저니녁3",
+      date: "2021/03/08",
+      views: 10,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 10,
+      title: "저니녁짱 10번",
+      writer: "저니녁",
+      date: "2021/03/08",
+      views: 15,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 11,
+      title: "저니녁짱2 11번",
+      writer: "저니녁2",
+      date: "2021/03/08",
+      views: 16,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 12,
+      title: "저니녁짱3 12번",
+      writer: "저니녁3",
+      date: "2021/03/08",
+      views: 10,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 13,
+      title: "저니녁짱3 13",
+      writer: "저니녁3",
+      date: "2021/03/08",
+      views: 10,
+      contents: "안녕 나는 인혁2",
+    },
+    {
+      id: 20,
+      title: "20번게시글 전인혁 20번",
+      writer: "저니녁",
+      date: "2021/10/16",
+      views: 10,
+      contents:
+        "안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱안녕 나는 인혁이야 메롱",
+    },
+  ];
+  return posts;
+};
 
+//게시판
 const FreeForum = ({ history, match }) => {
-  getData();
   const [posts, setDumy] = useState({
     data: getDumys(),
     pageSize: 10,
     currentPage: 1,
   });
+
+  // 페이징 설정
   const handlePageChange = (page) => {
     setDumy({ ...posts, currentPage: page });
   };
-
   const { data, pageSize, currentPage } = posts;
-  const pagedDumys = paginate(data, currentPage, pageSize); // 페이지 별로 아이템이 속한 배열을 얻어옴
-  const count = posts.data.length;
-  if (count === 0) return <p>게시글이 없습니다.</p>;
 
+  // 페이지 별로 아이템이 속한 배열을 얻어옴
+  const pagedDumys = paginate(data, currentPage, pageSize);
+
+  // 게시글 count
+  const count = posts.data.length;
+  if (count === 0) return <p>게시글이 없습니다.</p>; //게시글이 없을 때 리턴
+
+  //게시글이 있을 때 리턴
   return (
     <>
       <Router>
