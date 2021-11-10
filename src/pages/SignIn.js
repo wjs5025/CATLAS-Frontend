@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./css/SignIn.css";
 
 const SignIn = () => {
   const [inputId, setInputId] = useState("");
@@ -53,31 +54,32 @@ const SignIn = () => {
       .catch();
   }, []);
   console.log(sessionStorage.getItem("user_id") + "님이 로그인 중");
+
   return (
     <div>
       <>
-        <div className="SignUp_container noDrag">
-          <div className="SignUp_inner">
+        <div className="SignIn_container noDrag">
+          <div className="SignIn_inner">
             <div style={{ margin: "50px" }}>
               <h1 style={{ fontFamily: "SCDream7" }}>로그인</h1>
             </div>
-
-            <div className="inputBox_div">
-              <label>아이디 / id</label>
-              <input
-                className="inputBox"
-                type="text"
-                name="id"
-                value={inputId}
-                onChange={handleInputId}
-              />
-            </div>
-            <div className="inputBox_div">
-              <label>비밀번호 / password</label>
-              <input className="inputBox" type="text" name="pw" />
-              <p style={{ textAlign: "initial" }}></p>
-            </div>
-            {/*
+            <div className="input_Area">
+              <div className="inputBox_div">
+                <label>아이디 / id</label>
+                <input
+                  className="inputBox"
+                  type="text"
+                  name="id"
+                  value={inputId}
+                  onChange={handleInputId}
+                />
+              </div>
+              <div className="inputBox_div">
+                <label>비밀번호 / password</label>
+                <input className="inputBox" type="text" name="pw" />
+                <p style={{ textAlign: "initial" }}></p>
+              </div>
+              {/*
             <div className="inputBox_div">
               <label>이메일 / e-mail</label>
               <input
@@ -89,6 +91,7 @@ const SignIn = () => {
               />
             </div>
             */}
+            </div>
             <div className="inputBox_div">
               <button className="submitBtn" onClick={onClickLogin}>
                 LOGIN

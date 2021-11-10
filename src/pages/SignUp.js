@@ -26,6 +26,10 @@ const SignUp = () => {
             <label>비밀번호 확인 / password check</label>
             <input className="inputBox" type="text" name="pwCheck" />
           </div>
+          <div className="inputBox_div">
+            <label>이메일 / e-mail</label>
+            <input className="inputBox" type="text" name="email" />
+          </div>
           <div className="inputBox_container">
             <div className="inputBox_div2">
               <label>이름 / name</label>
@@ -34,7 +38,6 @@ const SignUp = () => {
             <div className="inputBox_div2">
               <label>전화번호 / phone number</label>
               <input className="inputBox" type="text" name="pwCheck" />
-              {/* <p>*</p> */}
             </div>
           </div>
           <div className="inputBox_div">
