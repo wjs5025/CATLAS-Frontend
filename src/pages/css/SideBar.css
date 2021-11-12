@@ -14,9 +14,8 @@ a {
 .left {
   /* border: 1px solid red; */
   margin-right: 3vw;
-  padding-top: 15vh;
+  padding-top: 8vh;
   width: 15vw;
-  height: 100vh;
 }
 
 /* 우측영역 (MainBar) */
@@ -35,25 +34,32 @@ a {
   font-size: 40px;
   font-family: "SCDream9";
   text-align: center;
+  text-decoration: underline;
+  text-decoration-color: #f6330a;
 }
 
 .menu_Nav ul {
+  display: flex;
+  flex-direction: column;
+  /*border: 1px solid red;*/
   padding: 0;
   text-align: center;
-  /* 일정하게 띄워야함 */
+  height: 60vh;
+  justify-content: center; /* 일정하게 띄워야함 */
 }
 
 .menu_Nav ul li {
-  display: block;
   font-size: 1.5em;
   font-family: "SCDream5";
-  line-height: 90px;
-  height: 90px;
+  height: 9vh;
 }
 
 .menu_Nav a {
-  color: gray !important;
+  color: gray;
+  vertical-align: middle;
+  transition: 150ms;
 }
+
 .menu_Nav a:hover {
   text-decoration: none;
   position: relative;
@@ -62,7 +68,17 @@ a {
   font-family: "SCDream6";
   color: black !important;
 }
+
 /* 본문 */
 .Main_Component {
   height: 90vh;
+}
+
+.SideBarActive {
+  text-decoration: none;
+  position: relative;
+  vertical-align: middle;
+  font-size: 1.3em !important;
+  font-family: "SCDream6";
+  color: black !important;
 }

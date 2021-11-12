@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  NavLink,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 // Pages Import
 import Home from "./pages/Home";
@@ -14,25 +19,6 @@ import NotFound from "./pages/NotFound";
 // App.css
 import "./App.css";
 
-//axios
-import axios from "axios";
-
-let Who = "Unknown";
-
-const WhoLogined = async () => {
-  try {
-    const res = await axios.get("api/WhoLogined");
-    return res;
-  } catch (err) {
-    return err;
-  }
-};
-
-WhoLogined().then(function (res) {
-  Who = res.data;
-  console.log("then ", res.data);
-});
-
 const App = () => {
   return (
     <Router>
@@ -40,43 +26,75 @@ const App = () => {
         <nav id="topMenu">
           <ul>
             <li>
-              <Link className="menuLink" to="/">
+              <NavLink
+                exact
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/"
+              >
                 <div>HOME</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/Info/공지사항">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Info/공지사항"
+              >
                 <div>INFO</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/Forum/자유게시판">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Forum/자유게시판"
+              >
                 <div>FORUM</div>
-              </Link>
+              </NavLink>
             </li>
-
             <li>
-              <Link className="menuLink" to="/Gallery/2021">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Gallery/2021"
+              >
                 <div>GALLERY</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/Contact_us/기술문제">
-                <div>CONTACT US</div>
-              </Link>
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Contact/문의하기"
+              >
+                <div>CONTACT</div>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/SignUp">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/SignUp"
+              >
                 <div>SIGN UP</div>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="menuLink" to="/SignIn">
+              <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/SignIn"
+              >
                 <div>SIGN IN</div>
-              </Link>
+              </NavLink>
             </li>
 
-            {/* <li>{sessionStorage.getItem("user_id")} 님이 로그인 중!</li> */}
+            <li>
+              <p style={{ color: "white" }}>
+                헬로 {sessionStorage.getItem("id")} 로그인중
+              </p>
+            </li>
           </ul>
         </nav>
       </header>
@@ -86,9 +104,10 @@ const App = () => {
           <Route path="/Gallery" component={Gallery} />
           <Route path="/Info" component={Info} />
           <Route path="/Forum" component={Forum} />
-          <Route path="/Contact_us" component={ContactUs} />
+          <Route path="/Contact" component={ContactUs} />
           <Route path="/SignIn" component={SignIn} />
           <Route path="/SignUp" component={SignUp} />
+
           <Route path="*" component={NotFound} />
         </Switch>
       </main>

@@ -1,0 +1,21 @@
+.SignIn_container {
+  font-family: "SCDream5";
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  text-align: center;
+}
+.SignIn_inner {
+  margin: auto;
+  width: 28vw;
+  flex-direction: column;
+}
+
+.SignIn_inner label {
+  float: left;
+  font-size: 1.2em;
+}
+
+.input_Area {
+  margin-bottom: 50px;
+}

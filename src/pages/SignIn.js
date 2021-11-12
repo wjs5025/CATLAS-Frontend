@@ -1,105 +1,98 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import "./css/SignIn.css";
 
 const SignIn = () => {
-  const [inputId, setInputId] = useState("");
-  const [inputEm, setInputEm] = useState("");
+  const [InputID, setInputID] = useState("");
+  const [InputPW, setInputPW] = useState("");
 
-  const handleInputId = (e) => {
-    setInputId(e.target.value);
-  };
-
-  const handleInputEm = (e) => {
-    setInputEm(e.target.value);
-  };
-
-  const onClickLogin = () => {
-    console.log("click login");
-    console.log("ID : ", inputId);
-    console.log("PW : ", inputEm);
+  // 로그인 버튼 클릭시
+  const Login = () => {
     axios
-      .post("/SignIn", {
+      .post("http://172.18.3.25:3001/SignIn", {
         params: {
-          name: inputId,
-          email: inputEm,
+          userid: InputID,
+          password: InputPW,
         },
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data === "/") {
           alert("Login Success");
-          sessionStorage.setItem("user_id", inputId);
+          sessionStorage.setItem("id", InputID);
+          document.location.href = "/";
         } else {
           alert("Login Error");
         }
-        // 작업 완료 되면 페이지 이동(새로고침)
-        document.location.href = "/";
       })
       .catch();
   };
 
-  const onClickLogout = () => {
-    sessionStorage.removeItem("user_id");
-    axios.post("/Signout").then((res) => {
-      alert("logout!");
-    });
-    document.location.href = "/";
-  };
-
-  useEffect(() => {
-    axios
-      .get("")
-      .then((res) => console.log(res))
-      .catch();
-  }, []);
-
   return (
     <div>
-      {sessionStorage.getItem("user_id")} 님이 로그인 중!
-      <p>SignIn</p>
-      <div>
-        <label htmlFor="input_id">ID : </label>
-        <input
-          type="text"
-          name="name"
-          value={inputId}
-          onChange={handleInputId}
-        />
-      </div>
-      <div>
-        <label htmlFor="input_pw">EMAIL : </label>
-        <input
-          type="text"
-          name="email"
-          value={inputEm}
-          onChange={handleInputEm}
-        />
-      </div>
-      <div>
-        <button type="button" onClick={onClickLogin}>
-          Login
-        </button>
-        <button type="button" onClick={onClickLogout}>
-          Logout
-        </button>
-      </div>
+      <>
+        <div className="SignIn_container noDrag">
+          <div className="SignIn_inner">
+            <div style={{ margin: "50px" }}>
+              <h1
+                style={{
+                  fontFamily: "SCDream7",
+                  textDecoration: "underline",
+                  textDecorationColor: "#f6330a",
+                }}
+              >
+                로그인
+              </h1>
+            </div>
+            <div className="input_Area">
+              <div className="inputBox_div">
+                <label>아이디 / id</label>
+                <input
+                  className="inputBox"
+                  type="text"
+                  name="id"
+                  value={InputID}
+                  onChange={(e) => setInputID(e.target.value)}
+                />
+              </div>
+              <div className="inputBox_div">
+                <label>비밀번호 / password</label>
+                <input
+                  className="inputBox"
+                  type="text"
+                  name="pw"
+                  value={InputPW}
+                  onChange={(e) => setInputPW(e.target.value)}
+                />
+                <p style={{ textAlign: "initial" }}></p>
+              </div>
+            </div>
+            <div className="inputBox_div">
+              <button className="submitBtn" onClick={() => Login()}>
+                LOGIN
+              </button>
+              <button
+                onClick={() => {
+                  sessionStorage.removeItem("id");
+                  axios.post("http://172.18.3.25:3001/SignOut").then(() => {
+                    alert("SignOut!");
+                  });
+                  document.location.href = "/";
+                }}
+              >
+                로그아웃
+              </button>
+            </div>
+            <a
+              href="http://naver.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Forgot your ID/PW ?
+            </a>
+          </div>
+        </div>
+      </>
     </div>
   );
 };
 export default SignIn;
-
-/*
-
-  /*  const callApi = async () => {
-      console.log("SI");
-      axios.get("/api").then((res) => console.log(res.data));
-  };
-  
-  useEffect(() => {
-  callApi();
-  },[]);
-  
-
-  
-  return <div>test</div>;
-  */
