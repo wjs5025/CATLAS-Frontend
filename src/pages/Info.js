@@ -1,7 +1,6 @@
 import {
   Switch,
   NavLink,
-  Link,
   Route,
   BrowserRouter as Router,
 } from "react-router-dom";
@@ -50,11 +49,19 @@ function Info() {
             <div className="Main_Component">
               <Switch>
                 <Route exact path="/Info/공지사항" component={FreeForum} />
-                <Route exact path="/Info/학사일정" component={FreeForum} />
                 <Route exact path="/Info/장학안내" component={FreeForum} />
+                <Route
+                  exact
+                  path="/Info/장학안내/글쓰기"
+                  component={FreeForum}
+                />
+                <Route
+                  exact
+                  path="/Info/장학안내/글쓰기"
+                  component={FreeForum}
+                />
 
                 <Route path="/Info/공지사항/:id" component={Detail} />
-                <Route path="/Info/학사일정/:id" component={Detail} />
                 <Route path="/Info/장학안내/:id" component={Detail} />
               </Switch>
             </div>

@@ -4,7 +4,6 @@ import {
   NavLink,
   Switch,
   Route,
-  Link,
 } from "react-router-dom";
 
 // Pages Import
@@ -19,25 +18,6 @@ import NotFound from "./pages/NotFound";
 
 // App.css
 import "./App.css";
-
-//axios
-import axios from "axios";
-
-let Who = "Unknown";
-
-const WhoLogined = async () => {
-  try {
-    const res = await axios.get("api/WhoLogined");
-    return res;
-  } catch (err) {
-    return err;
-  }
-};
-
-WhoLogined().then(function (res) {
-  Who = res.data;
-  console.log("then ", res.data);
-});
 
 const App = () => {
   return (
@@ -73,7 +53,6 @@ const App = () => {
                 <div>FORUM</div>
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 className="menuLink"
@@ -111,7 +90,11 @@ const App = () => {
               </NavLink>
             </li>
 
-            {/* <li>{sessionStorage.getItem("user_id")} 님이 로그인 중!</li> */}
+            <li>
+              <p style={{ color: "white" }}>
+                헬로 {sessionStorage.getItem("id")} 로그인중
+              </p>
+            </li>
           </ul>
         </nav>
       </header>
@@ -124,6 +107,7 @@ const App = () => {
           <Route path="/Contact" component={ContactUs} />
           <Route path="/SignIn" component={SignIn} />
           <Route path="/SignUp" component={SignUp} />
+
           <Route path="*" component={NotFound} />
         </Switch>
       </main>
