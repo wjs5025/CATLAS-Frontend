@@ -57,6 +57,10 @@ tr {
 }
 
 .Board_paging {
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   flex-basis: 10%;
   align-self: center;
   line-height: 100%;
@@ -77,4 +81,8 @@ tr {
 
 .Board_header {
   font-family: "SCDream8";
+}
+
+.PostingBtn {
+  justify-content: flex-end;
 }

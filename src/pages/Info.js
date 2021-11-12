@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import FreeForum from "./menu_Forums/Board";
 import Detail from "./menu_Forums/Detail";
+import Posting from "./menu_Forums/Posting";
 
 function Info() {
   return (
@@ -50,16 +51,8 @@ function Info() {
               <Switch>
                 <Route exact path="/Info/공지사항" component={FreeForum} />
                 <Route exact path="/Info/장학안내" component={FreeForum} />
-                <Route
-                  exact
-                  path="/Info/장학안내/글쓰기"
-                  component={FreeForum}
-                />
-                <Route
-                  exact
-                  path="/Info/장학안내/글쓰기"
-                  component={FreeForum}
-                />
+                <Route exact path="/Info/공지사항/글쓰기" component={Posting} />
+                <Route exact path="/Info/장학안내/글쓰기" component={Posting} />
 
                 <Route path="/Info/공지사항/:id" component={Detail} />
                 <Route path="/Info/장학안내/:id" component={Detail} />

@@ -121,7 +121,10 @@ const FreeForum = ({ history, match }) => {
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
-            <div onClick={() => history.push(match.url + "/" + "글쓰기")}>
+            <div
+              className="PostingBtn"
+              onClick={() => history.push(match.url + "/" + "글쓰기")}
+            >
               글쓰기
             </div>
           </div>

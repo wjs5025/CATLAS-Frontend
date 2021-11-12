@@ -8,6 +8,7 @@ import "./css/SideBar.css";
 import FreeForum from "./menu_Forums/Board";
 import Detail from "./menu_Forums/Detail";
 import NotFound from "../pages/NotFound";
+import Posting from "./menu_Forums/Posting";
 
 const Forum = () => {
   return (
@@ -77,6 +78,33 @@ const Forum = () => {
                 <Route exact path="/Forum/동아리게시판" component={FreeForum} />
                 <Route exact path="/Forum/IT게시판" component={FreeForum} />
                 <Route exact path="/Forum/자료실" component={FreeForum} />
+
+                <Route
+                  exact
+                  path="/Forum/자유게시판/글쓰기"
+                  component={Posting}
+                />
+                <Route
+                  exact
+                  path="/Forum/질문게시판/글쓰기"
+                  component={Posting}
+                />
+                <Route
+                  exact
+                  path="/Forum/홍보게시판/글쓰기"
+                  component={Posting}
+                />
+                <Route
+                  exact
+                  path="/Forum/동아리게시판/글쓰기"
+                  component={Posting}
+                />
+                <Route
+                  exact
+                  path="/Forum/IT게시판/글쓰기"
+                  component={Posting}
+                />
+                <Route exact path="/Forum/자료실/글쓰기" component={Posting} />
 
                 <Route path="/Forum/자유게시판/:id" component={Detail} />
                 <Route path="/Forum/질문게시판/:id" component={Detail} />
