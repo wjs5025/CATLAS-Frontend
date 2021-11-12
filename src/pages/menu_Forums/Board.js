@@ -15,7 +15,7 @@ const FreeForum = ({ history, match }) => {
   //게시글 경로 확인
   const pathArray = history.location.pathname.split("/");
   const BoardPath = pathArray[2];
-
+  const [testpng, setpng] = useState("");
   const [posts, setPosts] = useState({
     data: dataset,
     pageSize: 10,
@@ -30,7 +30,10 @@ const FreeForum = ({ history, match }) => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        console.log("dfd", res.data);
+        if (BoardPath === "2021") {
+          setpng(res.data[0].URL);
+        }
         setPosts({ ...posts, data: res.data });
       });
   };
@@ -49,7 +52,7 @@ const FreeForum = ({ history, match }) => {
 
   // 게시글 count
   const count = posts.data.length;
-  if (count === 0) return <p>게시글이 없습니다.</p>; //게시글이 없을 때 리턴
+  // if (count === 0) return <p>게시글이 없습니다.</p>; //게시글이 없을 때 리턴
 
   console.log("매치", match.url);
   //게시글이 있을 때 리턴
@@ -64,6 +67,9 @@ const FreeForum = ({ history, match }) => {
               {count} 개의 게시글이 있습니다
             </p>
           </div>
+          {console.log("여기야", testpng)}
+          <img src={testpng} width={200} />
+
           <div className="Board">
             <table className="table table-hover">
               <thead>
@@ -105,9 +111,9 @@ const FreeForum = ({ history, match }) => {
                         {nowPost.title}
                       </div>
                     </td>
-                    <td>{nowPost.date.substr(0, 10)}</td>
-                    <td>{nowPost.writer}</td>
-                    <td>{nowPost.views}</td>
+                    {/* <td>{nowPost.date.substr(0, 10)}</td>
+                    <td>{nowPost.writer}</td>/
+                    <td>{nowPost.views}</td> */}
                   </tr>
                 ))}
               </tbody>
