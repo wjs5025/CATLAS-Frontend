@@ -8,6 +8,7 @@ import Board from "./SubPages/Board";
 import Detail from "./SubPages/Detail";
 import Posting from "./SubPages/Posting";
 import LinkImg from "../assets/Images/linkIcon.png";
+
 function Info() {
   return (
     <>
@@ -38,16 +39,19 @@ function Info() {
                 <li>
                   <a
                     href="https://newgh.gnu.ac.kr/main/ps/schdul/selectSchdulMainList.do?mi=1084"
-                    activeClassName="SideBarActive"
                     target="_blank"
                     rel="noreferrer"
                   >
                     학사일정
                   </a>
                   <img
-                    style={{ position: "absolute" }}
+                    style={{
+                      position: "absolute",
+                      paddingTop: "11px",
+                    }}
                     src={LinkImg}
                     width={18}
+                    alt=""
                   />
                 </li>
               </ul>

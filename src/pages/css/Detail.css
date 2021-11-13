@@ -8,12 +8,6 @@
   flex-basis: 5%;
 }
 
-.Detail_info {
-  flex-basis: 5%;
-}
-
-
-
 .title {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
@@ -24,12 +18,11 @@
   font-family: "SCDream5";
   display: flex;
 }
-.PostingTitle{
+.PostingTitle {
   padding: 5px 0;
-
 }
 .Detail_contents {
-  flex-basis: 71.1%;
+  height: 65vh;
   padding: 20px;
   text-overflow: scroll;
   font-size: 1.1em;

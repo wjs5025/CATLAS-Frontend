@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./css/SignIn.css";
+import { useHistory } from "react-router";
 
 const SignIn = () => {
+  const history = useHistory();
   const [InputID, setInputID] = useState("");
   const [InputPW, setInputPW] = useState("");
 
@@ -72,14 +74,10 @@ const SignIn = () => {
               </button>
               <button
                 onClick={() => {
-                  sessionStorage.removeItem("id");
-                  axios.post("http://172.18.3.25:3001/SignOut").then(() => {
-                    alert("SignOut!");
-                  });
-                  document.location.href = "/";
+                  history.push("/SignUp");
                 }}
               >
-                로그아웃
+                회원가입
               </button>
             </div>
             <a

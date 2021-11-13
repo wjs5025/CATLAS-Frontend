@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "./css/SignUp.css";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 const SignUp = () => {
+  const history = useHistory();
   const [InputID, setInputID] = useState("");
   const [InputPW, setInputPW] = useState("");
   const [InputEmail, setInputEmail] = useState("");
   const [InputName, setInputName] = useState("");
   const [InputPhnum, setInputPhnum] = useState("");
 
-  const SignUp = () => {
-    alert(InputID);
-
+  const SignUpBtn = () => {
     axios
       .post("http://172.18.3.25:3001/SignUp", {
         params: {
@@ -23,7 +23,8 @@ const SignUp = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        alert("회원가입 완료 !");
+        history.push("/");
       });
   };
   return (
@@ -103,7 +104,7 @@ const SignUp = () => {
             </div>
           </div>
           <div className="inputBox_div">
-            <button className="submitBtn" onClick={SignUp}>
+            <button className="submitBtn" onClick={SignUpBtn}>
               가입하기
             </button>
           </div>

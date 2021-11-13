@@ -12,8 +12,12 @@ table > caption {
 
 tbody > tr {
   border-bottom: white;
+  transition: 200ms;
 }
-
+tbody > tr:hover {
+  border-bottom: white;
+  background-color: rgba(206, 41, 8, 0.05);
+}
 tr {
   font-family: "SCDream4";
   text-align: center;
@@ -39,50 +43,61 @@ tr {
   width: 10%;
 }
 
+/* Board Header*/
+.Board_header {
+  font-family: "SCDream8";
+}
+
 /* Board Post List */
 .Forum_container {
-  display: flex;
-  flex-direction: column;
-  padding-top: 8vh;
-  height: 100%;
+  width: 100%;
+  height: 80vh;
+  border: 2px solid rgba(231, 231, 231, 0.7);
 }
 
 .Board_Info {
-  flex-basis: 10%;
+  height: 10vh;
 }
 
 .Board {
-  padding-top: 10px;
-  flex-basis: 80%;
-}
+  line-height: 4vh;
 
-.Board_paging {
-  justify-content: center;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-basis: 10%;
-  align-self: center;
-  line-height: 100%;
+  height: 70vh;
 }
 
 .page-link {
   color: black !important;
-  background-color: white !important;
+  background-color: rgba(255, 255, 255, 0) !important;
   border-color: white !important;
   font-weight: bold;
   font-family: "SCDream7";
 }
 
+.page-item .page-link {
+  height: fit-content;
+  font-family: "SCDream7";
+  float: left;
+}
+
 .page-item.active .page-link {
-  font-size: 1.7em;
+  font-size: 1.5em;
   font-family: "SCDream7";
 }
 
-.Board_header {
-  font-family: "SCDream8";
+.PostingBtn {
+  padding: 0 !important;
+  z-index: 5;
+  position: absolute;
+  right: 0;
+  transition: 100ms;
+}
+.PostingBtn:hover {
+  width: 40px;
 }
 
-.PostingBtn {
-  justify-content: flex-end;
+.pagination {
+  align-items: center;
+  justify-content: center;
+  height: fit-content !important;
+  margin: 0% !important;
 }

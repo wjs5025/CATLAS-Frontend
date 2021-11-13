@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import "./css/SideBar.css";
-import Board from "./SubPages/Board";
+import GalleryBoard from "./SubPages/GalleryBoard";
 import Detail from "./SubPages/Detail";
 import NotFound from "./SubPages/NotFound";
 
@@ -36,7 +36,7 @@ const Gallery = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/Gallery/2017"} activeClassName="SideBarActive">
+                  <NavLink to={"/Gallery/2018"} activeClassName="SideBarActive">
                     2018
                   </NavLink>
                 </li>
@@ -51,11 +51,11 @@ const Gallery = () => {
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route exact path="/Gallery/2021" component={Board} />
-                <Route exact path="/Gallery/2020" component={Board} />
-                <Route exact path="/Gallery/2019" component={Board} />
-                <Route exact path="/Gallery/2018" component={Board} />
-                <Route exact path="/Gallery/Down" component={Board} />
+                <Route exact path="/Gallery/2021" component={GalleryBoard} />
+                <Route exact path="/Gallery/2020" component={GalleryBoard} />
+                <Route exact path="/Gallery/2019" component={GalleryBoard} />
+                <Route exact path="/Gallery/2018" component={GalleryBoard} />
+                <Route exact path="/Gallery/Down" component={GalleryBoard} />
 
                 <Route path="/Gallery/2021/:id" component={Detail} />
                 <Route path="/Gallery/2020/:id" component={Detail} />
