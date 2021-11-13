@@ -4,7 +4,7 @@ import {
   Route,
   BrowserRouter as Router,
 } from "react-router-dom";
-import QuestionForm from "./menu_Contact/QuestionForm";
+import QuestionForm from "./SubPages/QuestionForm";
 
 function Contact_us() {
   return (

@@ -4,8 +4,16 @@ import {
   Route,
   BrowserRouter as Router,
 } from "react-router-dom";
+<<<<<<< HEAD
+import Board from "./SubPages/Board";
+import Detail from "./SubPages/Detail";
+import Posting from "./SubPages/Posting";
+=======
 import FreeForum from "./menu_Forums/Board";
 import Detail from "./menu_Forums/Detail";
+import Posting from "./menu_Forums/Posting";
+import LinkImg from "../assets/Images/linkIcon.png";
+>>>>>>> cf89e2c9940079165ca9302437f48fcb2f460311
 
 function Info() {
   return (
@@ -28,38 +36,36 @@ function Info() {
                 </li>
                 <li>
                   <NavLink
-                    to={"/Info/학사일정"}
-                    activeClassName="SideBarActive"
-                  >
-                    학사일정
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
                     to={"/Info/장학안내"}
                     activeClassName="SideBarActive"
                   >
                     장학안내
                   </NavLink>
                 </li>
+                <li>
+                  <a
+                    href="https://newgh.gnu.ac.kr/main/ps/schdul/selectSchdulMainList.do?mi=1084"
+                    activeClassName="SideBarActive"
+                    target="_blank"
+                    rel="noreferrer"
+
+                  >
+                    학사일정
+                  </a>
+                <img style={{position:"absolute"}} src={LinkImg} width={18}/>
+                 
+                </li>
+
               </ul>
             </div>
           </div>
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route exact path="/Info/공지사항" component={FreeForum} />
-                <Route exact path="/Info/장학안내" component={FreeForum} />
-                <Route
-                  exact
-                  path="/Info/장학안내/글쓰기"
-                  component={FreeForum}
-                />
-                <Route
-                  exact
-                  path="/Info/장학안내/글쓰기"
-                  component={FreeForum}
-                />
+                <Route exact path="/Info/공지사항" component={Board} />
+                <Route exact path="/Info/장학안내" component={Board} />
+                <Route exact path="/Info/공지사항/글쓰기" component={Posting} />
+                <Route exact path="/Info/장학안내/글쓰기" component={Posting} />
 
                 <Route path="/Info/공지사항/:id" component={Detail} />
                 <Route path="/Info/장학안내/:id" component={Detail} />
