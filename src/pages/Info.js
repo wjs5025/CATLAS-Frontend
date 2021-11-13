@@ -7,6 +7,7 @@ import {
 import FreeForum from "./menu_Forums/Board";
 import Detail from "./menu_Forums/Detail";
 import Posting from "./menu_Forums/Posting";
+import LinkImg from "../assets/Images/linkIcon.png";
 
 function Info() {
   return (
@@ -29,20 +30,26 @@ function Info() {
                 </li>
                 <li>
                   <NavLink
-                    to={"/Info/학사일정"}
-                    activeClassName="SideBarActive"
-                  >
-                    학사일정
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
                     to={"/Info/장학안내"}
                     activeClassName="SideBarActive"
                   >
                     장학안내
                   </NavLink>
                 </li>
+                <li>
+                  <a
+                    href="https://newgh.gnu.ac.kr/main/ps/schdul/selectSchdulMainList.do?mi=1084"
+                    activeClassName="SideBarActive"
+                    target="_blank"
+                    rel="noreferrer"
+
+                  >
+                    학사일정
+                  </a>
+                <img style={{position:"absolute"}} src={LinkImg} width={18}/>
+                 
+                </li>
+
               </ul>
             </div>
           </div>

@@ -12,17 +12,22 @@
   flex-basis: 5%;
 }
 
+
+
 .title {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  padding: 5px;
+  padding: 5px 0;
 
   font-size: 1.3em;
   text-align: center;
   font-family: "SCDream5";
   display: flex;
 }
+.PostingTitle{
+  padding: 5px 0;
 
+}
 .Detail_contents {
   flex-basis: 71.1%;
   padding: 20px;
