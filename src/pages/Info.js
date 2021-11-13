@@ -4,17 +4,10 @@ import {
   Route,
   BrowserRouter as Router,
 } from "react-router-dom";
-<<<<<<< HEAD
 import Board from "./SubPages/Board";
 import Detail from "./SubPages/Detail";
 import Posting from "./SubPages/Posting";
-=======
-import FreeForum from "./menu_Forums/Board";
-import Detail from "./menu_Forums/Detail";
-import Posting from "./menu_Forums/Posting";
 import LinkImg from "../assets/Images/linkIcon.png";
->>>>>>> cf89e2c9940079165ca9302437f48fcb2f460311
-
 function Info() {
   return (
     <>
@@ -48,14 +41,15 @@ function Info() {
                     activeClassName="SideBarActive"
                     target="_blank"
                     rel="noreferrer"
-
                   >
                     학사일정
                   </a>
-                <img style={{position:"absolute"}} src={LinkImg} width={18}/>
-                 
+                  <img
+                    style={{ position: "absolute" }}
+                    src={LinkImg}
+                    width={18}
+                  />
                 </li>
-
               </ul>
             </div>
           </div>
