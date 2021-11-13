@@ -4,9 +4,9 @@ import {
   Route,
   BrowserRouter as Router,
 } from "react-router-dom";
-import FreeForum from "./menu_Forums/Board";
-import Detail from "./menu_Forums/Detail";
-import Posting from "./menu_Forums/Posting";
+import Board from "./SubPages/Board";
+import Detail from "./SubPages/Detail";
+import Posting from "./SubPages/Posting";
 
 function Info() {
   return (
@@ -49,8 +49,8 @@ function Info() {
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route exact path="/Info/공지사항" component={FreeForum} />
-                <Route exact path="/Info/장학안내" component={FreeForum} />
+                <Route exact path="/Info/공지사항" component={Board} />
+                <Route exact path="/Info/장학안내" component={Board} />
                 <Route exact path="/Info/공지사항/글쓰기" component={Posting} />
                 <Route exact path="/Info/장학안내/글쓰기" component={Posting} />
 

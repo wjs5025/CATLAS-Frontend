@@ -5,9 +5,9 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import "./css/SideBar.css";
-import FreeForum from "./menu_Forums/Board";
-import Detail from "./menu_Forums/Detail";
-import NotFound from "../pages/NotFound";
+import Board from "./SubPages/Board";
+import Detail from "./SubPages/Detail";
+import NotFound from "./SubPages/NotFound";
 
 const Gallery = () => {
   return (
@@ -51,11 +51,11 @@ const Gallery = () => {
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route exact path="/Gallery/2021" component={FreeForum} />
-                <Route exact path="/Gallery/2020" component={FreeForum} />
-                <Route exact path="/Gallery/2019" component={FreeForum} />
-                <Route exact path="/Gallery/2018" component={FreeForum} />
-                <Route exact path="/Gallery/Down" component={FreeForum} />
+                <Route exact path="/Gallery/2021" component={Board} />
+                <Route exact path="/Gallery/2020" component={Board} />
+                <Route exact path="/Gallery/2019" component={Board} />
+                <Route exact path="/Gallery/2018" component={Board} />
+                <Route exact path="/Gallery/Down" component={Board} />
 
                 <Route path="/Gallery/2021/:id" component={Detail} />
                 <Route path="/Gallery/2020/:id" component={Detail} />

@@ -14,7 +14,7 @@ import Forum from "./pages/Forum";
 import ContactUs from "./pages/Contact_Us";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/SubPages/NotFound";
 
 // App.css
 import "./App.css";

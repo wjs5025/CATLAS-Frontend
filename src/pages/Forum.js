@@ -5,10 +5,10 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import "./css/SideBar.css";
-import FreeForum from "./menu_Forums/Board";
-import Detail from "./menu_Forums/Detail";
-import NotFound from "../pages/NotFound";
-import Posting from "./menu_Forums/Posting";
+import Board from "./SubPages/Board";
+import Detail from "./SubPages/Detail";
+import NotFound from "./SubPages/NotFound";
+import Posting from "./SubPages/Posting";
 
 const Forum = () => {
   return (
@@ -72,12 +72,12 @@ const Forum = () => {
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route exact path="/Forum/자유게시판" component={FreeForum} />
-                <Route exact path="/Forum/질문게시판" component={FreeForum} />
-                <Route exact path="/Forum/홍보게시판" component={FreeForum} />
-                <Route exact path="/Forum/동아리게시판" component={FreeForum} />
-                <Route exact path="/Forum/IT게시판" component={FreeForum} />
-                <Route exact path="/Forum/자료실" component={FreeForum} />
+                <Route exact path="/Forum/자유게시판" component={Board} />
+                <Route exact path="/Forum/질문게시판" component={Board} />
+                <Route exact path="/Forum/홍보게시판" component={Board} />
+                <Route exact path="/Forum/동아리게시판" component={Board} />
+                <Route exact path="/Forum/IT게시판" component={Board} />
+                <Route exact path="/Forum/자료실" component={Board} />
 
                 <Route
                   exact

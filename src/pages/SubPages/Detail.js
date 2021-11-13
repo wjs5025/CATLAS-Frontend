@@ -1,4 +1,3 @@
-// import NotFound from "../NotFound";
 import "../css/Detail.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
