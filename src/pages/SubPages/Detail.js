@@ -50,15 +50,15 @@ const Detail = () => {
                 paddingLeft: "20px",
               }}
             >
-              {dataSet.title}
+              123{dataSet.title}
             </div>
-            <div style={{ flexBasis: "15%" }}>{date.substr(0, 10)}</div>
-            <div style={{ flexBasis: "15%" }}>{dataSet.writer}</div>
-            <div style={{ flexBasis: "10%" }}>{dataSet.views} VIEWS</div>
+            <div style={{ flexBasis: "15%" }}>저니녁 {date.substr(0, 10)}</div>
+            <div style={{ flexBasis: "15%" }}>2021/11/13{dataSet.writer}</div>
+            <div style={{ flexBasis: "10%" }}>32{dataSet.views} VIEWS</div>
           </div>
         </div>
         <div className="Detail_contents">
-          <pre>{dataSet.contents}</pre>
+          <pre>123{dataSet.contents}</pre>
         </div>
         <div className="Detail_bottom">
           <button
