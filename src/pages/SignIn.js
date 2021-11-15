@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./css/SignIn.css";
+import { useHistory } from "react-router";
 
 const SignIn = () => {
+  const history = useHistory();
   const [InputID, setInputID] = useState("");
   const [InputPW, setInputPW] = useState("");
 
@@ -58,7 +60,7 @@ const SignIn = () => {
                 <label>비밀번호 / password</label>
                 <input
                   className="inputBox"
-                  type="text"
+                  type="password"
                   name="pw"
                   value={InputPW}
                   onChange={(e) => setInputPW(e.target.value)}
@@ -70,25 +72,24 @@ const SignIn = () => {
               <button className="submitBtn" onClick={() => Login()}>
                 LOGIN
               </button>
-              <button
-                onClick={() => {
-                  sessionStorage.removeItem("id");
-                  axios.post("http://172.18.3.25:3001/SignOut").then(() => {
-                    alert("SignOut!");
-                  });
-                  document.location.href = "/";
-                }}
-              >
-                로그아웃
-              </button>
+              <div style={{ display: "flex" }}>
+                <div
+                  className="FindBtn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div href="https://www.naver.com/">Forgot your ID/PW ?</div>
+                </div>
+                <div
+                  className="SignUpBtn"
+                  onClick={() => {
+                    history.push("/SignUp");
+                  }}
+                >
+                  <div href="https://www.naver.com/">SIGN UP</div>
+                </div>
+              </div>
             </div>
-            <a
-              href="http://naver.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Forgot your ID/PW ?
-            </a>
           </div>
         </div>
       </>

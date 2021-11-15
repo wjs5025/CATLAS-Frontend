@@ -4,47 +4,54 @@
   justify-content: flex-start;
 }
 
-.Detail_address {
-  flex-basis: 5%;
-}
-
 .Detail_info {
-  flex-basis: 5%;
+  height: 3vh;
 }
-
-
-
 .title {
-  border-top: 1px solid black;
+  height: 8vh;
   border-bottom: 1px solid black;
-  padding: 5px 0;
-
-  font-size: 1.3em;
+  padding-top: 20px;
+  font-size: 1.4em;
   text-align: center;
-  font-family: "SCDream5";
+  font-family: "SCDream6";
   display: flex;
 }
-.PostingTitle{
-  padding: 5px 0;
 
-}
 .Detail_contents {
-  flex-basis: 71.1%;
+  min-height: 67vh;
+  width: 100%;
+  height: fit-content;
   padding: 20px;
   text-overflow: scroll;
   font-size: 1.1em;
+  border-bottom: 1px solid black;
 }
 
 .Detail_contents > pre {
   white-space: pre-wrap; /* pre tag내에 word wrap */
   font-family: "SCDream4";
 }
-
 .Detail_bottom {
-  text-align: right;
-  padding: 30px;
+  min-height: 10vh;
+}
+.DetailBtn {
+  position: absolute;
+  right: 0;
+  transition: 100ms;
 }
 
-.Detail_button {
-  margin: 10px;
+.DetailBtn:hover {
+  width: 40px;
+}
+
+.FloatingBtn {
+  position: fixed;
+  width: 35px;
+  transition: 100ms;
+  bottom: 4.5vh;
+  right: 6vw;
+}
+
+.FloatingBtn:hover {
+  width: 40px;
 }

@@ -1,0 +1,7 @@
+.borderGray {
+  border: 1px solid #dcdcdc;
+}
+
+.noBorderBottom {
+  border-bottom: none;
+}

@@ -1,31 +1,72 @@
 import { useState } from "react";
 import "./css/SignUp.css";
 import axios from "axios";
+import { useHistory } from "react-router";
+import { useEffect } from "react";
 
 const SignUp = () => {
+  const history = useHistory();
   const [InputID, setInputID] = useState("");
   const [InputPW, setInputPW] = useState("");
+  const [InputPwCheck, setInputPwCheck] = useState("");
   const [InputEmail, setInputEmail] = useState("");
   const [InputName, setInputName] = useState("");
   const [InputPhnum, setInputPhnum] = useState("");
 
-  const SignUp = () => {
-    alert(InputID);
+  // 비밀번호 검사 관련 변수 선언 (문구 = pwCheck, 클래스명 = check)
+  const [pwClass, setpwClass] = useState("pwInit");
+  const [pwCheck, setpwCheck] = useState("비밀번호가 일치하지 않습니다");
+  const [pwCheckClass, setpwCheckClass] = useState("checkInit");
+  const [pwAllow, setpwAllow] = useState(false);
 
-    axios
-      .post("http://172.18.3.25:3001/SignUp", {
-        params: {
-          userid: InputID,
-          password: InputPW,
-          email: InputEmail,
-          name: InputName,
-          phonenumber: InputPhnum,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-      });
+  // 비밀번호와 비밀번호 확인이 일치하는지 검사 checkPW()
+  const checkPW = () => {
+    if (InputPwCheck === "") {
+      setpwCheck("* 비밀번호를 입력해주세요.");
+      setpwCheckClass("checkInit");
+      setpwAllow(false);
+    } else if (InputPW === InputPwCheck) {
+      setpwCheck("* 비밀번호가 일치합니다");
+      setpwCheckClass("checkTrue");
+      setpwAllow(true);
+    } else {
+      setpwCheck("* 비밀번호가 일치하지 않습니다");
+      setpwCheckClass("checkInit");
+      setpwAllow(false);
+    }
+
+    let pwExp = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=_]).*$/;
+
+    if (pwExp.test(InputPW)) {
+      setpwClass("pwTrue");
+    } else {
+      setpwClass("pwInit");
+    }
   };
+  useEffect(checkPW, [InputPW, InputPwCheck]);
+
+  // 가입하기 버튼 클릭 SignUpBtn()
+  const SignUpBtn = () => {
+    if (pwAllow) {
+      axios
+        .post("http://172.18.3.25:3001/SignUp", {
+          params: {
+            userid: InputID,
+            password: InputPW,
+            email: InputEmail,
+            name: InputName,
+            phonenumber: InputPhnum,
+          },
+        })
+        .then((res) => {
+          alert("회원가입 완료 !");
+          history.push("/");
+        });
+    } else {
+      alert("입력오류");
+    }
+  };
+
   return (
     <>
       <div className="SignUp_container noDrag">
@@ -34,6 +75,7 @@ const SignUp = () => {
             <h1
               style={{
                 fontFamily: "SCDream7",
+                textDecoration: "underline #f6330a",
               }}
             >
               환영합니다 !
@@ -54,24 +96,24 @@ const SignUp = () => {
             <label>비밀번호 / password</label>
             <input
               className="inputBox"
-              type="text"
-              value={InputPW}
+              type="password"
+              value={InputPW.trim()}
               onChange={(e) => setInputPW(e.target.value)}
             />
-            <p
-              style={{
-                textAlign: "initial",
-                fontSize: "12px",
-                color: "gray",
-              }}
-            >
-              * 영문, 숫자, 특수문자 포함 8자 이상
-            </p>
+            <p className={pwClass}>* 영문, 숫자, 특수문자 포함 8자 이상</p>
           </div>
 
           <div className="inputBox_div">
             <label>비밀번호 확인 / password check</label>
-            <input className="inputBox" type="text" />
+            <input
+              className="inputBox"
+              type="password"
+              value={InputPwCheck.trim()}
+              onChange={(e) => {
+                setInputPwCheck(e.target.value);
+              }}
+            />
+            <p className={pwCheckClass}>{pwCheck}</p>
           </div>
           <div className="inputBox_div">
             <label>이메일 / e-mail</label>
@@ -103,7 +145,7 @@ const SignUp = () => {
             </div>
           </div>
           <div className="inputBox_div">
-            <button className="submitBtn" onClick={SignUp}>
+            <button className="submitBtn" onClick={SignUpBtn}>
               가입하기
             </button>
           </div>

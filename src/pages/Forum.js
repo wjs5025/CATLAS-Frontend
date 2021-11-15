@@ -11,6 +11,7 @@ import NotFound from "./SubPages/NotFound";
 import Posting from "./SubPages/Posting";
 
 const Forum = () => {
+  console.log("헬로", sessionStorage);
   return (
     <>
       <Router>

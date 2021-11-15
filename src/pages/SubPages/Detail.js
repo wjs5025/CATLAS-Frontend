@@ -2,6 +2,7 @@ import "../css/Detail.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import FloatingBtn from "../../components/FloatingBtn";
 
 const Detail = () => {
   const history = useHistory();
@@ -13,8 +14,8 @@ const Detail = () => {
   const BoardPath = pathArray[2];
   const PostNum = Number(pathArray[3]);
 
-  console.log(BoardPath);
-  console.log(PostNum);
+  console.log("게시판", BoardPath);
+  console.log("게시글번호", PostNum);
 
   const getData = () => {
     axios
@@ -25,7 +26,6 @@ const Detail = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setDataSet(res.data[0]);
         setDate(res.data[0].date);
       });
@@ -37,44 +37,26 @@ const Detail = () => {
     <>
       <div className="Forum_container">
         {/* 게시글 헤더 */}
-        <div className="Detail_address">
+        <div className="Detail_info noDrag">
           <h5 className="Board_header">{history.location.pathname}</h5>
         </div>
-
-        <div className="Detail_info">
-          <div className="title">
-            <div
-              style={{
-                flexBasis: "60%",
-                textAlign: "start",
-                paddingLeft: "20px",
-              }}
-            >
-              123{dataSet.title}
-            </div>
-            <div style={{ flexBasis: "15%" }}>저니녁 {date.substr(0, 10)}</div>
-            <div style={{ flexBasis: "15%" }}>2021/11/13{dataSet.writer}</div>
-            <div style={{ flexBasis: "10%" }}>32{dataSet.views} VIEWS</div>
+        <div className="title">
+          <div
+            style={{
+              flexBasis: "60%",
+              textAlign: "start",
+              paddingLeft: "20px",
+            }}
+          >
+            {dataSet.title}
           </div>
+          <div style={{ flexBasis: "15%" }}> {date.substr(0, 10)}</div>
+          <div style={{ flexBasis: "15%" }}>{dataSet.writer}</div>
+          <div style={{ flexBasis: "15%" }}>{dataSet.views} VIEWS</div>
         </div>
         <div className="Detail_contents">
-          <pre>123{dataSet.contents}</pre>
-        </div>
-        <div className="Detail_bottom">
-          <button
-            onClick={() => {
-              history.push("/" + pathArray[1] + "/" + pathArray[2]);
-            }}
-            className="Detail_button"
-          >
-            목록으로
-          </button>
-          <button
-            onClick={() => window.scrollTo(0, 0)}
-            className="Detail_button"
-          >
-            맨 위로
-          </button>
+          <pre>{dataSet.contents}</pre>
+          <FloatingBtn history={history} pathArray={pathArray} />
         </div>
       </div>
     </>

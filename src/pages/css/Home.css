@@ -23,20 +23,16 @@
 }
 
 /* 타이틀 및 공지사항 미리보기 (상단부) */
-
 .home_firstLine {
   position: relative;
   display: flex;
-  width: auto;
-  height: auto;
 }
 
 .home_Header {
+  margin-top: 9vh;
   position: relative;
-  margin: auto;
-  width: 50%;
-  height: auto;
-  padding-left: 7%;
+  width: 50vw;
+  padding-left: 7vw;
 }
 
 .home_Title {
@@ -52,7 +48,7 @@
 }
 
 .home_LogoBadges {
-  margin-left: 10%;
+  margin-left: 3vw;
 }
 
 .LogoBadge {
@@ -60,31 +56,14 @@
 }
 .home_Notice {
   margin: auto;
-  width: 51%;
-  margin-top: 8%;
+  width: 50vw;
+  margin-top: 14vh;
   display: flex;
-  padding-right: 10%;
+  padding-right: 10vw;
 }
 
-.home_Notice_circle {
-  width: 50px;
-  height: 40%;
-}
-
-.circle_area {
-  padding-top: 1%;
-}
-
-.circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 75px;
-  background-color: white;
-  box-shadow: 2px 2px 2px 2px gray;
-}
 .notice_Header {
-  width: 100%;
-  height: auto;
+  width: 100vw;
 }
 
 .notice_Title {
@@ -106,7 +85,7 @@
   color: #f6330a;
 }
 .notice_posts {
-  width: 100%;
+  width: 40vw;
   height: auto;
   border-top: 3px solid #f6330a;
   display: flex;
@@ -126,7 +105,7 @@
 .notice_post_Title {
   font-family: "SCDream5";
   font-size: 18px;
-  margin: 10px 0 5px 10px;
+  margin: 10px 0 5px 0px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -156,25 +135,19 @@
 /* 게시판 미리보기 (하단부) */
 .home_SecondLine {
   position: relative;
-  margin-top: 4%;
+  margin-top: 4vh;
   display: flex;
 }
 
 .home_Forum {
+  padding-right: 10vw;
+  padding-left: 10vw;
   display: flex;
 }
 
-.home_Forum_circle {
-  margin-right: auto;
-  margin-top: 1%;
-}
-
-.yellow_circle {
-  background-color: #2d2f2d;
-}
 .forum_name {
   font-family: "SCDream7";
-  margin-top: 5px;
+  margin-top: 10px;
   font-size: 20px;
 }
 .home_Forum {
@@ -184,9 +157,7 @@
 }
 
 .Forum_Header {
-  margin: auto;
-  margin-right: 0;
-  width: 80%;
+  width: 100vw;
   font-family: "SCDream8";
 }
 

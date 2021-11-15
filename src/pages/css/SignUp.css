@@ -21,11 +21,18 @@
 }
 
 .inputBox_div {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 .inputBox {
+  border-radius: 5px;
   width: 100%;
   height: 40px;
+  border: 1px solid black;
+}
+.inputBox:focus {
+  border: none;
+
+  outline: 2px solid #f6330a;
 }
 
 .inputBox_container {
@@ -40,10 +47,11 @@
 }
 
 .submitBtn {
+  border-radius: 5px;
   width: 100%;
   height: 45px;
   background-color: #fff;
-  border: 1px solid gray;
+  border: 1px solid black;
   color: black;
   transition: all 0.25s;
 }
@@ -52,4 +60,28 @@
   background-color: #f6330a;
   color: #fff;
   border: none;
+}
+
+.checkInit {
+  text-align: initial;
+  font-size: 12.5px;
+  color: #ce2908;
+}
+
+.checkTrue {
+  text-align: initial;
+  font-size: 12.5px;
+  color: #06a821;
+}
+
+.pwInit {
+  text-align: initial;
+  font-size: 12.5px;
+  color: #ce2908;
+}
+
+.pwTrue {
+  text-align: initial;
+  font-size: 12.5px;
+  color: #06a821;
 }
