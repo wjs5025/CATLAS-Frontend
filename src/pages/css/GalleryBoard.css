@@ -1,71 +1,24 @@
-/* Board Post List */
-table {
-  font-family: "SCDream7";
+.Gallery_post {
+  padding: 20px;
+  align-self: center;
+  width: 16vw;
+  height: 29vh;
 }
 
-table > caption {
-  font-size: 30px;
-  color: grey;
-  border-bottom: white;
-  font-family: "SCDream7";
+.gallery_table tbody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-tbody > tr {
-  border-bottom: white;
-  transition: 200ms;
-}
-tbody > tr:hover {
-  border-bottom: white;
-  background-color: rgba(206, 41, 8, 0.05);
-}
-tr {
-  font-family: "SCDream4";
-  text-align: center;
-}
-
-/* Board Post List */
-.Forum_container {
+.gallery_table tr {
+  margin-top: 5px;
+  height: 34vh;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  transition: 200ms;
 }
 
-.Board_Info {
-  flex-basis: 10%;
-}
-
-.Board {
-  padding-top: 10px;
-  flex-basis: 80%;
-}
-
-.Board_paging {
-  justify-content: center;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-basis: 10%;
-  align-self: center;
-  line-height: 100%;
-}
-
-.page-link {
-  color: black !important;
-  background-color: white !important;
-  border-color: white !important;
-  font-weight: bold;
-  font-family: "SCDream7";
-}
-
-.page-item.active .page-link {
-  font-size: 1.7em;
-  font-family: "SCDream7";
-}
-
-.Board_header {
-  font-family: "SCDream8";
-}
-
-.PostingBtn {
-  justify-content: flex-end;
+.gallery_table tr:hover {
+  border-bottom: 1px solid white;
 }
