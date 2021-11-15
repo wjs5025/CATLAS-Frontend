@@ -7,6 +7,10 @@ import FloatingBtn from "../../components/FloatingBtn";
 const Detail = () => {
   const history = useHistory();
   const [dataSet, setDataSet] = useState({}); // 데이터
+  const [CommentSet, setCommentSet] = useState({
+    data: [],
+  }); // 댓글
+
   const [date, setDate] = useState("");
 
   //게시글 경로 확인
@@ -33,6 +37,23 @@ const Detail = () => {
 
   useEffect(getData, []);
 
+  const getComment = () => {
+    axios
+      .get("http://172.18.3.25:3001/Comment", {
+        params: {
+          BoardPath: BoardPath,
+          PostNum: PostNum,
+        },
+      })
+      .then((res) => {
+        setCommentSet({ ...CommentSet, data: res.data });
+      });
+  };
+
+  useEffect(getComment, []);
+
+  const { data } = CommentSet;
+
   return (
     <>
       <div className="Forum_container">
@@ -58,6 +79,14 @@ const Detail = () => {
           <pre>{dataSet.contents}</pre>
           <FloatingBtn history={history} pathArray={pathArray} />
         </div>
+
+        {CommentSet.data.map((nowComment) => (
+          <tr key={nowComment.idx}>
+            <td>{nowComment.writer} </td>
+            <td>{nowComment.contents} </td>
+            <td> {nowComment.date.substr(0, 10)}</td>
+          </tr>
+        ))}
       </div>
     </>
   );
