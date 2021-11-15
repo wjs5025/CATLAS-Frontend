@@ -21,8 +21,8 @@
 
 .SignUpBtn {
   flex-basis: 50%;
-  height: 70px;
-  line-height: 70px;
+  height: 90px;
+  line-height: 90px;
   transition: text-decoration-color 500ms;
   text-decoration: underline 0.15em rgba(255, 255, 255, 0);
 }
@@ -34,8 +34,8 @@
 
 .FindBtn {
   flex-basis: 50%;
-  height: 70px;
-  line-height: 70px;
+  height: 90px;
+  line-height: 90px;
   transition: text-decoration-color 500ms;
   text-decoration: underline 0.15em rgba(255, 255, 255, 0);
 }
