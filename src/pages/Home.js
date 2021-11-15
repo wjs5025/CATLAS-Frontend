@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import LogoON from "../assets/Images/CATLAS LOCO/CATLAS Logo on.png";
-import GNU from "../assets/Images/GNU Logo.jpg";
+import GNU from "../assets/Images/GNU Logo.png";
 import USG from "../assets/Images/usg.png";
+import CS from "../assets/Images/csLogo.png";
 import "./css/Home.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -20,7 +21,6 @@ const Home = () => {
   const getDataset = () => {
     axios.get("http://172.18.3.25:3001/Home").then((res) => {
       setDataSet(res.data);
-      console.log("이렇게드러옴", res.data);
     });
   };
 
@@ -41,20 +41,22 @@ const Home = () => {
 
               <div className="home_LogoBadges noDrag">
                 <a
-                  href="https://catlas.gnu.ac.kr/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img className="LogoBadge" src={LogoON} height={80} alt="" />
-                </a>
-                <a
                   href="https://newgh.gnu.ac.kr/main/main.do"
                   rel="noreferrer"
                   target="_blank"
                 >
                   <img className="LogoBadge" src={GNU} height={80} alt="" />
                 </a>
-
+                <a href="http://cs.gnu.ac.kr/" target="_blank" rel="noreferrer">
+                  <img className="LogoBadge" src={CS} height={80} alt="" />
+                </a>
+                <a
+                  href="https://catlas.gnu.ac.kr/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img className="LogoBadge" src={LogoON} height={80} alt="" />
+                </a>
                 <a href="http://usg.ac.kr/" target="_blank" rel="noreferrer">
                   <img className="LogoBadge" src={USG} height={80} alt="" />
                 </a>

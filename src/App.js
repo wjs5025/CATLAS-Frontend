@@ -17,6 +17,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/SubPages/NotFound";
 import axios from "axios";
+
 // App.css
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -50,7 +51,7 @@ const Login = () => {
         <Dropdown.Item>
           <NavLink
             to="/"
-            className="LoginLink"
+            className="SignOut"
             onClick={() => {
               sessionStorage.removeItem("id");
               axios.post("http://172.18.3.25:3001/SignOut").then(() => {});
@@ -118,6 +119,13 @@ const App = () => {
               </NavLink>
             </li>
             <li>
+              {/* <NavLink
+                className="menuLink"
+                activeClassName="MenuActive"
+                to="/Contact/문의하기"
+              >
+                <div>CONTACT</div>
+              </NavLink> */}
               <Login />
             </li>
           </ul>

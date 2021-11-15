@@ -2,13 +2,12 @@
   font-family: "SCDream5";
   width: 100vw;
   height: 75vh;
-  display: flex;
   text-align: center;
+  margin-top: 15vh;
 }
 .SignIn_inner {
   margin: auto;
   width: 28vw;
-  flex-direction: column;
 }
 
 .SignIn_inner label {
@@ -18,4 +17,30 @@
 
 .input_Area {
   margin-bottom: 50px;
+}
+
+.SignUpBtn {
+  flex-basis: 50%;
+  height: 70px;
+  line-height: 70px;
+  transition: text-decoration-color 500ms;
+  text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+}
+
+.SignUpBtn:hover {
+  color: #f6330a;
+  text-decoration: underline 0.15em #f6330a;
+}
+
+.FindBtn {
+  flex-basis: 50%;
+  height: 70px;
+  line-height: 70px;
+  transition: text-decoration-color 500ms;
+  text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+}
+
+.FindBtn:hover {
+  color: #f6330a;
+  text-decoration: underline 0.15em #f6330a;
 }

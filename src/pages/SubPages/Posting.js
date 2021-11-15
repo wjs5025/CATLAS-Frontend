@@ -1,60 +1,89 @@
-import "../css/Board.css";
-import React from "react";
-import { useHistory, BrowserRouter as Router } from "react-router-dom";
-
+import "../css/Posting.css";
+import { useHistory } from "react-router";
+import Check from "../../assets/Images/Check.png";
+import Back from "../../assets/Images/Back.png";
 //게시판
+
 const Posting = () => {
   const history = useHistory();
-  let today = new Date();
-  console.log(today);
   const pathArray = history.location.pathname.split("/");
+
+  let getDate = new Date();
+  let Year = getDate.getFullYear() + "-";
+  let month = getDate.getMonth() + 1;
+  let day = "-" + getDate.getDate();
+  let today = Year + month + day;
+
   // const BoardPath = pathArray[2];
   // const PostNum = Number(pathArray[3]);
 
+  const Done = () => {
+    alert("완료");
+    history.push("/" + pathArray[1] + "/" + pathArray[2]);
+  };
+
   return (
     <>
-      <Router>
-        <div className="Forum_container">
-          {/* 게시글 헤더 */}
-          <div className="Detail_address">
-            <h5 className="Board_header">{history.location.pathname}</h5>
-          </div>
-          <div className="Detail_info">
-            <div className="title PostingTitle">
-              <input
-                type="text"
-                placeholder="제목을 입력하세요"
-                style={{
-                  border: "none",
-                  marginLeft: "20px",
-                  flexBasis: "60%",
-                  textAlign: "start",
-                }}
-              ></input>
-              <div style={{ flexBasis: "15%" }}>저니녁</div>
-              <div style={{ flexBasis: "15%" }}></div>
-              <div style={{ flexBasis: "10%" }}>32 VIEWS</div>
-            </div>
-          </div>
-          <div className="Detail_contents">
-            <input
-              type="text"
-              style={{ width: "100%", height: "100%" }}
-              placeholder="내용을 입력하세요"
-            ></input>
-          </div>
-          <div className="Detail_bottom">
-            <button
+      <div className="Forum_container">
+        {/* 게시글 헤더 */}
+        <div className="Detail_info noDrag">
+          <h5 className="Board_header">{history.location.pathname}</h5>
+        </div>
+        <div className="title noBorderBottom">
+          <input
+            className="borderGray"
+            type="text"
+            placeholder="제목을 입력하세요"
+            style={{
+              height: "40px",
+              flexBasis: "60%",
+              textAlign: "start",
+              paddingLeft: "20px",
+            }}
+          ></input>
+          <div style={{ flexBasis: "15%" }}></div>
+          <div style={{ flexBasis: "15%" }}>{today}</div>
+          <div style={{ flexBasis: "15%" }}>{sessionStorage.id}</div>
+        </div>
+        <input className="Detail_contents borderGray"></input>
+        <div className="Detail_bottom">
+          <div
+            style={{
+              padding: "11px 0",
+              position: "relative",
+            }}
+          >
+            <img
+              className="DetailBtn"
               onClick={() => {
-                history.push("/" + pathArray[1] + "/" + pathArray[2]);
+                if (window.confirm("게시글을 작성하시겠습니까?")) {
+                  Done();
+                } else {
+                }
               }}
-              className="Detail_button"
-            >
-              작성하기
-            </button>
+              src={Check}
+              width={35}
+              alt=""
+            />
+            <img
+              className="DetailBtn marginRight"
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "주의 : 이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다"
+                  )
+                ) {
+                  history.push("/" + pathArray[1] + "/" + pathArray[2]);
+                } else {
+                }
+              }}
+              src={Back}
+              width={35}
+              alt=""
+            />
           </div>
         </div>
-      </Router>
+      </div>
     </>
   );
 };

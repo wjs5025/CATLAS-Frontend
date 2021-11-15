@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import WriteImg from "../../assets/Images/write2.png";
 const Board = ({ history, match }) => {
-  const [date, setDate] = useState("");
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
   const pathArray = history.location.pathname.split("/");
   const BoardPath = pathArray[2];
@@ -49,6 +48,15 @@ const Board = ({ history, match }) => {
   // 게시글 count
   const count = posts.data.length;
 
+  const [isLogin, SetLogin] = useState(0);
+
+  const IconDisabled = () => {
+    if (sessionStorage.id !== undefined) {
+      SetLogin(35);
+    } else SetLogin(0);
+  };
+
+  useEffect(IconDisabled, [sessionStorage.id]);
   return (
     <>
       <Router>
@@ -85,22 +93,20 @@ const Board = ({ history, match }) => {
               <tbody>
                 {/* 게시글 리스트 출력 */}
                 {pagedDumys.map((nowPost) => (
-                  <tr key={nowPost.idx}>
+                  <tr
+                    key={nowPost.idx}
+                    onClick={() =>
+                      history.push({
+                        pathname: match.url + "/" + nowPost.idx,
+                        data: {
+                          id: nowPost.idx,
+                        },
+                      })
+                    }
+                  >
                     <td>{nowPost.idx}</td>
                     <td>
-                      <div
-                        style={{ textAlign: "start" }}
-                        onClick={() =>
-                          history.push({
-                            pathname: match.url + "/" + nowPost.idx,
-                            data: {
-                              id: nowPost.idx,
-                            },
-                          })
-                        }
-                      >
-                        {nowPost.title}
-                      </div>
+                      <div style={{ textAlign: "start" }}>{nowPost.title}</div>
                     </td>
                     <td>{nowPost.date.substr(0, 10)}</td>
                     <td>{nowPost.writer}</td>
@@ -121,7 +127,7 @@ const Board = ({ history, match }) => {
               paddingTop: "11px",
             }}
             src={WriteImg}
-            width={35}
+            width={isLogin}
             alt=""
           />
         </div>

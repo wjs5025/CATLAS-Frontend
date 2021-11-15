@@ -2,6 +2,7 @@ import "../css/Detail.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import FloatingBtn from "../../components/FloatingBtn";
 
 const Detail = () => {
   const history = useHistory();
@@ -51,23 +52,11 @@ const Detail = () => {
           </div>
           <div style={{ flexBasis: "15%" }}> {date.substr(0, 10)}</div>
           <div style={{ flexBasis: "15%" }}>{dataSet.writer}</div>
-          <div style={{ flexBasis: "10%" }}>{dataSet.views} VIEWS</div>
+          <div style={{ flexBasis: "15%" }}>{dataSet.views} VIEWS</div>
         </div>
         <div className="Detail_contents">
           <pre>{dataSet.contents}</pre>
-        </div>
-        <div className="Detail_bottom">
-          <div
-            onClick={() => {
-              history.push("/" + pathArray[1] + "/" + pathArray[2]);
-            }}
-            className="Detail_button"
-          >
-            목록으로
-          </div>
-          <div onClick={() => window.scrollTo(0, 0)} className="Detail_button">
-            TO TOP
-          </div>
+          <FloatingBtn history={history} pathArray={pathArray} />
         </div>
       </div>
     </>

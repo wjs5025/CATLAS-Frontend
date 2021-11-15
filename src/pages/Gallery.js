@@ -41,7 +41,7 @@ const Gallery = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/Gallery/Down"} activeClassName="SideBarActive">
+                  <NavLink to={"/Gallery/down"} activeClassName="SideBarActive">
                     2017 ~
                   </NavLink>
                 </li>
@@ -61,7 +61,7 @@ const Gallery = () => {
                 <Route path="/Gallery/2020/:id" component={Detail} />
                 <Route path="/Gallery/2019/:id" component={Detail} />
                 <Route path="/Gallery/2018/:id" component={Detail} />
-                <Route path="/Gallery/Down/:id" component={Detail} />
+                <Route path="/Gallery/down/:id" component={Detail} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </div>
