@@ -89,7 +89,11 @@ const GalleryBoard = ({ history, match }) => {
                 {/* 게시글 리스트 출력 */}
                 {pagedDumys.map((nowPost) => (
                   <tr key={nowPost.idx}>
-                    <img src={naming(nowPost)} alt="" />
+                    <img
+                      src={naming(nowPost)}
+                      alt=""
+                      style={{ width: "15vh" }}
+                    />
                     <td>{nowPost.idx}</td>
 
                     <td>

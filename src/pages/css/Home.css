@@ -103,7 +103,7 @@
 }
 
 .notice_post_Title {
-  font-family: "SCDream5";
+  font-family: "SCDream6";
   font-size: 18px;
   margin: 10px 0 5px 0px;
   overflow: hidden;
@@ -113,7 +113,7 @@
 
 .notice_post_Inner {
   position: relative;
-  font-family: "SCDream3";
+  font-family: "SCDream4";
   margin-left: 5px;
   overflow: hidden;
   display: -webkit-box;
