@@ -4,6 +4,7 @@ import { paginate } from "../../components/utils/paginate";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import "../css/GalleryBoard.css";
+import WriteImg from "../../assets/Images/write2.png";
 
 const GalleryBoard = ({ history, match }) => {
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
@@ -45,6 +46,16 @@ const GalleryBoard = ({ history, match }) => {
   // 게시글 count
   const count = posts.data.length;
 
+  const [isLogin, SetLogin] = useState(0);
+
+  const IconDisabled = () => {
+    if (sessionStorage.id !== undefined) {
+      SetLogin(35);
+    } else SetLogin(0);
+  };
+
+  useEffect(IconDisabled, [sessionStorage.id]);
+
   const naming = (nowPost) => {
     return (
       "http://172.18.3.25:3001/ImageLinking?Path=" +
@@ -53,6 +64,7 @@ const GalleryBoard = ({ history, match }) => {
       nowPost.filename
     );
   };
+
   return (
     <>
       <Router>
@@ -95,6 +107,19 @@ const GalleryBoard = ({ history, match }) => {
             </table>
           </div>
           {/* 페이지 표시 */}
+          <div style={{ position: "relative" }}>
+            <img
+              className="PostingBtn"
+              onClick={() => history.push(match.url + "/" + "글쓰기")}
+              style={{
+                position: "absolute",
+                paddingTop: "11px",
+              }}
+              src={WriteImg}
+              width={isLogin}
+              alt=""
+            />
+          </div>
           <div className="Board_paging">
             <Pagination
               pageSize={posts.pageSize}
@@ -102,12 +127,6 @@ const GalleryBoard = ({ history, match }) => {
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
-            <div
-              className="PostingBtn"
-              onClick={() => history.push(match.url, "/", "글쓰기")}
-            >
-              글쓰기
-            </div>
           </div>
         </div>
       </Router>
