@@ -240,8 +240,15 @@ const Detail = () => {
                     border: "1px solid #d3d3d3",
                     borderRadius: "5px",
                   }}
-                  value={InputCmt}
-                  onChange={(e) => setInputCmt(e.target.value)}
+                  placeholder="댓글을 입력해주세요"
+                  value={
+                    sessionStorage.id === undefined
+                      ? "댓글 작성은 로그인 후 이용하실 수 있습니다"
+                      : InputCmt
+                  }
+                  onChange={(e) => {
+                    setInputCmt(e.target.value);
+                  }}
                 />
               </td>
               <td className="cmtTableSubmit">
@@ -268,10 +275,13 @@ const Detail = () => {
                 </td>
               </tr>
             ))}
-            <br />
           </tbody>
         </table>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 };
