@@ -41,8 +41,8 @@ const Home = () => {
           <div className="home_firstLine">
             {/*타이틀 영역(좌측상단)*/}
             <div className="home_Header">
-              <h1 className="home_Title noDrag">CATLAS HOME</h1>
-              <p className="home_subTitle noDrag">
+              <h1 className="home_Title noDrag ">CATLAS HOME</h1>
+              <p className="home_subTitle noDrag ">
                 경상국립대학교 컴퓨터과학과 공식 커뮤니티 CATLAS
               </p>
 

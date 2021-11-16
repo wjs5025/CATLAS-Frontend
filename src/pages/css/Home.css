@@ -38,6 +38,7 @@
 .home_Title {
   font-size: 50px;
   font-family: "SCDream8";
+  text-shadow: 1px 1px 2px #d3d3d3;
 }
 
 .home_subTitle {
@@ -45,6 +46,7 @@
   font-family: "SCDream4";
   margin-left: 4%;
   width: fit-content;
+  text-shadow: 1px 1px 2px #d3d3d3;
 }
 
 .home_LogoBadges {
@@ -52,6 +54,8 @@
 }
 
 .LogoBadge {
+  border-radius: 20px;
+
   margin-right: 20px;
 }
 .home_Notice {
@@ -67,6 +71,7 @@
 }
 
 .notice_Title {
+  text-shadow: 1px 1px 2px #d3d3d3;
   margin-left: 15px;
   font-size: 25px;
   font-family: "SCDream8";
@@ -74,6 +79,8 @@
 }
 
 .notice_more {
+  text-shadow: none;
+
   font-family: "SCDream5";
   font-size: 15px;
   margin-left: 8px;
@@ -85,6 +92,8 @@
   color: #f6330a;
 }
 .notice_posts {
+  box-shadow: 1px 1px 2px 1px #f1f1f1;
+  border-radius: 5px;
   width: 40vw;
   height: auto;
   border-top: 3px solid #f6330a;
@@ -93,15 +102,20 @@
 }
 
 .borderR {
-  border-right: 2px solid rgb(200, 201, 202);
+  border-right: 2px solid #f0f0f0;
 }
+
 .notice_post {
   position: relative;
   width: 50%;
   padding-left: 8px;
   padding-right: 8px;
+  transition: 0.25s;
 }
 
+.notice_post:hover {
+  background-color: rgba(246, 51, 10, 0.02);
+}
 .notice_post_Title {
   font-family: "SCDream6";
   font-size: 18px;
@@ -146,6 +160,8 @@
 }
 
 .forum_name {
+  text-shadow: 1px 1px 2px #d3d3d3;
+
   font-family: "SCDream7";
   margin-top: 10px;
   font-size: 20px;
@@ -162,12 +178,16 @@
 }
 
 .Forum_Title {
+  text-shadow: 1px 1px 2px #d3d3d3;
+
   text-align: right;
   margin-right: 10px;
 }
 
 .Forum_posts {
   width: 100%;
+  box-shadow: 1px 1px 2px 1px #f1f1f1;
+  border-radius: 5px;
   height: auto;
   border-top: 3px solid #f6330a;
   display: flex;
@@ -181,4 +201,9 @@
   width: 33.3%;
   padding-left: 8px;
   padding-right: 8px;
+  transition: 0.25s;
+}
+
+.Forum_post:hover {
+  background-color: rgba(246, 51, 10, 0.02);
 }
