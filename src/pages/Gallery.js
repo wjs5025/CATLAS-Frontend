@@ -8,6 +8,7 @@ import "./css/SideBar.css";
 import GalleryBoard from "./SubPages/GalleryBoard";
 import Detail from "./SubPages/Detail";
 import NotFound from "./SubPages/NotFound";
+import Posting from "./SubPages/Posting";
 
 const Gallery = () => {
   return (
@@ -57,11 +58,18 @@ const Gallery = () => {
                 <Route exact path="/Gallery/2018" component={GalleryBoard} />
                 <Route exact path="/Gallery/Down" component={GalleryBoard} />
 
+                <Route exact path="/Gallery/2021/글쓰기" component={Posting} />
+                <Route exact path="/Gallery/2020/글쓰기" component={Posting} />
+                <Route exact path="/Gallery/2019/글쓰기" component={Posting} />
+                <Route exact path="/Gallery/2018/글쓰기" component={Posting} />
+                <Route exact path="/Gallery/down/글쓰기" component={Posting} />
+
                 <Route path="/Gallery/2021/:id" component={Detail} />
                 <Route path="/Gallery/2020/:id" component={Detail} />
                 <Route path="/Gallery/2019/:id" component={Detail} />
                 <Route path="/Gallery/2018/:id" component={Detail} />
                 <Route path="/Gallery/down/:id" component={Detail} />
+
                 <Route path="*" component={NotFound} />
               </Switch>
             </div>

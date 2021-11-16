@@ -12,7 +12,7 @@ const QuestionForm = ({ history, match }) => {
           <p style={{ fontFamily: "SCDream5" }}>문의사항이 있다면 문의하세요</p>
         </div>
         <div className="Contact_Email">
-          <h3>이메일로 문의하기</h3>
+          <h3 className="Contact_subTitle">이메일로 문의하기</h3>
           <div>
             <div className="Contact_inputBox">
               <label>보내는 사람 / name</label>
@@ -34,8 +34,12 @@ const QuestionForm = ({ history, match }) => {
           </div>
         </div>
         <div>
-          <h2>연락처로 문의하기</h2>
-          <h3>컴퓨터과학과 전산개발실 구석방 010-7589-5025</h3>
+          <h3 className="Contact_subTitle">연락처로 문의하기</h3>
+          <h4 style={{ fontFamily: "SCDream6" }}>
+            경상국립대학교 컴퓨터과학과 전산개발연구실 <br /> 경상남도 진주시
+            진주대로 501, 경상국립대학교 30동 313호
+          </h4>
+          <h4></h4>
         </div>
       </div>
     </>

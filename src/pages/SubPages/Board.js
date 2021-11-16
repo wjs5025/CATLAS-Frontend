@@ -5,6 +5,7 @@ import { paginate } from "../../components/utils/paginate";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import WriteImg from "../../assets/Images/write2.png";
+
 const Board = ({ history, match }) => {
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
   const pathArray = history.location.pathname.split("/");

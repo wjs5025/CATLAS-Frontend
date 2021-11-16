@@ -3,6 +3,8 @@ import Pagination from "../../components/Pagination";
 import { paginate } from "../../components/utils/paginate";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
+import "../css/GalleryBoard.css";
+import WriteImg from "../../assets/Images/write2.png";
 
 const GalleryBoard = ({ history, match }) => {
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
@@ -12,7 +14,7 @@ const GalleryBoard = ({ history, match }) => {
   //게시글 데이터 묶음 posts
   const [posts, setPosts] = useState({
     data: [],
-    pageSize: 10,
+    pageSize: 8,
     currentPage: 1,
   });
 
@@ -44,6 +46,16 @@ const GalleryBoard = ({ history, match }) => {
   // 게시글 count
   const count = posts.data.length;
 
+  const [isLogin, SetLogin] = useState(0);
+
+  const IconDisabled = () => {
+    if (sessionStorage.id !== undefined) {
+      SetLogin(35);
+    } else SetLogin(0);
+  };
+
+  useEffect(IconDisabled, [sessionStorage.id]);
+
   const naming = (nowPost) => {
     return (
       "http://172.18.3.25:3001/ImageLinking?Path=" +
@@ -52,6 +64,7 @@ const GalleryBoard = ({ history, match }) => {
       nowPost.filename
     );
   };
+
   return (
     <>
       <Router>
@@ -65,58 +78,48 @@ const GalleryBoard = ({ history, match }) => {
           </div>
 
           <div className="Board">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col" className="Board_Num">
-                    NO.
-                  </th>
-                  <th scope="col" className="Board_Title">
-                    TITLE
-                  </th>
-                  <th scope="col" className="Board_Date">
-                    DATE
-                  </th>
-                  <th scope="col" className="Board_Write">
-                    WRITER
-                  </th>
-                  <th scope="col" className="Board_Views">
-                    VIEWS
-                  </th>
-                </tr>
-              </thead>
+            <table className="gallery_table">
               <tbody>
                 {/* 게시글 리스트 출력 */}
                 {pagedDumys.map((nowPost) => (
-                  <tr key={nowPost.idx}>
-                    <img
-                      src={naming(nowPost)}
-                      alt=""
-                      style={{ width: "15vh" }}
-                    />
-                    <td>{nowPost.idx}</td>
-
+                  <tr
+                    key={nowPost.idx}
+                    onClick={() =>
+                      history.push({
+                        pathname: match.url + "/" + nowPost.idx,
+                        data: {
+                          id: nowPost.idx,
+                        },
+                      })
+                    }
+                  >
                     <td>
-                      <div
-                        style={{ textAlign: "start" }}
-                        onClick={() =>
-                          history.push({
-                            pathname: match.url + "/" + nowPost.idx,
-                            data: {
-                              id: nowPost.idx,
-                            },
-                          })
-                        }
-                      >
-                        {nowPost.title}
-                      </div>
+                      <img
+                        className="Gallery_post"
+                        src={naming(nowPost)}
+                        alt=""
+                      />
                     </td>
+                    <td>구석방 하계 MT 사진{nowPost.idx}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           {/* 페이지 표시 */}
+          <div style={{ position: "relative" }}>
+            <img
+              className="PostingBtn"
+              onClick={() => history.push(match.url + "/" + "글쓰기")}
+              style={{
+                position: "absolute",
+                paddingTop: "11px",
+              }}
+              src={WriteImg}
+              width={isLogin}
+              alt=""
+            />
+          </div>
           <div className="Board_paging">
             <Pagination
               pageSize={posts.pageSize}
@@ -124,12 +127,6 @@ const GalleryBoard = ({ history, match }) => {
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
-            <div
-              className="PostingBtn"
-              onClick={() => history.push(match.url, "/", "글쓰기")}
-            >
-              글쓰기
-            </div>
           </div>
         </div>
       </Router>

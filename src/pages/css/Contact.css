@@ -6,3 +6,7 @@
 .Contact_inputBox {
   display: flex;
 }
+
+.Contact_subTitle {
+  font-family: "SCDream7";
+}

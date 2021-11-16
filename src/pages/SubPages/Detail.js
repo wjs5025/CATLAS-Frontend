@@ -6,16 +6,24 @@ import FloatingBtn from "../../components/FloatingBtn";
 
 const Detail = () => {
   const history = useHistory();
-  const [dataSet, setDataSet] = useState({}); // 데이터
+  const [dataSet, setDataSet] = useState([
+    {
+      id: "",
+      menu: "",
+      writer: "",
+      date: "",
+      contents: "",
+      title: "",
+      views: "",
+      idx: "",
+    },
+  ]);
   const [date, setDate] = useState("");
 
   //게시글 경로 확인
   const pathArray = history.location.pathname.split("/");
   const BoardPath = pathArray[2];
   const PostNum = Number(pathArray[3]);
-
-  console.log("게시판", BoardPath);
-  console.log("게시글번호", PostNum);
 
   const getData = () => {
     axios
