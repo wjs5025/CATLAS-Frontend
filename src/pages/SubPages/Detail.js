@@ -238,6 +238,7 @@ const Detail = () => {
                   style={{
                     width: "30vw",
                     border: "1px solid #d3d3d3",
+                    boxShadow: "1px 1px 2px 1px #f1f1f1",
                     borderRadius: "5px",
                   }}
                   placeholder="댓글을 입력해주세요"

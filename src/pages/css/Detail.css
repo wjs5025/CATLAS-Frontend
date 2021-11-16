@@ -109,7 +109,9 @@ tbody tr:hover {
   left: 47%;
   font-family: "SCDream5";
   border: 1px solid #d3d3d3;
-  border-radius: 100px;
+  box-shadow: 1px 1px 2px 1px #d3d3d3;
+
+  border-radius: 5px;
   width: 80px;
   line-height: 35px;
   text-align: center;
@@ -126,11 +128,12 @@ tbody tr:hover {
   bottom: 20px;
   left: 47%;
   font-family: "SCDream5";
-  background-color: #f6330a;
-  border: 1px solid #f6330a;
+  background-color: rgba(246, 51, 10, 0.9);
+  border: 1px solid rgba(246, 51, 10, 0.9);
+  box-shadow: 1px 1px 2px 1px gray;
 
   color: #fff;
-  border-radius: 100px;
+  border-radius: 5px;
   width: 80px;
   line-height: 35px;
   text-align: center;

@@ -31,6 +31,8 @@ a {
 }
 
 .Title {
+  text-shadow: 1px 1px 2px #d3d3d3;
+
   font-size: 40px;
   font-family: "SCDream9";
   text-align: center;
