@@ -49,9 +49,21 @@
   width: 35px;
   transition: 100ms;
   bottom: 4.5vh;
-  right: 6vw;
+  left: 88vw;
 }
 
 .FloatingBtn:hover {
   width: 40px;
+}
+
+.CmtClose {
+  transform: rotate(90deg);
+}
+
+.cmtRenderTrue {
+  display: initial;
+}
+
+.cmtRenderFalse {
+  display: none;
 }
