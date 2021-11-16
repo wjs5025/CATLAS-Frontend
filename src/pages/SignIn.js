@@ -69,7 +69,15 @@ const SignIn = () => {
               </div>
             </div>
             <div className="inputBox_div">
-              <button className="submitBtn" onClick={() => Login()}>
+              <button
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") {
+                    this.handleClick();
+                  }
+                }}
+                className="submitBtn"
+                onClick={() => Login()}
+              >
                 LOGIN
               </button>
               <div style={{ display: "flex" }}>

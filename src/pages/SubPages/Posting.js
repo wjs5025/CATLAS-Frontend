@@ -47,41 +47,34 @@ const Posting = () => {
         </div>
         <input className="Detail_contents borderGray"></input>
         <div className="Detail_bottom">
-          <div
-            style={{
-              padding: "11px 0",
-              position: "relative",
+          <img
+            className="FloatingBtn"
+            onClick={() => {
+              if (window.confirm("게시글을 작성하시겠습니까?")) {
+                Done();
+              } else {
+              }
             }}
-          >
-            <img
-              className="DetailBtn"
-              onClick={() => {
-                if (window.confirm("게시글을 작성하시겠습니까?")) {
-                  Done();
-                } else {
-                }
-              }}
-              src={Check}
-              width={35}
-              alt=""
-            />
-            <img
-              className="DetailBtn marginRight"
-              onClick={() => {
-                if (
-                  window.confirm(
-                    "주의 : 이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다"
-                  )
-                ) {
-                  history.push("/" + pathArray[1] + "/" + pathArray[2]);
-                } else {
-                }
-              }}
-              src={Back}
-              width={35}
-              alt=""
-            />
-          </div>
+            src={Check}
+            width={35}
+            alt=""
+          />
+          <img
+            className="FloatingBtn marginRight"
+            onClick={() => {
+              if (
+                window.confirm(
+                  "주의 : 이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다"
+                )
+              ) {
+                history.push("/" + pathArray[1] + "/" + pathArray[2]);
+              } else {
+              }
+            }}
+            src={Back}
+            width={35}
+            alt=""
+          />
         </div>
       </div>
     </>

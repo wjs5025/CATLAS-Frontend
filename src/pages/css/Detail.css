@@ -36,7 +36,7 @@
 }
 .DetailBtn {
   position: absolute;
-  right: 0;
+  left: 88vw;
   transition: 100ms;
 }
 
@@ -59,11 +59,45 @@
 .CmtClose {
   transform: rotate(90deg);
 }
+.cmtRenderTrue tbody tr {
+  padding: 5px;
+  height: 4.5vh;
+}
 
-.cmtRenderTrue {
-  display: initial;
+.cmtRenderTrue tbody tr:hover {
+  background-color: rgba(206, 41, 8, 0.06);
 }
 
 .cmtRenderFalse {
   display: none;
+}
+
+tbody tr:hover {
+  background-color: none;
+}
+
+.cmtHeader {
+  display: flex;
+  margin: 15px 0 0 10px;
+  align-items: center;
+  width: fit-content;
+}
+.comment {
+  border: solid 1px !important;
+}
+
+.cmtTableWriter {
+  width: 5vw;
+  font-family: "SCDream7";
+  text-align: center;
+}
+
+.cmtTableContents {
+  width: 30vw;
+  text-align: initial;
+}
+
+.cmtTableSubmit {
+  font-size: 12px;
+  vertical-align: middle;
 }
