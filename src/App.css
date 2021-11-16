@@ -35,8 +35,9 @@
   src: url("./assets/Fonts/SCDream/SCDream9.otf");
 }
 body {
-  background-image: url("./assets/Images/background.png");
-  background-color: #f5f5f5 !important;
+  /* 배경 적용은 보류 */
+  /* background-image: url("./assets/Images/background.png");
+  background-color: #f5f5f5 !important; */
   overflow-x: hidden;
 }
 

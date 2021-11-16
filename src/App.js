@@ -6,7 +6,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { DropdownButton, Dropdown } from "react-bootstrap";
+import { DropdownButton } from "react-bootstrap";
 // Pages Import
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
@@ -28,7 +28,7 @@ const Login = () => {
   if (sessionStorage.id === undefined) {
     return (
       <NavLink className="LoginLink" activeClassName="MenuActive" to="/SignIn">
-        <div>SIGN IN</div>
+        <div className="noDrag">SIGN IN</div>
       </NavLink>
     );
   } else {
@@ -48,19 +48,17 @@ const Login = () => {
           님 로그인 중
         </div>
 
-        <Dropdown.Item>
-          <NavLink
-            to="/"
-            className="SignOut"
-            onClick={() => {
-              sessionStorage.removeItem("id");
-              axios.post("http://172.18.3.25:3001/SignOut").then(() => {});
-              document.location.href = history.location.pathname;
-            }}
-          >
-            <div>SIGN OUT</div>
-          </NavLink>
-        </Dropdown.Item>
+        <NavLink
+          to="/"
+          className="SignOut"
+          onClick={() => {
+            sessionStorage.removeItem("id");
+            axios.post("http://172.18.3.25:3001/SignOut").then(() => {});
+            document.location.href = history.location.pathname;
+          }}
+        >
+          <div className="noDrag">SIGN OUT</div>
+        </NavLink>
       </DropdownButton>
     );
   }
@@ -79,7 +77,7 @@ const App = () => {
                 activeClassName="MenuActive"
                 to="/"
               >
-                <div>HOME</div>
+                <div className="noDrag">HOME</div>
               </NavLink>
             </li>
             <li>
@@ -88,7 +86,7 @@ const App = () => {
                 activeClassName="MenuActive"
                 to="/Info/공지사항"
               >
-                <div>INFO</div>
+                <div className="noDrag">INFO</div>
               </NavLink>
             </li>
             <li>
@@ -97,7 +95,7 @@ const App = () => {
                 activeClassName="MenuActive"
                 to="/Forum/자유게시판"
               >
-                <div>FORUM</div>
+                <div className="noDrag">FORUM</div>
               </NavLink>
             </li>
             <li>
@@ -106,7 +104,7 @@ const App = () => {
                 activeClassName="MenuActive"
                 to="/Gallery/2021"
               >
-                <div>GALLERY</div>
+                <div className="noDrag">GALLERY</div>
               </NavLink>
             </li>
             <li>
@@ -119,13 +117,6 @@ const App = () => {
               </NavLink>
             </li>
             <li>
-              {/* <NavLink
-                className="menuLink"
-                activeClassName="MenuActive"
-                to="/Contact/문의하기"
-              >
-                <div>CONTACT</div>
-              </NavLink> */}
               <Login />
             </li>
           </ul>

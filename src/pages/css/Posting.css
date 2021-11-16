@@ -1,5 +1,11 @@
 .borderGray {
-  border: 1px solid #dcdcdc;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+}
+.borderGray:focus {
+  border: none;
+
+  outline: 2px solid #f6330a;
 }
 
 .noBorderBottom {

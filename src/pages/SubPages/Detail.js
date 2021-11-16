@@ -7,7 +7,17 @@ import Comment from "../../assets/Images/comment2.png";
 import Check from "../../assets/Images/submit.png";
 
 const Detail = () => {
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // 변수 선언 //
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  //라우팅 관련 변수선언
   const history = useHistory();
+  const pathArray = history.location.pathname.split("/");
+  const BoardPath = pathArray[2];
+  const PostNum = Number(pathArray[3]);
+
+  //게시글 관련 변수선언
   const [dataSet, setDataSet] = useState([
     [
       {
@@ -23,21 +33,8 @@ const Detail = () => {
     [{ writer: "" }],
   ]);
 
-  const [InputCmt, setInputCmt] = useState("");
-
-  // today = 오늘 날짜
-  let getDate = new Date();
-  let Year = getDate.getFullYear() + "-";
-  let month = getDate.getMonth() + 1;
-  let day = "-" + getDate.getDate();
-  let today = Year + month + day;
-
-  //게시글 경로 확인 관련 변수선언
-  const pathArray = history.location.pathname.split("/");
-  const BoardPath = pathArray[2];
-  const PostNum = Number(pathArray[3]);
-
   // 댓글 관련 변수 선언
+  const [InputCmt, setInputCmt] = useState("");
   const [CommentSet, setCommentSet] = useState({
     data: [
       {
@@ -53,18 +50,11 @@ const Detail = () => {
   const [cmtRender, setCmtRender] = useState("");
   const [cmtCnt, setcmtCnt] = useState(0);
 
-  // 댓글리스트 상태에 따른 Open Close
-  const CommentState = () => {
-    if (cmtOpen == true) {
-      setCmtOpen(false);
-      setCmtClassName("");
-      setCmtRender("cmtRenderFalse");
-    } else {
-      setCmtOpen(true);
-      setCmtClassName("CmtClose");
-      setCmtRender("cmtRenderTrue");
-    }
-  };
+  // 추천 검증 변수(로그인한 사람이 추천을 눌렀는지 검증)
+  const [isRmdTrue, setRmdTrue] = useState(false);
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // axios 통신 //
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // 게시글 정보 GET
   const getData = () => {
@@ -83,8 +73,9 @@ const Detail = () => {
       });
   };
 
+  // 댓글 작성 완료 통신
   const cmtSubmit = () => {
-    if (InputCmt.trim() == "") {
+    if (InputCmt.trim() === "") {
       alert("댓글을 입력해주세요");
     } else {
       axios
@@ -100,8 +91,63 @@ const Detail = () => {
     }
   };
 
+  // 추천 통신
+  const isRecommend = () => {
+    axios.get("").then((res) => {
+      if (res.data === "1") {
+        setRmdTrue(true);
+      } else {
+        setRmdTrue(false);
+      }
+    });
+  };
+
+  const RecommendClick = () => {
+    if (isRmdTrue === true) {
+      setRmdTrue(false);
+    } else {
+      setRmdTrue(true);
+    }
+  };
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // 댓글 및 추천 관련 //
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  const Recommend = () => {
+    if (isRmdTrue === true) {
+      return (
+        <div onClick={RecommendClick} className="recommendBtnTrue noDrag">
+          👍 65
+        </div>
+      );
+    } else {
+      return (
+        <div onClick={RecommendClick} className="recommendBtnFalse noDrag">
+          👍🏻 65
+        </div>
+      );
+    }
+  };
+  // 댓글리스트 상태에 따른 Open Close
+  const CommentState = () => {
+    if (cmtOpen === true) {
+      setCmtOpen(false);
+      setCmtClassName("noDrag");
+      setCmtRender("cmtRenderFalse");
+    } else {
+      setCmtOpen(true);
+      setCmtClassName("CmtClose noDrag");
+      setCmtRender("cmtRenderTrue");
+    }
+  };
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   useEffect(getData, []);
   useEffect(CommentState, []);
+  useEffect(isRecommend, []);
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <>
       <div className="Forum_container">
@@ -109,9 +155,13 @@ const Detail = () => {
         <div className="Detail_info noDrag">
           <h5 className="Board_header">{history.location.pathname}</h5>
         </div>
+        {/* 게시글 본문 */}
         <div className="title">
           <div
             style={{
+              height: "5vh",
+              lineHeight: "5vh",
+              fontSize: "1.4rem",
               flexBasis: "60%",
               textAlign: "start",
               paddingLeft: "20px",
@@ -119,27 +169,61 @@ const Detail = () => {
           >
             {dataSet[0][0].title}
           </div>
-          <div style={{ flexBasis: "15%" }}>
+          <div
+            style={{
+              height: "5vh",
+              lineHeight: "5vh",
+              fontSize: "1.2rem",
+              flexBasis: "15%",
+            }}
+          >
             {dataSet[0][0].date.substr(0, 10)}
           </div>
-          <div style={{ flexBasis: "15%" }}>{dataSet[0][0].writer}</div>
-          <div style={{ flexBasis: "15%" }}>{dataSet[0][0].views} VIEWS</div>
+          <div
+            style={{
+              flexBasis: "15%",
+              height: "5vh",
+              lineHeight: "5vh",
+              fontSize: "1.2rem",
+            }}
+          >
+            {dataSet[0][0].writer}
+          </div>
+          <div
+            style={{
+              flexBasis: "15%",
+              height: "5vh",
+              lineHeight: "5vh",
+              fontSize: "1.2rem",
+            }}
+          >
+            {dataSet[0][0].views} VIEWS
+          </div>
         </div>
         <div className="Detail_contents">
           <pre>{dataSet[0][0].contents}</pre>
-          <FloatingBtn history={history} pathArray={pathArray} />
+          {/* ToTop, Back 버튼 */}
+
+          <Recommend />
         </div>
+
         {/* 댓글 */}
         {/* - 댓글 헤더 */}
+        <div style={{ display: "flex", justifyContent: "center" }}></div>
         <div className="cmtHeader" onClick={CommentState}>
+          <FloatingBtn history={history} pathArray={pathArray} />
           <img
             src={Comment}
             className={cmtClassName}
             style={{ transition: "100ms" }}
             width={15}
             height={15}
+            alt=""
           />
-          <h5 style={{ margin: "0 0 0 10px", fontFamily: "SCDream6" }}>
+          <h5
+            className="noDrag"
+            style={{ margin: "0 0 0 10px", fontFamily: "SCDream6" }}
+          >
             댓글 ({cmtCnt})
           </h5>
         </div>
@@ -162,7 +246,7 @@ const Detail = () => {
               </td>
               <td className="cmtTableSubmit">
                 <div onClick={() => cmtSubmit()}>
-                  <img src={Check} width={25} alt="" />
+                  <img src={Check} width={18} alt="" />
                 </div>
               </td>
             </tr>
@@ -175,7 +259,7 @@ const Detail = () => {
                 </td>
                 <td
                   style={{
-                    width: "5vw",
+                    width: "100px",
                     fontSize: "12px",
                     textAlign: "center",
                   }}
@@ -184,6 +268,7 @@ const Detail = () => {
                 </td>
               </tr>
             ))}
+            <br />
           </tbody>
         </table>
       </div>

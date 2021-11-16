@@ -11,19 +11,23 @@ const SignIn = () => {
   // 로그인 버튼 클릭시
   const Login = () => {
     axios
-      .post("http://172.18.3.25:3001/SignIn", {
-        params: {
-          userid: InputID,
-          password: InputPW,
+      .post(
+        "http://172.18.3.25:3001/SignIn",
+        {
+          params: {
+            userid: InputID,
+            password: InputPW,
+          },
         },
-      })
+        { withCredentials: true }
+      )
       .then((res) => {
-        if (res.data === "/") {
-          alert("Login Success");
+        if (res.data !== "error") {
           sessionStorage.setItem("id", InputID);
+          sessionStorage.setItem("Sid", res.data);
           document.location.href = "/";
         } else {
-          alert("Login Error");
+          alert("로그인 정보가 일치하지 않습니다");
         }
       })
       .catch();
@@ -88,13 +92,14 @@ const SignIn = () => {
                 >
                   <div href="https://www.naver.com/">Forgot your ID/PW ?</div>
                 </div>
-                <div
-                  className="SignUpBtn"
-                  onClick={() => {
-                    history.push("/SignUp");
-                  }}
-                >
-                  <div href="https://www.naver.com/">SIGN UP</div>
+                <div className="SignUpBtn">
+                  <div
+                    onClick={() => {
+                      history.push("/SignUp");
+                    }}
+                  >
+                    SIGN UP
+                  </div>
                 </div>
               </div>
             </div>
