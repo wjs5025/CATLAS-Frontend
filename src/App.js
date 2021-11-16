@@ -33,7 +33,7 @@ const Login = () => {
     );
   } else {
     return (
-      <DropdownButton title="LOGIN MENU">
+      <DropdownButton title={sessionStorage.id + " 님"}>
         <div
           className="noDrag"
           style={{

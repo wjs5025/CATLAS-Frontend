@@ -158,14 +158,20 @@ body {
 }
 
 .dropdown {
+  display: flex;
+  justify-content: center;
   background-color: none !important;
-
-  line-height: 2vh;
   min-height: 2vh;
   vertical-align: middle;
   width: 16vw;
+  text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+
+  transition: text-decoration-color 500ms;
 }
 
+.dropdown:hover {
+  text-decoration: underline 0.15em;
+}
 .dropdown-menu {
   min-width: 200px !important;
   max-width: 200px !important;
