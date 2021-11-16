@@ -19,10 +19,16 @@ const Home = () => {
   ]);
 
   const getDataset = () => {
-    axios.get("http://172.18.3.25:3001/Home").then((res) => {
-      console.log(res.data);
-      setDataSet(res.data);
-    });
+    axios
+      .get("http://172.18.3.25:3001/Home", {
+        params: {
+          Sid: sessionStorage.Sid,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setDataSet(res.data);
+      });
   };
 
   useEffect(getDataset, []);

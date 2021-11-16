@@ -4,9 +4,37 @@
 }
 
 .Contact_inputBox {
-  display: flex;
+  width: 100%;
+  float: left;
 }
 
 .Contact_subTitle {
+  padding-top: 10px;
   font-family: "SCDream7";
+  border-top: 1px solid #d3d3d3;
+}
+
+.EmailSubmit {
+  font-family: "SCDream5";
+  margin: 10px 0;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  transition: all 0.25s;
+}
+.EmailSubmit:hover {
+  background-color: #f6330a;
+  color: #fff;
+  border: none;
+}
+.QuestionInput {
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+}
+.QuestionInput:focus {
+  border: none;
+  outline: 2px solid #f6330a;
 }

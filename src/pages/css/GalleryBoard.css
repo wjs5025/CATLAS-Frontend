@@ -5,6 +5,9 @@
   height: 29vh;
 }
 
+.gallery_table {
+  border-color: rgba(255, 255, 255, 0) !important;
+}
 .gallery_table tbody {
   display: flex;
   flex-wrap: wrap;

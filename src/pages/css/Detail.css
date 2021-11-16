@@ -18,6 +18,7 @@
 }
 
 .Detail_contents {
+  position: relative;
   min-height: 67vh;
   width: 100%;
   height: fit-content;
@@ -36,7 +37,7 @@
 }
 .DetailBtn {
   position: absolute;
-  right: 0;
+  left: 88vw;
   transition: 100ms;
 }
 
@@ -46,12 +47,98 @@
 
 .FloatingBtn {
   position: fixed;
+  bottom: 5vh;
   width: 35px;
   transition: 100ms;
-  bottom: 4.5vh;
-  right: 6vw;
+  left: 88vw;
 }
 
 .FloatingBtn:hover {
   width: 40px;
+}
+
+.CmtClose {
+  transform: rotate(90deg);
+}
+.cmtRenderTrue tbody tr {
+  padding: 5px;
+  height: 4.5vh;
+}
+
+.cmtRenderTrue tbody tr:hover {
+  background-color: rgba(206, 41, 8, 0.06);
+}
+
+.cmtRenderFalse {
+  display: none;
+}
+
+tbody tr:hover {
+  background-color: none;
+}
+
+.cmtHeader {
+  display: flex;
+  margin: 10px 0 0 10px;
+  align-items: center;
+  width: fit-content;
+}
+.comment {
+  border: solid 1px !important;
+}
+
+.cmtTableWriter {
+  width: 100px;
+  font-family: "SCDream7";
+  text-align: center;
+}
+
+.cmtTableContents {
+  width: 30vw;
+  text-align: initial;
+}
+
+.cmtTableSubmit {
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.recommendBtnFalse {
+  position: absolute;
+  bottom: 20px;
+  left: 47%;
+  font-family: "SCDream5";
+  border: 1px solid #d3d3d3;
+  border-radius: 100px;
+  width: 80px;
+  line-height: 35px;
+  text-align: center;
+  transition: all 0.25s;
+}
+.recommendBtnFalse:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0);
+  background-color: rgba(246, 51, 10, 0.5);
+}
+
+.recommendBtnTrue {
+  position: absolute;
+  bottom: 20px;
+  left: 47%;
+  font-family: "SCDream5";
+  background-color: #f6330a;
+  border: 1px solid #f6330a;
+
+  color: #fff;
+  border-radius: 100px;
+  width: 80px;
+  line-height: 35px;
+  text-align: center;
+  transition: all 0.25s;
+}
+
+.recommendBtnTrue:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0);
+  background-color: rgba(246, 51, 10, 0.5);
 }

@@ -122,14 +122,14 @@ const Board = ({ history, match }) => {
         <div style={{ position: "relative" }}>
           <img
             className="PostingBtn"
-            onClick={() => history.push(match.url + "/" + "글쓰기")}
+            onClick={() => history.push(match.url + "/글쓰기")}
+            alt=""
             style={{
               position: "absolute",
               paddingTop: "11px",
             }}
             src={WriteImg}
             width={isLogin}
-            alt=""
           />
         </div>
         <div className="Board_paging">

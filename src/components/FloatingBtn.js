@@ -12,6 +12,7 @@ const FloatingBtn = () => {
         className="FloatingBtn"
         src={ToTop}
         onClick={() => window.scrollTo(0, 0)}
+        alt=""
       />
       <img
         className="FloatingBtn marginRight"
@@ -19,6 +20,7 @@ const FloatingBtn = () => {
         onClick={() => {
           history.push("/" + pathArray[1] + "/" + pathArray[2]);
         }}
+        alt=""
       />
     </>
   );
