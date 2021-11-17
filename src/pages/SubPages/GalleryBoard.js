@@ -21,11 +21,15 @@ const GalleryBoard = ({ history, match }) => {
   //서버로부터 "게시글 데이터 객체"를 받아옴
   const getDataset = () => {
     axios
-      .get("http://172.18.3.25:3001/Board", {
-        params: {
-          BoardPath,
+      .get(
+        "http://172.18.3.25:3001/Board",
+        {
+          params: {
+            BoardPath,
+          },
         },
-      })
+        { withCredentials: true }
+      )
       .then((res) => {
         setPosts({ ...posts, data: res.data });
       });

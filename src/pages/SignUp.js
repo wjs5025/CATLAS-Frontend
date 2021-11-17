@@ -49,15 +49,19 @@ const SignUp = () => {
   const SignUpBtn = () => {
     if (pwAllow) {
       axios
-        .post("http://172.18.3.25:3001/SignUp", {
-          params: {
-            userid: InputID,
-            password: InputPW,
-            email: InputEmail,
-            name: InputName,
-            phonenumber: InputPhnum,
+        .post(
+          "http://172.18.3.25:3001/SignUp",
+          {
+            params: {
+              userid: InputID,
+              password: InputPW,
+              email: InputEmail,
+              name: InputName,
+              phonenumber: InputPhnum,
+            },
           },
-        })
+          { withCredentials: true }
+        )
         .then((res) => {
           alert("회원가입 완료 !");
           history.push("/");

@@ -3,6 +3,7 @@ import LogoON from "../assets/Images/CATLAS LOCO/CATLAS Logo on.png";
 import GNU from "../assets/Images/GNU Logo.png";
 import USG from "../assets/Images/usg.png";
 import CS from "../assets/Images/csLogo.png";
+import Test from "../assets/Images/test.jpg";
 import "./css/Home.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -17,23 +18,18 @@ const Home = () => {
     [{ title: "", contents: "", idx: 0, date: "" }],
     [{ title: "", contents: "", idx: 0, date: "" }],
   ]);
-
   const getDataset = () => {
     axios
-      .get("http://172.18.3.25:3001/Home", {
-        params: {
-          Sid: sessionStorage.Sid,
-        },
-      })
+      .get("http://172.18.3.25:3001/Home", { withCredentials: true })
       .then((res) => {
-        console.log(res.data);
+        console.log("Home res", res.data);
         setDataSet(res.data);
       });
   };
 
   useEffect(getDataset, []);
 
-  console.log("Home Session 로그인 아이디 : ", sessionStorage.id);
+  // console.log("Home Session 로그인 아이디 : ", sessionStorage.id);
   return (
     <>
       <Router>
@@ -41,47 +37,48 @@ const Home = () => {
           <div className="home_firstLine">
             {/*타이틀 영역(좌측상단)*/}
             <div className="home_Header">
-              <h1 className="home_Title noDrag ">CATLAS HOME</h1>
+              <h1 className="home_Title noDrag">CATLAS HOME</h1>
               <p className="home_subTitle noDrag ">
                 경상국립대학교 컴퓨터과학과 공식 커뮤니티 CATLAS
               </p>
-
-              <div className="home_LogoBadges noDrag">
-                <a
-                  href="https://newgh.gnu.ac.kr/main/main.do"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <img className="LogoBadge" src={GNU} height={80} alt="" />
-                </a>
-                <a href="http://cs.gnu.ac.kr/" target="_blank" rel="noreferrer">
-                  <img className="LogoBadge" src={CS} height={80} alt="" />
-                </a>
-                <a
-                  href="https://catlas.gnu.ac.kr/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img className="LogoBadge" src={LogoON} height={80} alt="" />
-                </a>
-                <a href="http://usg.ac.kr/" target="_blank" rel="noreferrer">
-                  <img className="LogoBadge" src={USG} height={80} alt="" />
-                </a>
-              </div>
             </div>
-
-            {/*공지영역(우측상단)*/}
-
-            <div className="home_Notice">
-              <div className="notice_Header">
-                <h3 className="notice_Title noDrag">
+            <div className="home_LogoBadges noDrag">
+              <a
+                href="https://newgh.gnu.ac.kr/main/main.do"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <img className="LogoBadge" src={GNU} height={50} alt="" />
+              </a>
+              <a href="http://cs.gnu.ac.kr/" target="_blank" rel="noreferrer">
+                <img className="LogoBadge" src={CS} height={50} alt="" />
+              </a>
+              <a
+                href="https://catlas.gnu.ac.kr/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img className="LogoBadge" src={LogoON} height={50} alt="" />
+              </a>
+              <a href="http://usg.ac.kr/" target="_blank" rel="noreferrer">
+                <img className="LogoBadge" src={USG} height={50} alt="" />
+              </a>
+            </div>
+          </div>
+          {/*//////////////////////////////////////////////////////////////////////*/}
+          <div className="home_SecondLine">
+            {/*게시판영역(하단))*/}
+            <div className="home_Forum">
+              <div className="Forum_Header">
+                <h3 className="Forum_Title noDrag">
                   NOTICE
+                  <span style={{ fontSize: "0.6em" }}> of INFO</span>
                   <a href={"/Info/공지사항"}>
                     <span className="notice_more">more {">"}</span>
                   </a>
                 </h3>
-                <div className="notice_posts">
-                  <div className="notice_post borderR">
+                <div className="Forum_posts">
+                  <div className="Forum_post borderR">
                     <a
                       className="a_tag"
                       href={"/Info/공지사항/" + dataSet[0][0].idx}
@@ -91,19 +88,17 @@ const Home = () => {
                         {dataSet[0][0].contents}
                       </p>
                       <p className="notice_post_date">
-                        {" "}
                         {dataSet[0][0].date.substr(0, 10)}
                       </p>
                     </a>
                   </div>
-                  <div className="notice_post">
+                  <div className="Forum_post borderR">
                     <a
                       className="a_tag"
                       href={"/Info/공지사항/" + dataSet[0][1].idx}
                     >
                       <p className="notice_post_Title">{dataSet[0][1].title}</p>
                       <p className="notice_post_Inner">
-                        {" "}
                         {dataSet[0][1].contents}
                       </p>
                       <p className="notice_post_date">
@@ -111,24 +106,39 @@ const Home = () => {
                       </p>
                     </a>
                   </div>
+
+                  <div className="Forum_post">
+                    <a
+                      className="a_tag"
+                      href={"/Info/공지사항/" + dataSet[0][1].idx}
+                    >
+                      <p className="notice_post_Title">{dataSet[0][1].title}</p>
+                      <p className="notice_post_Inner">
+                        {dataSet[3][0].contents}
+                      </p>
+                      <p className="notice_post_date">
+                        {dataSet[3][0].date.substr(0, 10)}
+                      </p>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
+          {/*//////////////////////////////////////////////////////////////////////*/}
           <div className="home_SecondLine">
             {/*게시판영역(하단))*/}
             <div className="home_Forum">
               <div className="Forum_Header">
-                <h3 className="Forum_Title noDrag">FORUM</h3>
+                <h3 className="Forum_Title noDrag">
+                  FREE
+                  <span style={{ fontSize: "0.6em" }}> of FORUM</span>
+                  <a href={"/Forum/자유게시판"}>
+                    <span className="notice_more">more {">"}</span>
+                  </a>
+                </h3>
                 <div className="Forum_posts">
                   <div className="Forum_post borderR">
-                    <h4 className="forum_name noDrag">
-                      FREE FORUM
-                      <a href={"/Forum/자유게시판"}>
-                        <span className="notice_more">more {">"}</span>
-                      </a>
-                    </h4>
                     <a
                       className="a_tag"
                       href={"/Forum/자유게시판/" + dataSet[1][0].idx}
@@ -143,12 +153,66 @@ const Home = () => {
                     </a>
                   </div>
                   <div className="Forum_post borderR">
-                    <h4 className="forum_name noDrag">
-                      QUESTION FORUM
-                      <a href={"/Forum/질문게시판/"}>
-                        <span className="notice_more">more {">"}</span>
-                      </a>
-                    </h4>
+                    <a
+                      className="a_tag"
+                      href={"/Forum/자유게시판/" + dataSet[1][0].idx}
+                    >
+                      <p className="notice_post_Title">{dataSet[1][0].title}</p>
+                      <p className="notice_post_Inner">
+                        {dataSet[1][0].contents}
+                      </p>
+                      <p className="notice_post_date">
+                        {dataSet[1][0].date.substr(0, 10)}
+                      </p>
+                    </a>
+                  </div>
+
+                  <div className="Forum_post">
+                    <a
+                      className="a_tag"
+                      href={"/Forum/자유게시판/" + dataSet[1][0].idx}
+                    >
+                      <p className="notice_post_Title">{dataSet[1][0].title}</p>
+                      <p className="notice_post_Inner">
+                        {dataSet[1][0].contents}
+                      </p>
+                      <p className="notice_post_date">
+                        {dataSet[1][0].date.substr(0, 10)}
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/*//////////////////////////////////////////////////////////////////////*/}
+          <div className="home_SecondLine">
+            {/*게시판영역(하단))*/}
+            <div className="home_Forum">
+              <div className="Forum_Header">
+                <h3 className="Forum_Title noDrag">
+                  QUESTION
+                  <span style={{ fontSize: "0.6em" }}> of FORUM</span>
+                  <a href={"/Forum/질문게시판"}>
+                    <span className="notice_more">more {">"}</span>
+                  </a>
+                </h3>
+                <div className="Forum_posts">
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag"
+                      href={"/Forum/질문게시판/" + dataSet[2][0].idx}
+                    >
+                      <p className="notice_post_Title">{dataSet[2][0].title}</p>
+                      <p className="notice_post_Inner">
+                        {dataSet[2][0].contents}
+                      </p>
+                      <p className="notice_post_date">
+                        {dataSet[2][0].date.substr(0, 10)}
+                      </p>
+                    </a>
+                  </div>
+                  <div className="Forum_post borderR">
                     <a
                       className="a_tag"
                       href={"/Forum/질문게시판/" + dataSet[2][0].idx}
@@ -164,12 +228,66 @@ const Home = () => {
                   </div>
 
                   <div className="Forum_post">
-                    <h4 className="forum_name noDrag">
-                      ADVERTISING FORUM
-                      <a href={"/Forum/홍보게시판"}>
-                        <span className="notice_more">more {">"}</span>
-                      </a>
-                    </h4>
+                    <a
+                      className="a_tag"
+                      href={"/Forum/질문게시판/" + dataSet[2][0].idx}
+                    >
+                      <p className="notice_post_Title">{dataSet[2][0].title}</p>
+                      <p className="notice_post_Inner">
+                        {dataSet[2][0].contents}
+                      </p>
+                      <p className="notice_post_date">
+                        {dataSet[2][0].date.substr(0, 10)}
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/*//////////////////////////////////////////////////////////////////////*/}
+          <div className="home_SecondLine">
+            {/*게시판영역(하단))*/}
+            <div className="home_Forum">
+              <div className="Forum_Header">
+                <h3 className="Forum_Title noDrag">
+                  PROMOTION
+                  <span style={{ fontSize: "0.6em" }}> of FORUM</span>
+                  <a href={"/Forum/홍보게시판"}>
+                    <span className="notice_more">more {">"}</span>
+                  </a>
+                </h3>
+                <div className="Forum_posts">
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag"
+                      href={"/Forum/홍보게시판/" + dataSet[3][0].idx}
+                    >
+                      <p className="notice_post_Title">{dataSet[3][0].title}</p>
+                      <p className="notice_post_Inner">
+                        {dataSet[3][0].contents}
+                      </p>
+                      <p className="notice_post_date">
+                        {dataSet[3][0].date.substr(0, 10)}
+                      </p>
+                    </a>
+                  </div>
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag"
+                      href={"/Forum/홍보게시판/" + dataSet[3][0].idx}
+                    >
+                      <p className="notice_post_Title">{dataSet[3][0].title}</p>
+                      <p className="notice_post_Inner">
+                        {dataSet[3][0].contents}
+                      </p>
+                      <p className="notice_post_date">
+                        {dataSet[3][0].date.substr(0, 10)}
+                      </p>
+                    </a>
+                  </div>
+
+                  <div className="Forum_post">
                     <a
                       className="a_tag"
                       href={"/Forum/홍보게시판/" + dataSet[3][0].idx}
@@ -185,8 +303,68 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="home_Forum_circle">
-                {/* <div className="circle yellow_circle" /> */}
+            </div>
+          </div>
+          {/*//////////////////////////////////////////////////////////////////////*/}
+          {/* 갤러리 영역*/}
+          <div className="home_SecondLine">
+            <div className="home_Forum">
+              <div className="Forum_Header">
+                <h3 className="Forum_Title noDrag">
+                  2021
+                  <span style={{ fontSize: "0.6em" }}> of GALLERY</span>
+                  <a href={"/Gallery/2021"}>
+                    <span className="notice_more">more {">"}</span>
+                  </a>
+                </h3>
+                <div className="Forum_posts">
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag HomeGallery"
+                      href={"/Gallery/2021/" + dataSet[2][0].idx}
+                    >
+                      <p className="notice_post_Title">저희 집 다람쥐에요</p>
+
+                      <img
+                        src={Test}
+                        alt=""
+                        width="80%"
+                        style={{ borderRadius: "5px" }}
+                      />
+                    </a>
+                  </div>
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag HomeGallery"
+                      href={"/Gallery/2021/" + dataSet[2][0].idx}
+                    >
+                      <p className="notice_post_Title">저희 집 다람쥐에요</p>
+
+                      <img
+                        src={Test}
+                        alt=""
+                        width="80%"
+                        style={{ borderRadius: "5px" }}
+                      />
+                    </a>
+                  </div>
+
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag HomeGallery"
+                      href={"/Gallery/2021/" + dataSet[2][0].idx}
+                    >
+                      <p className="notice_post_Title">저희 집 다람쥐에요</p>
+
+                      <img
+                        src={Test}
+                        alt=""
+                        width="80%"
+                        style={{ borderRadius: "5px" }}
+                      />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

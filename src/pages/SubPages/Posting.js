@@ -45,7 +45,7 @@ const Posting = () => {
           <div style={{ flexBasis: "15%" }}>{today}</div>
           <div style={{ flexBasis: "15%" }}>{sessionStorage.id}</div>
         </div>
-        <input className="Detail_contents borderGray"></input>
+        <textarea className="Detail_contents borderGray posting"></textarea>
         <div className="Detail_bottom">
           <img
             className="FloatingBtn"
