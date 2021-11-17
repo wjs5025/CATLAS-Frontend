@@ -2,6 +2,8 @@ import "../css/Posting.css";
 import { useHistory } from "react-router";
 import Check from "../../assets/Images/Check.png";
 import Back from "../../assets/Images/Back.png";
+import axios from "axios";
+import { useState } from "react";
 //게시판
 
 const Posting = () => {
@@ -14,10 +16,29 @@ const Posting = () => {
   let day = "-" + getDate.getDate();
   let today = Year + month + day;
 
-  // const BoardPath = pathArray[2];
-  // const PostNum = Number(pathArray[3]);
+  const BoardPath = pathArray[2];
+  const PostNum = Number(pathArray[3]);
 
+  const [InputTitle, setTitle] = useState("");
+  const [InputContents, setContents] = useState("");
   const Done = () => {
+    axios
+      .get(
+        "http://172.18.3.25:3001/Posting",
+        {
+          params: {
+            BoardPath,
+            PostNum,
+            userid: sessionStorage.id,
+            title: InputTitle,
+            contents: InputContents,
+          },
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        console.log("게시글작성 res", res.data);
+      });
     alert("완료");
     history.push("/" + pathArray[1] + "/" + pathArray[2]);
   };
@@ -40,12 +61,18 @@ const Posting = () => {
               textAlign: "start",
               paddingLeft: "20px",
             }}
-          ></input>
+            value={InputTitle}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <div style={{ flexBasis: "15%" }}></div>
           <div style={{ flexBasis: "15%" }}>{today}</div>
           <div style={{ flexBasis: "15%" }}>{sessionStorage.id}</div>
         </div>
-        <textarea className="Detail_contents borderGray posting"></textarea>
+        <textarea
+          value={InputContents}
+          onChange={(e) => setContents(e.target.value)}
+          className="Detail_contents borderGray posting"
+        ></textarea>
         <div className="Detail_bottom">
           <img
             className="FloatingBtn"
