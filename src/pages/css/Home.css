@@ -26,31 +26,36 @@
 .home_firstLine {
   position: relative;
   display: flex;
+  justify-content: center;
+  padding: 2vh 0 10vh 0;
 }
 
 .home_Header {
   margin-top: 9vh;
   position: relative;
   width: 50vw;
-  padding-left: 7vw;
 }
 
 .home_Title {
   font-size: 50px;
   font-family: "SCDream8";
   text-shadow: 1px 1px 2px #d3d3d3;
+  text-align: center;
 }
 
 .home_subTitle {
   font-size: 25px;
   font-family: "SCDream4";
   margin-left: 4%;
-  width: fit-content;
   text-shadow: 1px 1px 2px #d3d3d3;
+  text-align: center;
 }
 
 .home_LogoBadges {
-  margin-left: 3vw;
+  padding-left: 10vw;
+  padding-top: 5vh;
+  width: 100%;
+  position: absolute;
 }
 
 .LogoBadge {
@@ -113,7 +118,7 @@
 }
 
 .notice_post:hover {
-  background-color: rgba(246, 51, 10, 0.02);
+  background-color: rgba(120, 10, 246, 0.1);
 }
 .notice_post_Title {
   font-family: "SCDream6";
@@ -153,8 +158,8 @@
 }
 
 .home_Forum {
-  padding-right: 10vw;
-  padding-left: 10vw;
+  padding: 0 10vw 3vh 10vw;
+
   display: flex;
 }
 
@@ -172,14 +177,15 @@
 }
 
 .Forum_Header {
-  width: 100vw;
+  width: 80vw;
+  min-width: 80vw;
   font-family: "SCDream8";
 }
 
 .Forum_Title {
   text-shadow: 1px 1px 2px #d3d3d3;
 
-  text-align: right;
+  text-align: left;
   margin-right: 10px;
 }
 
@@ -200,8 +206,17 @@
   padding-left: 8px;
   padding-right: 8px;
   transition: 0.25s;
+  border: 2px solid rgba(255, 255, 255, 0);
 }
 
 .Forum_post:hover {
-  background-color: rgba(246, 51, 10, 0.02);
+  background-color: rgba(246, 51, 10, 0.03);
+  border-width: 2px;
+  border-color: rgba(246, 51, 10, 0.5);
+}
+
+.HomeGallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

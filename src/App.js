@@ -22,6 +22,7 @@ import axios from "axios";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
+axios.defaults.withCredentials = true;
 const Login = () => {
   const history = useHistory();
   console.log(history.location.pathname);

@@ -13,3 +13,7 @@
 .noBorderBottom {
   border-bottom: none;
 }
+
+.posting {
+  resize: none;
+}

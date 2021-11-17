@@ -80,9 +80,9 @@ const QuestionForm = ({ history }) => {
               >
                 문의 내용 / question
               </label>
-              <input
+              <textarea
                 className="QuestionInput"
-                style={{ width: "90%", height: "30vh" }}
+                style={{ width: "90%", height: "30vh", resize: "none" }}
                 type="text"
               />
             </div>
