@@ -13,10 +13,23 @@ const Home = () => {
     [
       { title: "", contents: "", idx: 0, date: "" },
       { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
     ],
-    [{ title: "", contents: "", idx: 0, date: "" }],
-    [{ title: "", contents: "", idx: 0, date: "" }],
-    [{ title: "", contents: "", idx: 0, date: "" }],
+    [
+      { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
+    ],
+    [
+      { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
+    ],
+    [
+      { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
+    ],
   ]);
   const getDataset = () => {
     axios
@@ -155,14 +168,14 @@ const Home = () => {
                   <div className="Forum_post borderR">
                     <a
                       className="a_tag"
-                      href={"/Forum/자유게시판/" + dataSet[1][0].idx}
+                      href={"/Forum/자유게시판/" + dataSet[1][1].idx}
                     >
-                      <p className="notice_post_Title">{dataSet[1][0].title}</p>
+                      <p className="notice_post_Title">{dataSet[1][1].title}</p>
                       <p className="notice_post_Inner">
-                        {dataSet[1][0].contents}
+                        {dataSet[1][1].contents}
                       </p>
                       <p className="notice_post_date">
-                        {dataSet[1][0].date.substr(0, 10)}
+                        {dataSet[1][1].date.substr(0, 10)}
                       </p>
                     </a>
                   </div>
@@ -170,14 +183,14 @@ const Home = () => {
                   <div className="Forum_post">
                     <a
                       className="a_tag"
-                      href={"/Forum/자유게시판/" + dataSet[1][0].idx}
+                      href={"/Forum/자유게시판/" + dataSet[1][2].idx}
                     >
-                      <p className="notice_post_Title">{dataSet[1][0].title}</p>
+                      <p className="notice_post_Title">{dataSet[1][2].title}</p>
                       <p className="notice_post_Inner">
-                        {dataSet[1][0].contents}
+                        {dataSet[1][2].contents}
                       </p>
                       <p className="notice_post_date">
-                        {dataSet[1][0].date.substr(0, 10)}
+                        {dataSet[1][2].date.substr(0, 10)}
                       </p>
                     </a>
                   </div>
@@ -215,14 +228,14 @@ const Home = () => {
                   <div className="Forum_post borderR">
                     <a
                       className="a_tag"
-                      href={"/Forum/질문게시판/" + dataSet[2][0].idx}
+                      href={"/Forum/질문게시판/" + dataSet[2][1].idx}
                     >
-                      <p className="notice_post_Title">{dataSet[2][0].title}</p>
+                      <p className="notice_post_Title">{dataSet[2][1].title}</p>
                       <p className="notice_post_Inner">
-                        {dataSet[2][0].contents}
+                        {dataSet[2][1].contents}
                       </p>
                       <p className="notice_post_date">
-                        {dataSet[2][0].date.substr(0, 10)}
+                        {dataSet[2][1].date.substr(0, 10)}
                       </p>
                     </a>
                   </div>
@@ -230,14 +243,14 @@ const Home = () => {
                   <div className="Forum_post">
                     <a
                       className="a_tag"
-                      href={"/Forum/질문게시판/" + dataSet[2][0].idx}
+                      href={"/Forum/질문게시판/" + dataSet[2][2].idx}
                     >
-                      <p className="notice_post_Title">{dataSet[2][0].title}</p>
+                      <p className="notice_post_Title">{dataSet[2][2].title}</p>
                       <p className="notice_post_Inner">
-                        {dataSet[2][0].contents}
+                        {dataSet[2][2].contents}
                       </p>
                       <p className="notice_post_date">
-                        {dataSet[2][0].date.substr(0, 10)}
+                        {dataSet[2][2].date.substr(0, 10)}
                       </p>
                     </a>
                   </div>
@@ -275,14 +288,14 @@ const Home = () => {
                   <div className="Forum_post borderR">
                     <a
                       className="a_tag"
-                      href={"/Forum/홍보게시판/" + dataSet[3][0].idx}
+                      href={"/Forum/홍보게시판/" + dataSet[3][1].idx}
                     >
-                      <p className="notice_post_Title">{dataSet[3][0].title}</p>
+                      <p className="notice_post_Title">{dataSet[3][1].title}</p>
                       <p className="notice_post_Inner">
-                        {dataSet[3][0].contents}
+                        {dataSet[3][1].contents}
                       </p>
                       <p className="notice_post_date">
-                        {dataSet[3][0].date.substr(0, 10)}
+                        {dataSet[3][1].date.substr(0, 10)}
                       </p>
                     </a>
                   </div>
@@ -290,14 +303,14 @@ const Home = () => {
                   <div className="Forum_post">
                     <a
                       className="a_tag"
-                      href={"/Forum/홍보게시판/" + dataSet[3][0].idx}
+                      href={"/Forum/홍보게시판/" + dataSet[3][2].idx}
                     >
-                      <p className="notice_post_Title">{dataSet[3][0].title}</p>
+                      <p className="notice_post_Title">{dataSet[3][2].title}</p>
                       <p className="notice_post_Inner">
-                        {dataSet[3][0].contents}
+                        {dataSet[3][2].contents}
                       </p>
                       <p className="notice_post_date">
-                        {dataSet[3][0].date.substr(0, 10)}
+                        {dataSet[3][2].date.substr(0, 10)}
                       </p>
                     </a>
                   </div>
