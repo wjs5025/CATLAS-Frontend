@@ -121,6 +121,7 @@
   background-color: rgba(120, 10, 246, 0.1);
 }
 .notice_post_Title {
+  padding-top: 1vh;
   font-family: "SCDream6";
   font-size: 20px;
   margin: 10px 0 5px 0px;
@@ -130,17 +131,17 @@
 }
 
 .notice_post_Inner {
-  font-size: 1.1em;
+  font-size: 1.2em;
   position: relative;
   font-family: "SCDream4";
   margin-left: 5px;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
-  line-height: 2.7vh;
-  height: 18.9vh;
+  line-height: 3.6vh;
+  height: 17.9vh;
 }
 
 .notice_post_date {
