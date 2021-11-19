@@ -6,14 +6,19 @@ import { useHistory } from "react-router";
 import FloatingBtn from "./FloatingBtn";
 
 const Comment = ({ CommentSet }) => {
-  console.log(CommentSet.data.length);
+  // 라우팅 관련 변수 선언
   const history = useHistory();
   const pathArray = history.location.pathname.split("/");
   const BoardPath = pathArray[2];
   const MenuPath = pathArray[1];
-
   const PostNum = Number(pathArray[3]);
+
+  //댓글 스타일 관련 변수 및 함수 선언
+  const [cmtOpen, setCmtOpen] = useState(false);
+  const [cmtRender, setCmtRender] = useState("");
+
   const [cmtStyle, setStyle] = useState({});
+  const [cmtClassName, setCmtClassName] = useState("");
 
   const CommentStyle = () => {
     if (MenuPath === "Info") {
@@ -21,17 +26,6 @@ const Comment = ({ CommentSet }) => {
     } else {
       setStyle({ display: "block" });
     }
-  };
-
-  const [InputCmt, setInputCmt] = useState("");
-
-  const [cmtOpen, setCmtOpen] = useState(false);
-  const [cmtClassName, setCmtClassName] = useState("");
-  const [cmtRender, setCmtRender] = useState("");
-  const [cmtCnt, setcmtCnt] = useState(0);
-
-  const CommentCnt = () => {
-    setcmtCnt(CommentSet.data.length);
   };
 
   const CommentState = () => {
@@ -45,6 +39,16 @@ const Comment = ({ CommentSet }) => {
       setCmtRender("cmtRenderTrue");
     }
   };
+
+  //댓글 데이터 관련 변수 선언
+  const [cmtCnt, setcmtCnt] = useState(0);
+
+  const CommentCnt = () => {
+    setcmtCnt(CommentSet.data.length);
+  };
+
+  //댓글 제출 관련 변수 및 선언
+  const [InputCmt, setInputCmt] = useState("");
 
   const cmtSubmit = () => {
     if (InputCmt.trim() === "") {
@@ -70,10 +74,15 @@ const Comment = ({ CommentSet }) => {
     }
   };
 
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
+
   useEffect(CommentCnt, [CommentSet.data.length]);
   useEffect(CommentState, []);
   useEffect(CommentStyle, [history.location.pathname]);
 
+  ////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////
   return (
     <div style={cmtStyle}>
       <div style={{ display: "flex", justifyContent: "center" }}></div>
