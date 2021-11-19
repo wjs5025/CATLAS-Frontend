@@ -9,8 +9,25 @@ import GalleryBoard from "./SubPages/GalleryBoard";
 import NotFound from "./SubPages/NotFound";
 import Posting from "./SubPages/Posting";
 import GalleryDetail from "./SubPages/GalleryDetail.js";
+import PleaseLogin from "./SubPages/PleaseLogin";
 
 const Gallery = () => {
+  const CanPosting = () => {
+    if (sessionStorage.id === undefined) {
+      return <PleaseLogin />;
+    } else {
+      return <Posting />;
+    }
+  };
+
+  const CanDetail = () => {
+    if (sessionStorage.id === undefined) {
+      return <PleaseLogin />;
+    } else {
+      return <GalleryDetail />;
+    }
+  };
+
   return (
     <>
       <Router>
@@ -58,17 +75,37 @@ const Gallery = () => {
                 <Route exact path="/Gallery/2018" component={GalleryBoard} />
                 <Route exact path="/Gallery/Down" component={GalleryBoard} />
 
-                <Route exact path="/Gallery/2021/글쓰기" component={Posting} />
-                <Route exact path="/Gallery/2020/글쓰기" component={Posting} />
-                <Route exact path="/Gallery/2019/글쓰기" component={Posting} />
-                <Route exact path="/Gallery/2018/글쓰기" component={Posting} />
-                <Route exact path="/Gallery/down/글쓰기" component={Posting} />
+                <Route
+                  exact
+                  path="/Gallery/2021/글쓰기"
+                  component={CanPosting}
+                />
+                <Route
+                  exact
+                  path="/Gallery/2020/글쓰기"
+                  component={CanPosting}
+                />
+                <Route
+                  exact
+                  path="/Gallery/2019/글쓰기"
+                  component={CanPosting}
+                />
+                <Route
+                  exact
+                  path="/Gallery/2018/글쓰기"
+                  component={CanPosting}
+                />
+                <Route
+                  exact
+                  path="/Gallery/down/글쓰기"
+                  component={CanPosting}
+                />
 
-                <Route path="/Gallery/2021/:id" component={GalleryDetail} />
-                <Route path="/Gallery/2020/:id" component={GalleryDetail} />
-                <Route path="/Gallery/2019/:id" component={GalleryDetail} />
-                <Route path="/Gallery/2018/:id" component={GalleryDetail} />
-                <Route path="/Gallery/down/:id" component={GalleryDetail} />
+                <Route path="/Gallery/2021/:id" component={CanDetail} />
+                <Route path="/Gallery/2020/:id" component={CanDetail} />
+                <Route path="/Gallery/2019/:id" component={CanDetail} />
+                <Route path="/Gallery/2018/:id" component={CanDetail} />
+                <Route path="/Gallery/down/:id" component={CanDetail} />
 
                 <Route path="*" component={NotFound} />
               </Switch>

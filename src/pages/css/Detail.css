@@ -153,3 +153,7 @@ tbody tr:hover {
   border-color: rgba(255, 255, 255, 0);
   background-color: rgba(246, 51, 10, 0.5);
 }
+
+.CantDelete {
+  display: none;
+}

@@ -8,8 +8,25 @@ import Board from "./SubPages/Board";
 import Detail from "./SubPages/Detail";
 import Posting from "./SubPages/Posting";
 import LinkImg from "../assets/Images/linkIcon.png";
+import PleaseLogin from "./SubPages/PleaseLogin";
+import NotFound from "./SubPages/NotFound";
 
 function Info() {
+  const CanPosting = () => {
+    if (sessionStorage.id === undefined) {
+      return <PleaseLogin />;
+    } else {
+      return <Posting />;
+    }
+  };
+
+  const CanDetail = () => {
+    if (sessionStorage.id === undefined) {
+      return <PleaseLogin />;
+    } else {
+      return <Detail />;
+    }
+  };
   return (
     <>
       <Router>
@@ -62,11 +79,20 @@ function Info() {
               <Switch>
                 <Route exact path="/Info/공지사항" component={Board} />
                 <Route exact path="/Info/장학안내" component={Board} />
-                <Route exact path="/Info/공지사항/글쓰기" component={Posting} />
-                <Route exact path="/Info/장학안내/글쓰기" component={Posting} />
+                <Route
+                  exact
+                  path="/Info/공지사항/글쓰기"
+                  component={CanPosting}
+                />
+                <Route
+                  exact
+                  path="/Info/장학안내/글쓰기"
+                  component={CanPosting}
+                />
 
-                <Route path="/Info/공지사항/:id" component={Detail} />
-                <Route path="/Info/장학안내/:id" component={Detail} />
+                <Route path="/Info/공지사항/:id" component={CanDetail} />
+                <Route path="/Info/장학안내/:id" component={CanDetail} />
+                <Route path="*" component={NotFound} />
               </Switch>
             </div>
           </div>

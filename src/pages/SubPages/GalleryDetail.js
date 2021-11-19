@@ -1,4 +1,3 @@
-import "../css/Detail.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
@@ -68,6 +67,9 @@ const Detail = () => {
       )
       .then((res) => {
         console.log("게시글 res", res.data);
+        if (res.data === "error") {
+          document.location.href = "/NotFound";
+        }
         setDataSet(res.data);
         setCommentSet({ ...CommentSet, data: res.data[1] });
         setRmdTrue(res.data[2].state);

@@ -9,13 +9,13 @@ const FloatingBtn = () => {
   return (
     <>
       <img
-        className="FloatingBtn"
+        className="FloatingBtn noDrag"
         src={ToTop}
         onClick={() => window.scrollTo(0, 0)}
         alt=""
       />
       <img
-        className="FloatingBtn marginRight"
+        className="FloatingBtn marginRight noDrag"
         src={Back}
         onClick={() => {
           history.push("/" + pathArray[1] + "/" + pathArray[2]);

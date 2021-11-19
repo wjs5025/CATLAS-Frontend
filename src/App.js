@@ -17,6 +17,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/SubPages/NotFound";
 import axios from "axios";
+import PleaseLogin from "./pages/SubPages/PleaseLogin";
 
 // App.css
 import "./App.css";
@@ -68,7 +69,7 @@ const Login = () => {
 const App = () => {
   return (
     <Router>
-      <div className="header">
+      <div className="header noDrag">
         <div className="NavMenu">
           <ul>
             <li>
@@ -134,6 +135,7 @@ const App = () => {
           <Route path="/SignUp" component={SignUp} />
 
           <Route path="*" component={NotFound} />
+          <Route path="/PleaseLogin" component={PleaseLogin} />
         </Switch>
       </main>
     </Router>

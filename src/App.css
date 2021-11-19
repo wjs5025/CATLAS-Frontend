@@ -180,3 +180,17 @@ body {
 .btn {
   padding: 0 !important;
 }
+
+/* NotFound 페이지 */
+.goHome {
+  margin-top: 1vh;
+  font-size: 1.1em;
+  color: black;
+  font-family: "SCDream4";
+  text-decoration: underline 0.15em rgba(255, 255, 255, 0) !important;
+  transition: 0.25s;
+}
+.goHome:hover {
+  text-decoration: underline 0.15em rgba(241, 51, 8, 1) !important;
+  color: #f6330a;
+}

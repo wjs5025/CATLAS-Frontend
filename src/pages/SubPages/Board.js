@@ -10,7 +10,9 @@ const Board = ({ history, match }) => {
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
   const pathArray = history.location.pathname.split("/");
   const BoardPath = pathArray[2];
+  const MenuPath = pathArray[1];
 
+  console.log(BoardPath);
   //게시글 데이터 묶음 posts
   const [posts, setPosts] = useState({
     data: [],
@@ -58,6 +60,9 @@ const Board = ({ history, match }) => {
     if (sessionStorage.id !== undefined) {
       SetLogin(35);
     } else SetLogin(0);
+    if (MenuPath == "Info") {
+      SetLogin(0);
+    }
   };
 
   useEffect(IconDisabled, [sessionStorage.id]);
@@ -135,7 +140,7 @@ const Board = ({ history, match }) => {
             width={isLogin}
           />
         </div>
-        <div className="Board_paging">
+        <div className="Board_paging noDrag">
           <Pagination
             pageSize={posts.pageSize}
             itemsCount={count}

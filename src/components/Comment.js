@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import Pencil from "../assets/Images/submit.png";
 import { useHistory } from "react-router";
 import FloatingBtn from "./FloatingBtn";
+import deleteIcon from "../assets/Images/delete.png";
 
 const Comment = ({ CommentSet }) => {
+  console.log("댓글 세트 ", CommentSet);
   // 라우팅 관련 변수 선언
   const history = useHistory();
   const pathArray = history.location.pathname.split("/");
@@ -19,6 +21,16 @@ const Comment = ({ CommentSet }) => {
 
   const [cmtStyle, setStyle] = useState({});
   const [cmtClassName, setCmtClassName] = useState("");
+  let CanDeleteCN = "CantDelete";
+
+  const DeleteClassName = (writer) => {
+    if (sessionStorage.id === writer) {
+      CanDeleteCN = "CanDelete";
+    } else {
+      CanDeleteCN = "CantDelete";
+    }
+    return CanDeleteCN;
+  };
 
   const CommentStyle = () => {
     if (MenuPath === "Info") {
@@ -74,6 +86,25 @@ const Comment = ({ CommentSet }) => {
     }
   };
 
+  // 댓글 삭제 관련 통신
+  const cmtDelete = (idx) => {
+    axios
+      .get("http://172.18.3.25:3001/Comment_Delete", {
+        params: {
+          BoardPath,
+          PostNum,
+          userid: sessionStorage.id,
+          idx: idx,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.data === "/") {
+          document.location.href = history.location.pathname;
+        }
+      });
+  };
+
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
 
@@ -108,8 +139,8 @@ const Comment = ({ CommentSet }) => {
       <table className={cmtRender} style={{ margin: "10px 0 0 10px" }}>
         <tbody>
           <tr>
-            <td className="cmtTableWriter">{sessionStorage.id}</td>
-            <td className="cmtTableContents">
+            <td className="cmtTableWriter noDrag">{sessionStorage.id}</td>
+            <td className="cmtTableContents noDrag">
               <input
                 type="text"
                 onKeyDown={(e) => {
@@ -132,7 +163,7 @@ const Comment = ({ CommentSet }) => {
                 }}
               />
             </td>
-            <td className="cmtTableSubmit">
+            <td className="cmtTableSubmit noDrag">
               <div onClick={() => cmtSubmit()}>
                 <img src={Pencil} width={18} alt="" />
               </div>
@@ -153,6 +184,20 @@ const Comment = ({ CommentSet }) => {
                 }}
               >
                 {nowComment.date.substr(0, 10)}
+              </td>
+              <td className={DeleteClassName(nowComment.writer)}>
+                <div>
+                  <img
+                    onClick={() => {
+                      if (window.confirm("댓글을 정말 삭제하시겠습니까?")) {
+                        cmtDelete(nowComment.idx);
+                      }
+                    }}
+                    style={{ margin: "0 10px" }}
+                    src={deleteIcon}
+                    width={10}
+                  />
+                </div>
               </td>
             </tr>
           ))}

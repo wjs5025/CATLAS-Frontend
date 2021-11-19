@@ -9,9 +9,25 @@ import Board from "./SubPages/Board";
 import Detail from "./SubPages/Detail";
 import NotFound from "./SubPages/NotFound";
 import Posting from "./SubPages/Posting";
+import PleaseLogin from "./SubPages/PleaseLogin";
 
 const Forum = () => {
-  console.log("헬로", sessionStorage);
+  const CanPosting = () => {
+    if (sessionStorage.id === undefined) {
+      return <PleaseLogin />;
+    } else {
+      return <Posting />;
+    }
+  };
+
+  const CanDetail = () => {
+    if (sessionStorage.id === undefined) {
+      return <PleaseLogin />;
+    } else {
+      return <Detail />;
+    }
+  };
+
   return (
     <>
       <Router>
@@ -83,36 +99,40 @@ const Forum = () => {
                 <Route
                   exact
                   path="/Forum/자유게시판/글쓰기"
-                  component={Posting}
+                  component={CanPosting}
                 />
                 <Route
                   exact
                   path="/Forum/질문게시판/글쓰기"
-                  component={Posting}
+                  component={CanPosting}
                 />
                 <Route
                   exact
                   path="/Forum/홍보게시판/글쓰기"
-                  component={Posting}
+                  component={CanPosting}
                 />
                 <Route
                   exact
                   path="/Forum/동아리게시판/글쓰기"
-                  component={Posting}
+                  component={CanPosting}
                 />
                 <Route
                   exact
                   path="/Forum/IT게시판/글쓰기"
-                  component={Posting}
+                  component={CanPosting}
                 />
-                <Route exact path="/Forum/자료실/글쓰기" component={Posting} />
+                <Route
+                  exact
+                  path="/Forum/자료실/글쓰기"
+                  component={CanPosting}
+                />
 
-                <Route path="/Forum/자유게시판/:id" component={Detail} />
-                <Route path="/Forum/질문게시판/:id" component={Detail} />
-                <Route path="/Forum/홍보게시판/:id" component={Detail} />
-                <Route path="/Forum/동아리게시판/:id" component={Detail} />
-                <Route path="/Forum/IT게시판/:id" component={Detail} />
-                <Route path="/Forum/자료실/:id" component={Detail} />
+                <Route path="/Forum/자유게시판/:id" component={CanDetail} />
+                <Route path="/Forum/질문게시판/:id" component={CanDetail} />
+                <Route path="/Forum/홍보게시판/:id" component={CanDetail} />
+                <Route path="/Forum/동아리게시판/:id" component={CanDetail} />
+                <Route path="/Forum/IT게시판/:id" component={CanDetail} />
+                <Route path="/Forum/자료실/:id" component={CanDetail} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </div>
