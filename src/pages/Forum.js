@@ -11,23 +11,23 @@ import NotFound from "./SubPages/NotFound";
 import Posting from "./SubPages/Posting";
 import PleaseLogin from "./SubPages/PleaseLogin";
 
+const CanPosting = () => {
+  if (sessionStorage.id === undefined) {
+    return <PleaseLogin />;
+  } else {
+    return <Posting />;
+  }
+};
+
+const CanDetail = () => {
+  if (sessionStorage.id === undefined) {
+    return <PleaseLogin />;
+  } else {
+    return <Detail />;
+  }
+};
+
 const Forum = () => {
-  const CanPosting = () => {
-    if (sessionStorage.id === undefined) {
-      return <PleaseLogin />;
-    } else {
-      return <Posting />;
-    }
-  };
-
-  const CanDetail = () => {
-    if (sessionStorage.id === undefined) {
-      return <PleaseLogin />;
-    } else {
-      return <Detail />;
-    }
-  };
-
   return (
     <>
       <Router>

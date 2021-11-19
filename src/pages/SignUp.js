@@ -19,6 +19,20 @@ const SignUp = () => {
   const [pwCheckClass, setpwCheckClass] = useState("checkInit");
   const [pwAllow, setpwAllow] = useState(false);
 
+  useEffect(() => {
+    if (InputPhnum.length === 10) {
+      setInputPhnum(InputPhnum.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    }
+
+    if (InputPhnum.length === 13) {
+      setInputPhnum(
+        InputPhnum.replace(/-/g, "").replace(
+          /(\d{3})(\d{4})(\d{4})/,
+          "$1-$2-$3"
+        )
+      );
+    }
+  }, [InputPhnum]);
   // 비밀번호와 비밀번호 확인이 일치하는지 검사 checkPW()
   const checkPW = () => {
     if (InputPwCheck === "") {
@@ -47,7 +61,20 @@ const SignUp = () => {
 
   // 가입하기 버튼 클릭 SignUpBtn()
   const SignUpBtn = () => {
-    if (pwAllow) {
+    let pwExp = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=_]).*$/;
+    var emailExp =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    var phExp = /^\d{3}-\d{3,4}-\d{4}$/;
+
+    if (!pwExp.test(InputPW)) {
+      alert("비밀번호를 올바른 형식으로 입력하세요");
+    } else if (!pwAllow) {
+      alert("두 비밀번호가 일치하지 않습니다");
+    } else if (!emailExp.test(InputEmail)) {
+      alert("이메일을 올바른 형식으로 입력하세요");
+    } else if (!phExp.test(InputPhnum)) {
+      alert("전화번호를 올바른 형식으로 입력하세요");
+    } else {
       axios
         .post(
           "http://172.18.3.25:3001/SignUp",
@@ -66,8 +93,6 @@ const SignUp = () => {
           alert("회원가입 완료 !");
           history.push("/");
         });
-    } else {
-      alert("입력오류");
     }
   };
 
@@ -90,6 +115,7 @@ const SignUp = () => {
           <div className="inputBox_div">
             <label>아이디 / id</label>
             <input
+              maxLength="15"
               className="inputBox"
               type="text"
               value={InputID}

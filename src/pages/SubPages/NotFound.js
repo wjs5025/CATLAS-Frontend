@@ -11,7 +11,7 @@ const NotFound = () => {
     >
       <div style={{ height: "20vh" }}> </div>
 
-      <img className="noDrag" src={Error} width={130} />
+      <img className="noDrag" src={Error} width={130} alt="" />
       <div style={{ height: "10vh" }}> </div>
       <h1 className="noDrag" style={{ fontFamily: "SCDream5" }}>
         잘못된 접근입니다

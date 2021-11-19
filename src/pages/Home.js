@@ -37,6 +37,7 @@ const Home = () => {
       .then((res) => {
         console.log("Home res", res.data);
         setDataSet(res.data);
+        console.log("리스폰스다 이말이야", res);
       });
   };
 

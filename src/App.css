@@ -40,6 +40,8 @@ body {
   /* background-image: url("./assets/Images/background.png"); */
   /* background-color: #f8f8f8 !important; */
   overflow-x: hidden;
+  position: relative;
+  height: 100%;
 }
 
 .header {

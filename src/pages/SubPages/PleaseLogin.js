@@ -11,7 +11,7 @@ const PleaseLogin = () => {
     >
       <div style={{ height: "20vh" }}> </div>
 
-      <img className="noDrag" src={Warning} width={130} />
+      <img className="noDrag" src={Warning} width={130} alt="" />
       <div style={{ height: "10vh" }}> </div>
       <h1 className="noDrag" style={{ fontFamily: "SCDream5" }}>
         로그인 후 이용해주세요

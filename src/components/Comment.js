@@ -3,7 +3,6 @@ import CommentImg from "../assets/Images/comment2.png";
 import { useState, useEffect } from "react";
 import Pencil from "../assets/Images/submit.png";
 import { useHistory } from "react-router";
-import FloatingBtn from "./FloatingBtn";
 import deleteIcon from "../assets/Images/delete.png";
 
 const Comment = ({ CommentSet }) => {
@@ -16,7 +15,7 @@ const Comment = ({ CommentSet }) => {
   const PostNum = Number(pathArray[3]);
 
   //댓글 스타일 관련 변수 및 함수 선언
-  const [cmtOpen, setCmtOpen] = useState(false);
+  const [cmtOpen, setCmtOpen] = useState(true);
   const [cmtRender, setCmtRender] = useState("");
 
   const [cmtStyle, setStyle] = useState({});
@@ -57,6 +56,7 @@ const Comment = ({ CommentSet }) => {
 
   const CommentCnt = () => {
     setcmtCnt(CommentSet.data.length);
+    CommentState();
   };
 
   //댓글 제출 관련 변수 및 선언
@@ -108,8 +108,7 @@ const Comment = ({ CommentSet }) => {
   ////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////
 
-  useEffect(CommentCnt, [CommentSet.data.length]);
-  useEffect(CommentState, []);
+  useEffect(CommentCnt, [CommentSet]);
   useEffect(CommentStyle, [history.location.pathname]);
 
   ////////////////////////////////////////////////////////////////////////
@@ -118,7 +117,6 @@ const Comment = ({ CommentSet }) => {
     <div style={cmtStyle}>
       <div style={{ display: "flex", justifyContent: "center" }}></div>
       <div className="cmtHeader" onClick={CommentState}>
-        <FloatingBtn history={history} pathArray={pathArray} />
         <img
           src={CommentImg}
           className={cmtClassName}
@@ -196,6 +194,7 @@ const Comment = ({ CommentSet }) => {
                     style={{ margin: "0 10px" }}
                     src={deleteIcon}
                     width={10}
+                    alt=""
                   />
                 </div>
               </td>

@@ -8,7 +8,8 @@
   height: 3vh;
 }
 .title {
-  height: 8vh;
+  height: fit-content;
+  min-height: 8vh;
   border-bottom: 1px solid black;
   padding-top: 20px;
   font-size: 1.4em;
@@ -17,6 +18,35 @@
   display: flex;
 }
 
+.table_titleArea {
+  min-height: 5vh;
+  height: fit-content;
+  font-size: 1.4rem;
+  flex-basis: 60%;
+  text-align: start;
+  padding-left: 20px;
+}
+
+.table_dateArea {
+  height: 5vh;
+  line-height: 5vh;
+  font-size: 1.2rem;
+  flex-basis: 15%;
+}
+
+.table_writerArea {
+  flex-basis: 15%;
+  height: 5vh;
+  line-height: 5vh;
+  font-size: 1.2rem;
+}
+
+.table_viewsArea {
+  flex-basis: 15%;
+  height: 5vh;
+  line-height: 5vh;
+  font-size: 1.2rem;
+}
 .Detail_contents {
   position: relative;
   min-height: 67vh;

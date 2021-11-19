@@ -5,6 +5,7 @@ import { paginate } from "../../components/utils/paginate";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import WriteImg from "../../assets/Images/write2.png";
+import Footer from "../../components/footer";
 
 const Board = ({ history, match }) => {
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
@@ -13,6 +14,7 @@ const Board = ({ history, match }) => {
   const MenuPath = pathArray[1];
 
   console.log(BoardPath);
+
   //게시글 데이터 묶음 posts
   const [posts, setPosts] = useState({
     data: [],
@@ -22,6 +24,7 @@ const Board = ({ history, match }) => {
 
   //서버로부터 BoardPath에 맞는 "게시글 데이터 객체"를 받아옴
   const getDataset = () => {
+    console.log(getDataset);
     axios
       .get(
         "http://172.18.3.25:3001/Board",
@@ -34,6 +37,7 @@ const Board = ({ history, match }) => {
       )
       .then((res) => {
         res.data.reverse();
+        console.log(res.data);
         setPosts({ ...posts, data: res.data });
       });
   };
@@ -50,7 +54,7 @@ const Board = ({ history, match }) => {
 
   // 페이지 별로 아이템이 속한 배열을 얻어옴
   const pagedDumys = paginate(data, currentPage, pageSize);
-
+  console.log("페이지드더미", pagedDumys);
   // 게시글 count
   const count = posts.data.length;
 
@@ -60,11 +64,16 @@ const Board = ({ history, match }) => {
     if (sessionStorage.id !== undefined) {
       SetLogin(35);
     } else SetLogin(0);
-    if (MenuPath == "Info") {
+    if (MenuPath === "Info") {
       SetLogin(0);
     }
   };
 
+  const cmtCount = (nowPost) => {
+    if (MenuPath === "Info") {
+      return "";
+    } else return "(" + nowPost.comment_count + ")";
+  };
   useEffect(IconDisabled, [sessionStorage.id]);
   return (
     <>
@@ -88,14 +97,19 @@ const Board = ({ history, match }) => {
                   <th scope="col" className="Board_Title">
                     TITLE
                   </th>
+
                   <th scope="col" className="Board_Date">
                     DATE
                   </th>
                   <th scope="col" className="Board_Write">
                     WRITER
                   </th>
+
                   <th scope="col" className="Board_Views">
                     VIEWS
+                  </th>
+                  <th scope="col" className="Board_Recommend">
+                    👍
                   </th>
                 </tr>
               </thead>
@@ -115,11 +129,15 @@ const Board = ({ history, match }) => {
                   >
                     <td>{nowPost.idx}</td>
                     <td>
-                      <div style={{ textAlign: "start" }}>{nowPost.title}</div>
+                      <div style={{ textAlign: "start" }}>
+                        {nowPost.title} {cmtCount(nowPost)}
+                      </div>
                     </td>
                     <td>{nowPost.date.substr(0, 10)}</td>
                     <td>{nowPost.writer}</td>
+
                     <td>{nowPost.views}</td>
+                    <td>{nowPost.recommend}</td>
                   </tr>
                 ))}
               </tbody>

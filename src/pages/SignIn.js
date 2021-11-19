@@ -92,12 +92,14 @@ const SignIn = () => {
                 LOGIN
               </button>
               <div style={{ display: "flex" }}>
-                <div
-                  className="FindBtn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div href="https://www.naver.com/">Forgot your ID/PW ?</div>
+                <div className="FindBtn">
+                  <div
+                    onClick={() => {
+                      history.push("/Contact/문의하기");
+                    }}
+                  >
+                    Forgot your ID/PW ?
+                  </div>
                 </div>
                 <div className="SignUpBtn">
                   <div
