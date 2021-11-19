@@ -21,26 +21,33 @@ const Posting = () => {
 
   const [InputTitle, setTitle] = useState("");
   const [InputContents, setContents] = useState("");
+
   const Done = () => {
-    axios
-      .get(
-        "http://172.18.3.25:3001/Posting",
-        {
-          params: {
-            BoardPath,
-            PostNum,
-            userid: sessionStorage.id,
-            title: InputTitle,
-            contents: InputContents,
+    if (InputTitle.trim() === "") {
+      alert("제목을 입력하세요");
+    } else if (InputContents.trim() === "") {
+      alert("내용을 입력하세요");
+    } else {
+      axios
+        .get(
+          "http://172.18.3.25:3001/Posting",
+          {
+            params: {
+              BoardPath,
+              PostNum,
+              userid: sessionStorage.id,
+              title: InputTitle,
+              contents: InputContents,
+            },
           },
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log("게시글작성 res", res.data);
-      });
-    alert("완료");
-    history.push("/" + pathArray[1] + "/" + pathArray[2]);
+          { withCredentials: true }
+        )
+        .then((res) => {
+          console.log("게시글작성 res", res.data);
+        });
+      alert("게시글 작성 완료");
+      history.push("/" + pathArray[1] + "/" + pathArray[2]);
+    }
   };
 
   return (

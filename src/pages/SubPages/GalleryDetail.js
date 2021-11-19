@@ -1,10 +1,14 @@
-import "../css/Detail.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Comment from "../../components/Comment";
+import "../css/GalleryDetail.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation } from "swiper";
+import "swiper/components/navigation/navigation.min.css";
+import "swiper/swiper.min.css";
 
-const Detail = () => {
+const GalleryDetail = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 변수 선언 //
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,13 +65,15 @@ const Detail = () => {
             BoardPath: BoardPath,
             PostNum: PostNum,
             user_id: sessionStorage.id,
-            // contents: InputCmt,
           },
         },
         { withCredentials: true }
       )
       .then((res) => {
         console.log("게시글 res", res.data);
+        if (res.data === "error") {
+          document.location.href = "/NotFound";
+        }
         setDataSet(res.data);
         setCommentSet({ ...CommentSet, data: res.data[1] });
         setRmdTrue(res.data[2].state);
@@ -110,9 +116,16 @@ const Detail = () => {
   };
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // 이미지 슬라이더 //
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  const [swiper, setSwiper] = useState(null);
+  SwiperCore.use([Navigation]);
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   useEffect(getData, []);
   useEffect(Recommend, [isRmdTrue]);
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   return (
     <>
       <div className="Forum_container">
@@ -165,8 +178,34 @@ const Detail = () => {
             {dataSet[0][0].views} VIEWS
           </div>
         </div>
-        <div className="Detail_contents">
+        <Swiper
+          className="swiperStyle"
+          navigation={true}
+          pagination={{
+            clickable: true,
+          }}
+          ref={setSwiper}
+        >
+          {dataSet[3] &&
+            dataSet[3].map((nowImg) => {
+              return (
+                <SwiperSlide>
+                  <img
+                    className="SwiperImg"
+                    src={
+                      "http://172.18.3.25:3001/ImageLinking?path=" +
+                      nowImg.path +
+                      "&filename=" +
+                      nowImg.filename
+                    }
+                  />
+                </SwiperSlide>
+              );
+            })}
+        </Swiper>
+        <div className="GalleryContents">
           <pre>{dataSet[0][0].contents}</pre>
+
           {/* ToTop, Back 버튼 */}
           <div onClick={isRecommend} className={rmdClass}>
             👍 {Recommend_count}
@@ -184,4 +223,4 @@ const Detail = () => {
     </>
   );
 };
-export default Detail;
+export default GalleryDetail;

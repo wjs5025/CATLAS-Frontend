@@ -31,6 +31,7 @@ const GalleryBoard = ({ history, match }) => {
         { withCredentials: true }
       )
       .then((res) => {
+        console.log("갤러리보드", res.data);
         setPosts({ ...posts, data: res.data });
       });
   };
@@ -59,16 +60,6 @@ const GalleryBoard = ({ history, match }) => {
   };
 
   useEffect(IconDisabled, [sessionStorage.id]);
-
-  const naming = (nowPost) => {
-    return (
-      "http://172.18.3.25:3001/ImageLinking?Path=" +
-      nowPost.path +
-      "&Filename=" +
-      nowPost.filename
-    );
-  };
-
   return (
     <>
       <Router>
@@ -100,11 +91,16 @@ const GalleryBoard = ({ history, match }) => {
                     <td>
                       <img
                         className="Gallery_post"
-                        src={naming(nowPost)}
+                        src={
+                          "http://172.18.3.25:3001/ImageLinking?path=" +
+                          nowPost.path +
+                          "&filename=" +
+                          nowPost.filename
+                        }
                         alt=""
                       />
                     </td>
-                    <td>구석방 하계 MT 사진{nowPost.idx}</td>
+                    <td>{nowPost.title}</td>
                   </tr>
                 ))}
               </tbody>
@@ -135,10 +131,6 @@ const GalleryBoard = ({ history, match }) => {
         </div>
       </Router>
     </>
-    // <>
-    //   <div>갤러리테스트</div>
-    //   <img src={imagePath} />
-    // </>
   );
 };
 

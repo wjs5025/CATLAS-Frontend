@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Comment from "../../components/Comment";
+import FloatingBtn from "../../components/FloatingBtn";
 
 const Detail = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,6 +54,7 @@ const Detail = () => {
 
   // 게시글 정보 GET
   const getData = () => {
+    console.log("겟데이타 통신했다~");
     axios
       .get(
         "http://172.18.3.25:3001/Detail",
@@ -67,7 +69,9 @@ const Detail = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log("게시글 res", res.data);
+        if (res.data === "error") {
+          document.location.href = "/NotFound";
+        }
         setDataSet(res.data);
         setCommentSet({ ...CommentSet, data: res.data[1] });
         setRmdTrue(res.data[2].state);
@@ -122,51 +126,17 @@ const Detail = () => {
         </div>
         {/* 게시글 본문 */}
         <div className="title">
-          <div
-            style={{
-              height: "5vh",
-              lineHeight: "5vh",
-              fontSize: "1.4rem",
-              flexBasis: "60%",
-              textAlign: "start",
-              paddingLeft: "20px",
-            }}
-          >
-            {dataSet[0][0].title}
-          </div>
-          <div
-            style={{
-              height: "5vh",
-              lineHeight: "5vh",
-              fontSize: "1.2rem",
-              flexBasis: "15%",
-            }}
-          >
+          <div className="table_titleArea">{dataSet[0][0].title}</div>
+          <div className="table_dateArea">
             {dataSet[0][0].date.substr(0, 10)}
           </div>
-          <div
-            style={{
-              flexBasis: "15%",
-              height: "5vh",
-              lineHeight: "5vh",
-              fontSize: "1.2rem",
-            }}
-          >
-            {dataSet[0][0].writer}
-          </div>
-          <div
-            style={{
-              flexBasis: "15%",
-              height: "5vh",
-              lineHeight: "5vh",
-              fontSize: "1.2rem",
-            }}
-          >
-            {dataSet[0][0].views} VIEWS
-          </div>
+          <div className="table_writerArea">{dataSet[0][0].writer}</div>
+          <div className="table_viewsArea">{dataSet[0][0].views} VIEWS</div>
         </div>
         <div className="Detail_contents">
           <pre>{dataSet[0][0].contents}</pre>
+          <FloatingBtn history={history} pathArray={pathArray} />
+
           {/* ToTop, Back 버튼 */}
           <div onClick={isRecommend} className={rmdClass}>
             👍 {Recommend_count}
@@ -175,6 +145,7 @@ const Detail = () => {
         </div>
 
         {/* 댓글 */}
+
         <Comment CommentSet={CommentSet} />
       </div>
       <br />

@@ -17,7 +17,8 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/SubPages/NotFound";
 import axios from "axios";
-
+import PleaseLogin from "./pages/SubPages/PleaseLogin";
+import Footer from "./components/footer";
 // App.css
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -68,7 +69,7 @@ const Login = () => {
 const App = () => {
   return (
     <Router>
-      <div className="header">
+      <div className="header noDrag">
         <div className="NavMenu">
           <ul>
             <li>
@@ -126,16 +127,18 @@ const App = () => {
       <main>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/Gallery" component={Gallery} />
-          <Route path="/Info" component={Info} />
-          <Route path="/Forum" component={Forum} />
-          <Route path="/Contact" component={ContactUs} />
-          <Route path="/SignIn" component={SignIn} />
-          <Route path="/SignUp" component={SignUp} />
+          <Route path="/Gallery/" component={Gallery} />
+          <Route path="/Info/" component={Info} />
+          <Route path="/Forum/" component={Forum} />
+          <Route path="/Contact/" component={ContactUs} />
+          <Route path="/SignIn/" component={SignIn} />
+          <Route path="/SignUp/" component={SignUp} />
 
           <Route path="*" component={NotFound} />
+          <Route path="/PleaseLogin" component={PleaseLogin} />
         </Switch>
       </main>
+      <Footer />
     </Router>
   );
 };

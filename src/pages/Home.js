@@ -37,12 +37,12 @@ const Home = () => {
       .then((res) => {
         console.log("Home res", res.data);
         setDataSet(res.data);
+        console.log("리스폰스다 이말이야", res);
       });
   };
 
   useEffect(getDataset, []);
 
-  // console.log("Home Session 로그인 아이디 : ", sessionStorage.id);
   return (
     <>
       <Router>
@@ -85,7 +85,7 @@ const Home = () => {
               <div className="Forum_Header">
                 <h3 className="Forum_Title noDrag">
                   NOTICE
-                  <span style={{ fontSize: "0.6em" }}> of INFO</span>
+                  {/* <span style={{ fontSize: "0.6em" }}> of INFO</span> */}
                   <a href={"/Info/공지사항"}>
                     <span className="notice_more">more {">"}</span>
                   </a>
@@ -144,8 +144,8 @@ const Home = () => {
             <div className="home_Forum">
               <div className="Forum_Header">
                 <h3 className="Forum_Title noDrag">
-                  FREE
-                  <span style={{ fontSize: "0.6em" }}> of FORUM</span>
+                  FREE FORUM
+                  {/* <span style={{ fontSize: "0.6em" }}> of FORUM</span> */}
                   <a href={"/Forum/자유게시판"}>
                     <span className="notice_more">more {">"}</span>
                   </a>
@@ -204,8 +204,8 @@ const Home = () => {
             <div className="home_Forum">
               <div className="Forum_Header">
                 <h3 className="Forum_Title noDrag">
-                  QUESTION
-                  <span style={{ fontSize: "0.6em" }}> of FORUM</span>
+                  QUESTION FORUM
+                  {/* <span style={{ fontSize: "0.6em" }}> of FORUM</span> */}
                   <a href={"/Forum/질문게시판"}>
                     <span className="notice_more">more {">"}</span>
                   </a>
@@ -264,8 +264,8 @@ const Home = () => {
             <div className="home_Forum">
               <div className="Forum_Header">
                 <h3 className="Forum_Title noDrag">
-                  PROMOTION
-                  <span style={{ fontSize: "0.6em" }}> of FORUM</span>
+                  PROMOTION FORUM
+                  {/* <span style={{ fontSize: "0.6em" }}> of FORUM</span> */}
                   <a href={"/Forum/홍보게시판"}>
                     <span className="notice_more">more {">"}</span>
                   </a>
@@ -324,8 +324,8 @@ const Home = () => {
             <div className="home_Forum">
               <div className="Forum_Header">
                 <h3 className="Forum_Title noDrag">
-                  2021
-                  <span style={{ fontSize: "0.6em" }}> of GALLERY</span>
+                  GALLERY 2021
+                  {/* <span style={{ fontSize: "0.6em" }}> of GALLERY</span> */}
                   <a href={"/Gallery/2021"}>
                     <span className="notice_more">more {">"}</span>
                   </a>

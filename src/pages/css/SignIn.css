@@ -20,27 +20,44 @@
 }
 
 .SignUpBtn {
+  display: flex;
+  text-align: center;
   flex-basis: 50%;
+  flex-direction: column;
+  justify-content: center;
   height: 90px;
-  line-height: 90px;
+}
+.SignUpBtn div {
+  width: 100%;
+
+  height: fit-content;
   transition: text-decoration-color 500ms;
   text-decoration: underline 0.15em rgba(255, 255, 255, 0);
 }
 
-.SignUpBtn:hover {
+.SignUpBtn div:hover {
   color: #f6330a;
   text-decoration: underline 0.15em #f6330a;
 }
 
 .FindBtn {
+  display: flex;
+  text-align: center;
   flex-basis: 50%;
+  flex-direction: column;
+  justify-content: center;
   height: 90px;
-  line-height: 90px;
+}
+
+.FindBtn div {
+  width: 100%;
+
+  height: fit-content;
   transition: text-decoration-color 500ms;
   text-decoration: underline 0.15em rgba(255, 255, 255, 0);
 }
 
-.FindBtn:hover {
+.FindBtn div:hover {
   color: #f6330a;
   text-decoration: underline 0.15em #f6330a;
 }

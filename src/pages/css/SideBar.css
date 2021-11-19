@@ -4,17 +4,17 @@ a {
 
 .container {
   padding-right: 0 !important;
+  position: relative;
   display: flex;
   /* block로 바꾸면 상하로 */
   width: 100vw !important;
   max-width: 100vw !important;
-  align-items: center;
   justify-content: center;
 }
 
 /* 좌측영역 (Sidear) */
 .left {
-  margin-top: 10vh;
+  margin-top: 15vh;
   margin-right: 3vw;
   width: 15vw;
 }
@@ -74,7 +74,8 @@ a {
 /* 본문 */
 .Main_Component {
   margin-top: 5vh;
-  height: 75vh;
+  min-height: 75vh;
+  height: fit-content;
 }
 
 .SideBarActive {

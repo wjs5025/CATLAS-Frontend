@@ -10,27 +10,32 @@ const SignIn = () => {
 
   // 로그인 버튼 클릭시
   const Login = () => {
-    axios
-      .post(
-        "http://172.18.3.25:3001/SignIn",
-        {
-          params: {
-            userid: InputID,
-            password: InputPW,
+    if (InputID.trim() === "") {
+      alert("아이디를 입력해주세요");
+    } else if (InputPW.trim() === "") {
+      alert("비밀번호를 입력해주세요");
+    } else
+      axios
+        .post(
+          "http://172.18.3.25:3001/SignIn",
+          {
+            params: {
+              userid: InputID,
+              password: InputPW,
+            },
           },
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        if (res.data !== "error") {
-          sessionStorage.setItem("id", InputID);
-          sessionStorage.setItem("Sid", res.data);
-          document.location.href = "/";
-        } else {
-          alert("로그인 정보가 일치하지 않습니다");
-        }
-      })
-      .catch();
+          { withCredentials: true }
+        )
+        .then((res) => {
+          if (res.data !== "error") {
+            sessionStorage.setItem("id", InputID);
+            sessionStorage.setItem("Sid", res.data);
+            document.location.href = "/";
+          } else {
+            alert("로그인 정보가 일치하지 않습니다");
+          }
+        })
+        .catch();
   };
 
   return (
@@ -53,6 +58,11 @@ const SignIn = () => {
               <div className="inputBox_div">
                 <label>아이디 / id</label>
                 <input
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      Login();
+                    }
+                  }}
                   className="inputBox"
                   type="text"
                   name="id"
@@ -63,6 +73,11 @@ const SignIn = () => {
               <div className="inputBox_div">
                 <label>비밀번호 / password</label>
                 <input
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      Login();
+                    }
+                  }}
                   className="inputBox"
                   type="password"
                   name="pw"
@@ -73,24 +88,18 @@ const SignIn = () => {
               </div>
             </div>
             <div className="inputBox_div">
-              <button
-                onKeyPress={(e) => {
-                  if (e.key === "Enter") {
-                    this.handleClick();
-                  }
-                }}
-                className="submitBtn"
-                onClick={() => Login()}
-              >
+              <button className="submitBtn" onClick={() => Login()}>
                 LOGIN
               </button>
               <div style={{ display: "flex" }}>
-                <div
-                  className="FindBtn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div href="https://www.naver.com/">Forgot your ID/PW ?</div>
+                <div className="FindBtn">
+                  <div
+                    onClick={() => {
+                      history.push("/Contact/문의하기");
+                    }}
+                  >
+                    Forgot your ID/PW ?
+                  </div>
                 </div>
                 <div className="SignUpBtn">
                   <div

@@ -1,6 +1,6 @@
-import Error from "../../assets/Images/error.png";
+import Warning from "../../assets/Images/warning.png";
 
-const NotFound = () => {
+const PleaseLogin = () => {
   return (
     <div
       style={{
@@ -11,16 +11,16 @@ const NotFound = () => {
     >
       <div style={{ height: "20vh" }}> </div>
 
-      <img className="noDrag" src={Error} width={130} alt="" />
+      <img className="noDrag" src={Warning} width={130} alt="" />
       <div style={{ height: "10vh" }}> </div>
       <h1 className="noDrag" style={{ fontFamily: "SCDream5" }}>
-        잘못된 접근입니다
+        로그인 후 이용해주세요
       </h1>
-      <a className="a_tag goHome" href="/">
-        홈으로 돌아가기
+      <a className="a_tag goHome" href="/SignIn">
+        로그인 하러가기
       </a>
     </div>
   );
 };
 
-export default NotFound;
+export default PleaseLogin;

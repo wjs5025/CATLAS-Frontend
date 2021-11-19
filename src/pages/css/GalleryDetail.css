@@ -1,0 +1,37 @@
+.swiperStyle {
+  position: "releative";
+  width: 100vh;
+  height: 60vh;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.SwiperImg {
+  object-fit: contain;
+  width: 100vh;
+  height: 60vh;
+  transition: 0.25s;
+}
+
+.GalleryContents {
+  position: relative;
+  min-height: 20vh;
+  width: 100%;
+  height: fit-content;
+  padding: 20px;
+  text-overflow: scroll;
+  font-size: 1.1em;
+  border-bottom: 1px solid black;
+}
+
+.GalleryContents > pre {
+  white-space: pre-wrap; /* pre tag내에 word wrap */
+  font-family: "SCDream4";
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #f6330a !important;
+}

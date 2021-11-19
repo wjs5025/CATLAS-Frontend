@@ -44,9 +44,11 @@ tr {
 }
 
 .Board_Views {
-  width: 10%;
+  width: 5%;
 }
-
+.Board_Recommend {
+  width: 5%;
+}
 /* Board Header*/
 .Board_header {
   font-family: "SCDream8";
@@ -67,7 +69,7 @@ tr {
 .Board {
   line-height: 4vh;
   min-height: 70vh;
-  height: 70vh;
+  height: fit-content;
   /* border-bottom: 1px solid black; */
   box-shadow: 1px 0px 3px 1px #e7e7e7;
   border-radius: 5px;
