@@ -102,6 +102,10 @@ const Comment = ({ CommentSet }) => {
             <td className="cmtTableWriter">{sessionStorage.id}</td>
             <td className="cmtTableContents">
               <input
+                type="text"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") cmtSubmit();
+                }}
                 style={{
                   width: "30vw",
                   border: "1px solid #d3d3d3",
