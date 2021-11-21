@@ -30,6 +30,11 @@ const Home = () => {
       { title: "", contents: "", idx: 0, date: "" },
       { title: "", contents: "", idx: 0, date: "" },
     ],
+    [
+      { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
+      { title: "", contents: "", idx: 0, date: "" },
+    ],
   ]);
   const getDataset = () => {
     axios
@@ -37,7 +42,6 @@ const Home = () => {
       .then((res) => {
         console.log("Home res", res.data);
         setDataSet(res.data);
-        console.log("리스폰스다 이말이야", res);
       });
   };
 
@@ -123,15 +127,98 @@ const Home = () => {
                   <div className="Forum_post">
                     <a
                       className="a_tag"
-                      href={"/Info/공지사항/" + dataSet[0][1].idx}
+                      href={"/Info/공지사항/" + dataSet[0][2].idx}
                     >
-                      <p className="notice_post_Title">{dataSet[0][1].title}</p>
+                      <p className="notice_post_Title">{dataSet[0][2].title}</p>
                       <p className="notice_post_Inner">
-                        {dataSet[3][0].contents}
+                        {dataSet[0][2].contents}
                       </p>
                       <p className="notice_post_date">
-                        {dataSet[3][0].date.substr(0, 10)}
+                        {dataSet[0][2].date.substr(0, 10)}
                       </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* 갤러리 영역*/}
+          <div className="home_SecondLine">
+            <div className="home_Forum">
+              <div className="Forum_Header">
+                <h3 className="Forum_Title noDrag">
+                  GALLERY 2021
+                  {/* <span style={{ fontSize: "0.6em" }}> of GALLERY</span> */}
+                  <a href={"/Gallery/2021"}>
+                    <span className="notice_more">more {">"}</span>
+                  </a>
+                </h3>
+                <div className="Forum_posts">
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag HomeGallery "
+                      href={"/Gallery/2021/" + dataSet[4][0].idx}
+                    >
+                      <p className="notice_post_Title alignInit">
+                        {dataSet[4][0].title}
+                      </p>
+
+                      <img
+                        src={
+                          "http://172.18.3.25:3001/ImageLinking?path=" +
+                          dataSet[4][0].path +
+                          "&filename=" +
+                          dataSet[4][0].filename
+                        }
+                        alt=""
+                        width="60%"
+                        style={{ borderRadius: "5px" }}
+                      />
+                    </a>
+                  </div>
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag HomeGallery"
+                      href={"/Gallery/2021/" + dataSet[4][1].idx}
+                    >
+                      <p className="notice_post_Title alignInit">
+                        {dataSet[4][1].title}
+                      </p>
+
+                      <img
+                        src={
+                          "http://172.18.3.25:3001/ImageLinking?path=" +
+                          dataSet[4][1].path +
+                          "&filename=" +
+                          dataSet[4][1].filename
+                        }
+                        alt=""
+                        width="60%"
+                        style={{ borderRadius: "5px" }}
+                      />
+                    </a>
+                  </div>
+
+                  <div className="Forum_post borderR">
+                    <a
+                      className="a_tag HomeGallery "
+                      href={"/Gallery/2021/" + dataSet[4][2].idx}
+                    >
+                      <p className="notice_post_Title alignInit">
+                        {dataSet[4][2].title}
+                      </p>
+
+                      <img
+                        src={
+                          "http://172.18.3.25:3001/ImageLinking?path=" +
+                          dataSet[4][2].path +
+                          "&filename=" +
+                          dataSet[4][2].filename
+                        }
+                        alt=""
+                        width="60%"
+                        style={{ borderRadius: "5px" }}
+                      />
                     </a>
                   </div>
                 </div>
@@ -319,68 +406,6 @@ const Home = () => {
             </div>
           </div>
           {/*//////////////////////////////////////////////////////////////////////*/}
-          {/* 갤러리 영역*/}
-          <div className="home_SecondLine">
-            <div className="home_Forum">
-              <div className="Forum_Header">
-                <h3 className="Forum_Title noDrag">
-                  GALLERY 2021
-                  {/* <span style={{ fontSize: "0.6em" }}> of GALLERY</span> */}
-                  <a href={"/Gallery/2021"}>
-                    <span className="notice_more">more {">"}</span>
-                  </a>
-                </h3>
-                <div className="Forum_posts">
-                  <div className="Forum_post borderR">
-                    <a
-                      className="a_tag HomeGallery"
-                      href={"/Gallery/2021/" + dataSet[2][0].idx}
-                    >
-                      <p className="notice_post_Title">저희 집 다람쥐에요</p>
-
-                      <img
-                        src={Test}
-                        alt=""
-                        width="80%"
-                        style={{ borderRadius: "5px" }}
-                      />
-                    </a>
-                  </div>
-                  <div className="Forum_post borderR">
-                    <a
-                      className="a_tag HomeGallery"
-                      href={"/Gallery/2021/" + dataSet[2][0].idx}
-                    >
-                      <p className="notice_post_Title">저희 집 다람쥐에요</p>
-
-                      <img
-                        src={Test}
-                        alt=""
-                        width="80%"
-                        style={{ borderRadius: "5px" }}
-                      />
-                    </a>
-                  </div>
-
-                  <div className="Forum_post borderR">
-                    <a
-                      className="a_tag HomeGallery"
-                      href={"/Gallery/2021/" + dataSet[2][0].idx}
-                    >
-                      <p className="notice_post_Title">저희 집 다람쥐에요</p>
-
-                      <img
-                        src={Test}
-                        alt=""
-                        width="80%"
-                        style={{ borderRadius: "5px" }}
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </Router>
     </>

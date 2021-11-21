@@ -5,15 +5,12 @@ import { paginate } from "../../components/utils/paginate";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import WriteImg from "../../assets/Images/write2.png";
-import Footer from "../../components/footer";
 
 const Board = ({ history, match }) => {
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
   const pathArray = history.location.pathname.split("/");
   const BoardPath = pathArray[2];
   const MenuPath = pathArray[1];
-
-  console.log(BoardPath);
 
   //게시글 데이터 묶음 posts
   const [posts, setPosts] = useState({
@@ -24,7 +21,6 @@ const Board = ({ history, match }) => {
 
   //서버로부터 BoardPath에 맞는 "게시글 데이터 객체"를 받아옴
   const getDataset = () => {
-    console.log(getDataset);
     axios
       .get(
         "http://172.18.3.25:3001/Board",
@@ -36,9 +32,8 @@ const Board = ({ history, match }) => {
         { withCredentials: true }
       )
       .then((res) => {
-        res.data.reverse();
-        console.log(res.data);
         setPosts({ ...posts, data: res.data });
+        console.log("핫게지롱", res.data);
       });
   };
 
@@ -75,6 +70,7 @@ const Board = ({ history, match }) => {
     } else return "(" + nowPost.comment_count + ")";
   };
   useEffect(IconDisabled, [sessionStorage.id]);
+
   return (
     <>
       <Router>
@@ -115,12 +111,12 @@ const Board = ({ history, match }) => {
               </thead>
               <tbody>
                 {/* 게시글 리스트 출력 */}
+                {console.log("메뉴패스", MenuPath)}
                 {pagedDumys.map((nowPost) => (
                   <tr
-                    key={nowPost.idx}
                     onClick={() =>
                       history.push({
-                        pathname: match.url + "/" + nowPost.idx,
+                        pathname: nowPost.menu + "/" + nowPost.idx,
                         data: {
                           id: nowPost.idx,
                         },
@@ -135,7 +131,6 @@ const Board = ({ history, match }) => {
                     </td>
                     <td>{nowPost.date.substr(0, 10)}</td>
                     <td>{nowPost.writer}</td>
-
                     <td>{nowPost.views}</td>
                     <td>{nowPost.recommend}</td>
                   </tr>

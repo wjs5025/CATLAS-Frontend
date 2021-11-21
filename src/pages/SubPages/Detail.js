@@ -2,8 +2,16 @@ import "../css/Detail.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import {
+  NavLink,
+  Switch,
+  Route,
+  BrowserRouter as Router,
+} from "react-router-dom";
 import Comment from "../../components/Comment";
 import FloatingBtn from "../../components/FloatingBtn";
+import Edit from "../../assets/Images/edit.png";
+import Delete from "../../assets/Images/deletepost.png";
 
 const Detail = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -13,10 +21,13 @@ const Detail = () => {
   //라우팅 관련 변수선언
   const history = useHistory();
   const pathArray = history.location.pathname.split("/");
+  const MenuPath = pathArray[1];
   const BoardPath = pathArray[2];
   const PostNum = Number(pathArray[3]);
 
   //게시글 관련 변수선언
+  const [CanManagePost, setManage] = useState("Disable");
+  const [thisWriter, setWriter] = useState("");
   const [dataSet, setDataSet] = useState([
     [
       {
@@ -54,7 +65,7 @@ const Detail = () => {
 
   // 게시글 정보 GET
   const getData = () => {
-    console.log("겟데이타 통신했다~");
+    console.log("getData 통신했음");
     axios
       .get(
         "http://172.18.3.25:3001/Detail",
@@ -72,6 +83,7 @@ const Detail = () => {
         if (res.data === "error") {
           document.location.href = "/NotFound";
         }
+        setWriter(res.data[0][0].writer);
         setDataSet(res.data);
         setCommentSet({ ...CommentSet, data: res.data[1] });
         setRmdTrue(res.data[2].state);
@@ -81,7 +93,6 @@ const Detail = () => {
 
   // 추천 통신
   const isRecommend = () => {
-    console.log(sessionStorage.id, isRmdTrue);
     axios
       .get(
         "http://172.18.3.25:3001/Recommend",
@@ -113,45 +124,110 @@ const Detail = () => {
     }
   };
 
+  const ManagePost = () => {
+    if (thisWriter === sessionStorage.id) {
+      setManage("Visible");
+    } else {
+      setManage("Disable");
+    }
+  };
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // 게시글 삭제 및 수정 //
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const DeletePost = () => {
+    axios
+      .get("http://172.18.3.25:3001/Post_Delete", {
+        params: {
+          BoardPath: BoardPath,
+          PostNum: PostNum,
+          user_id: sessionStorage.id,
+        },
+      })
+      .then(() => {
+        document.location.href = "/" + MenuPath + "/" + BoardPath;
+      });
+  };
+
+  const EditPost = (title, contents, date, writer) => {
+    history.push(history.location.pathname + "/글수정", {
+      title: title,
+      contents: contents,
+      date: date,
+      writer: writer,
+    });
+  };
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   useEffect(getData, []);
+  useEffect(ManagePost, [thisWriter]);
   useEffect(Recommend, [isRmdTrue]);
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <>
-      <div className="Forum_container">
-        {/* 게시글 헤더 */}
-        <div className="Detail_info noDrag">
-          <h5 className="Board_header">{history.location.pathname}</h5>
-        </div>
-        {/* 게시글 본문 */}
-        <div className="title">
-          <div className="table_titleArea">{dataSet[0][0].title}</div>
-          <div className="table_dateArea">
-            {dataSet[0][0].date.substr(0, 10)}
+      <Router>
+        <div className="Forum_container">
+          {/* 게시글 헤더 */}
+          <div className="Detail_info noDrag">
+            <h5 className="Board_header">{history.location.pathname}</h5>
           </div>
-          <div className="table_writerArea">{dataSet[0][0].writer}</div>
-          <div className="table_viewsArea">{dataSet[0][0].views} VIEWS</div>
-        </div>
-        <div className="Detail_contents">
-          <pre>{dataSet[0][0].contents}</pre>
-          <FloatingBtn history={history} pathArray={pathArray} />
-
-          {/* ToTop, Back 버튼 */}
-          <div onClick={isRecommend} className={rmdClass}>
-            👍 {Recommend_count}
+          {/* 게시글 본문 */}
+          <div className="title">
+            <div className="table_titleArea">{dataSet[0][0].title}</div>
+            <div className="table_dateArea">
+              {dataSet[0][0].date.substr(0, 10)}
+            </div>
+            <div className="table_writerArea">{dataSet[0][0].writer}</div>
+            <div className="table_viewsArea">{dataSet[0][0].views} VIEWS</div>
           </div>
-          {/* <Recommend /> */}
+          <div className="Detail_contents">
+            <pre>{dataSet[0][0].contents}</pre>
+            <FloatingBtn history={history} pathArray={pathArray} />
+            <div className={CanManagePost}>
+              <img
+                className="FloatingBtn noDrag"
+                src={Delete}
+                onClick={() => {
+                  if (window.confirm("게시글을 정말 삭제하시겠습니까?")) {
+                    DeletePost();
+                  } else {
+                  }
+                }}
+                alt=""
+              />
+              <img
+                className="FloatingBtn marginRight noDrag"
+                src={Edit}
+                onClick={() => {
+                  if (window.confirm("게시글을 수정하시겠습니까?")) {
+                    EditPost(
+                      dataSet[0][0].title,
+                      dataSet[0][0].contents,
+                      dataSet[0][0].date,
+                      dataSet[0][0].writer
+                    );
+                  } else {
+                  }
+                }}
+                alt=""
+              />
+            </div>
+
+            {/* ToTop, Back 버튼 */}
+            <div onClick={isRecommend} className={rmdClass}>
+              👍 {Recommend_count}
+            </div>
+            {/* <Recommend /> */}
+          </div>
+
+          {/* 댓글 */}
+          <Comment CommentSet={CommentSet} />
         </div>
-
-        {/* 댓글 */}
-
-        <Comment CommentSet={CommentSet} />
-      </div>
-      <br />
-      <br />
-      <br />
-      <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </Router>
     </>
   );
 };

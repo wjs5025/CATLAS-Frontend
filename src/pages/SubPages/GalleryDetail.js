@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/swiper.min.css";
+import FloatingBtn from "../../components/FloatingBtn";
 
 const GalleryDetail = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,7 +119,6 @@ const GalleryDetail = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 이미지 슬라이더 //
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  const [swiper, setSwiper] = useState(null);
   SwiperCore.use([Navigation]);
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,7 +184,6 @@ const GalleryDetail = () => {
           pagination={{
             clickable: true,
           }}
-          ref={setSwiper}
         >
           {dataSet[3] &&
             dataSet[3].map((nowImg) => {
@@ -203,6 +202,7 @@ const GalleryDetail = () => {
               );
             })}
         </Swiper>
+        <FloatingBtn history={history} />
         <div className="GalleryContents">
           <pre>{dataSet[0][0].contents}</pre>
 

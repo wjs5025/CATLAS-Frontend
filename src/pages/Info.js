@@ -7,7 +7,7 @@ import {
 import Board from "./SubPages/Board";
 import Detail from "./SubPages/Detail";
 import Posting from "./SubPages/Posting";
-import LinkImg from "../assets/Images/linkIcon.png";
+import LinkImg from "../assets/Images/linkicon.png";
 import PleaseLogin from "./SubPages/PleaseLogin";
 import NotFound from "./SubPages/NotFound";
 
