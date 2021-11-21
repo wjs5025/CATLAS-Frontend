@@ -80,13 +80,27 @@
   bottom: 5vh;
   width: 35px;
   transition: 100ms;
-  left: 88vw;
+  left: 82vw;
 }
 
 .FloatingBtn:hover {
   width: 40px;
 }
 
+.marginRight2 {
+  margin-left: 120px;
+}
+
+.Visible {
+  display: block;
+}
+
+.Disable {
+  display: none;
+}
+.marginRight3 {
+  margin-left: 180px;
+}
 .CmtClose {
   transform: rotate(90deg);
 }

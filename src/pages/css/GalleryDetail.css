@@ -25,7 +25,10 @@
   font-size: 1.1em;
   border-bottom: 1px solid black;
 }
-
+.alignInit {
+  width: 100%;
+  align-items: initial !important;
+}
 .GalleryContents > pre {
   white-space: pre-wrap; /* pre tag내에 word wrap */
   font-family: "SCDream4";

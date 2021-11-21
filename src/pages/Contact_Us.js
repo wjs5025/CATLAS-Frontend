@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import QuestionForm from "./SubPages/QuestionForm";
+import NotFound from "./SubPages/NotFound";
 function Contact_us() {
   return (
     <>
@@ -30,7 +31,12 @@ function Contact_us() {
           <div className="right">
             <div className="Main_Component">
               <Switch>
-                <Route path="/Contact/문의하기" component={QuestionForm} />
+                <Route
+                  exact
+                  path="/Contact/문의하기"
+                  component={QuestionForm}
+                />
+                <Route path="*" component={NotFound} />
               </Switch>
             </div>
           </div>

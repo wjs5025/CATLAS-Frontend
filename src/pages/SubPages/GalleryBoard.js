@@ -100,7 +100,9 @@ const GalleryBoard = ({ history, match }) => {
                         alt=""
                       />
                     </td>
-                    <td>{nowPost.title}</td>
+                    <td>
+                      {nowPost.title} ({nowPost.comment_count})
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -110,7 +112,10 @@ const GalleryBoard = ({ history, match }) => {
           <div style={{ position: "relative" }}>
             <img
               className="PostingBtn"
-              onClick={() => history.push(match.url + "/글쓰기")}
+              onClick={() =>
+                alert("현재 갤러리 글쓰기 기능은 제공하지 않습니다.")
+              }
+              // {() => history.push(match.url + "/글쓰기")}
               style={{
                 position: "absolute",
                 paddingTop: "11px",

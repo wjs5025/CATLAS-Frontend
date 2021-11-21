@@ -3,29 +3,23 @@ import { useHistory } from "react-router";
 import Check from "../../assets/Images/Check.png";
 import Back from "../../assets/Images/Back.png";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //게시판
 
-const Posting = () => {
+const PostEdit = () => {
   const history = useHistory();
   const pathArray = history.location.pathname.split("/");
 
-  let getDate = new Date();
-  let Year = getDate.getFullYear() + "-";
-  let month = getDate.getMonth() + 1;
-  let day = "-" + getDate.getDate();
-  let today = Year + month + day;
-
   const BoardPath = pathArray[2];
-  const MenuPath = pathArray[1];
-
   const PostNum = Number(pathArray[3]);
 
-  if (MenuPath === "Info" || MenuPath === "Gallery") {
-    history.push("/NotFound");
-  }
   const [InputTitle, setTitle] = useState("");
   const [InputContents, setContents] = useState("");
+
+  const Init = () => {
+    setTitle(history.location.state.title);
+    setContents(history.location.state.contents);
+  };
 
   const Done = () => {
     if (InputTitle.trim() === "") {
@@ -35,7 +29,7 @@ const Posting = () => {
     } else {
       axios
         .get(
-          "http://172.18.3.25:3001/Posting",
+          "http://172.18.3.25:3001/Post_Modify",
           {
             params: {
               BoardPath,
@@ -48,13 +42,14 @@ const Posting = () => {
           { withCredentials: true }
         )
         .then((res) => {
-          console.log("게시글작성 res", res.data);
+          console.log("게시글수정 res", res);
         });
-      alert("게시글 작성 완료");
-      history.push("/" + pathArray[1] + "/" + pathArray[2]);
+      alert("게시글 수정 완료");
+      history.goBack();
     }
   };
 
+  useEffect(Init, []);
   return (
     <>
       <div className="Forum_container">
@@ -78,7 +73,9 @@ const Posting = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <div style={{ flexBasis: "15%" }}></div>
-          <div style={{ flexBasis: "15%" }}>{today}</div>
+          <div style={{ flexBasis: "15%" }}>
+            {history.location.state.date.substr(0, 10)}
+          </div>
           <div style={{ flexBasis: "15%" }}>{sessionStorage.id}</div>
         </div>
         <textarea
@@ -104,10 +101,10 @@ const Posting = () => {
             onClick={() => {
               if (
                 window.confirm(
-                  "주의 : 이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다"
+                  "주의 : 이 페이지를 벗어나면 수정 사항은 저장되지 않습니다"
                 )
               ) {
-                history.push("/" + pathArray[1] + "/" + pathArray[2]);
+                history.goBack();
               } else {
               }
             }}
@@ -121,4 +118,4 @@ const Posting = () => {
   );
 };
 
-export default Posting;
+export default PostEdit;
