@@ -164,7 +164,7 @@ const Home = () => {
 
                       <img
                         src={
-                          "http://172.18.3.25:3001/ImageLinking?path=" +
+                          serverURL + "/ImageLinking?path=" +
                           dataSet[4][0].path +
                           "&filename=" +
                           dataSet[4][0].filename
@@ -186,7 +186,7 @@ const Home = () => {
 
                       <img
                         src={
-                          "http://172.18.3.25:3001/ImageLinking?path=" +
+                          serverURL+"/ImageLinking?path=" +
                           dataSet[4][1].path +
                           "&filename=" +
                           dataSet[4][1].filename

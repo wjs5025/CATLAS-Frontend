@@ -96,7 +96,7 @@ const GalleryBoard = ({ history, match }) => {
                       <img
                         className="Gallery_post"
                         src={
-                          "http://172.18.3.25:3001/ImageLinking?path=" +
+                          serverURL + "/ImageLinking?path=" +
                           nowPost.path +
                           "&filename=" +
                           nowPost.filename
