@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import "./css/SignUp.css";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { useEffect } from "react";
+import { NewContext } from "../App";
 
 const SignUp = () => {
+  const serverURL = useContext(NewContext).serverURL;
   const history = useHistory();
   const [InputID, setInputID] = useState("");
   const [InputPW, setInputPW] = useState("");
@@ -77,7 +79,7 @@ const SignUp = () => {
     } else {
       axios
         .post(
-          "http://172.18.3.25:3001/SignUp",
+          serverURL + "/SignUp",
           {
             params: {
               userid: InputID,

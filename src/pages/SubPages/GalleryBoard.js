@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Pagination from "../../components/Pagination";
 import { paginate } from "../../components/utils/paginate";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import "../css/GalleryBoard.css";
 import WriteImg from "../../assets/Images/write2.png";
+import { NewContext } from "../../App";
 
 const GalleryBoard = ({ history, match }) => {
+  const serverURL = useContext(NewContext).serverURL;
+
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
   const pathArray = history.location.pathname.split("/");
   const BoardPath = pathArray[2];
@@ -22,7 +25,7 @@ const GalleryBoard = ({ history, match }) => {
   const getDataset = () => {
     axios
       .get(
-        "http://172.18.3.25:3001/Board",
+        serverURL+"/Board",
         {
           params: {
             BoardPath,
@@ -36,7 +39,7 @@ const GalleryBoard = ({ history, match }) => {
       });
   };
 
-  useEffect(getDataset, [history.location.pathname]);
+  useEffect(() => getDataset(), []);
 
   // 페이징 설정
   const handlePageChange = (page) => {
@@ -59,7 +62,8 @@ const GalleryBoard = ({ history, match }) => {
     } else SetLogin(0);
   };
 
-  useEffect(IconDisabled, [sessionStorage.id]);
+  useEffect(IconDisabled, []);
+
   return (
     <>
       <Router>

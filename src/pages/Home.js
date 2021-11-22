@@ -3,12 +3,14 @@ import LogoON from "../assets/Images/CATLAS LOCO/CATLAS Logo on.png";
 import GNU from "../assets/Images/GNU Logo.png";
 import USG from "../assets/Images/usg.png";
 import CS from "../assets/Images/csLogo.png";
-import Test from "../assets/Images/test.jpg";
 import "./css/Home.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { NewContext } from "../App";
+import { useContext } from "react";
 
 const Home = () => {
+  const serverURL = useContext(NewContext).serverURL;
   const [dataSet, setDataSet] = useState([
     [
       { title: "", contents: "", idx: 0, date: "" },
@@ -37,16 +39,13 @@ const Home = () => {
     ],
   ]);
   const getDataset = () => {
-    axios
-      .get("http://172.18.3.25:3001/Home", { withCredentials: true })
-      .then((res) => {
-        console.log("Home res", res.data);
-        setDataSet(res.data);
-      });
+    axios.get(serverURL+ "/Home", { withCredentials: true }).then((res) => {
+      console.log("Home res", res.data);
+      setDataSet(res.data);
+    });
   };
 
   useEffect(getDataset, []);
-
   return (
     <>
       <Router>
@@ -210,7 +209,7 @@ const Home = () => {
 
                       <img
                         src={
-                          "http://172.18.3.25:3001/ImageLinking?path=" +
+                          "http://172.18.3.24:3001/ImageLinking?path=" +
                           dataSet[4][2].path +
                           "&filename=" +
                           dataSet[4][2].filename

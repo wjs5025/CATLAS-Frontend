@@ -1,12 +1,15 @@
 import "../css/Board.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Pagination from "../../components/Pagination";
 import { paginate } from "../../components/utils/paginate";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import WriteImg from "../../assets/Images/write2.png";
+import { NewContext } from "../../App";
 
 const Board = ({ history, match }) => {
+  const serverURL = useContext(NewContext).serverURL;
+
   //게시글 경로 확인을 위한 변수선언 (BoardPath = 현재 게시판명)
   const pathArray = history.location.pathname.split("/");
   const BoardPath = pathArray[2];
@@ -23,7 +26,7 @@ const Board = ({ history, match }) => {
   const getDataset = () => {
     axios
       .get(
-        "http://172.18.3.25:3001/Board",
+        serverURL+"/Board",
         {
           params: {
             BoardPath,
@@ -56,7 +59,7 @@ const Board = ({ history, match }) => {
   const [isLogin, SetLogin] = useState(0);
 
   const IconDisabled = () => {
-    if (sessionStorage.id !== undefined) {
+    if ((sessionStorage.id !== undefined) && (BoardPath !== "HOT게시판")) {
       SetLogin(35);
     } else SetLogin(0);
     if (MenuPath === "Info") {
@@ -69,7 +72,7 @@ const Board = ({ history, match }) => {
       return "";
     } else return "(" + nowPost.comment_count + ")";
   };
-  useEffect(IconDisabled, [sessionStorage.id]);
+  useEffect(IconDisabled, [history.location.pathname]);
 
   return (
     <>
