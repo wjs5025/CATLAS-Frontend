@@ -1,24 +1,20 @@
 import "../css/Detail.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router";
-import {
-  NavLink,
-  Switch,
-  Route,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Comment from "../../components/Comment";
 import FloatingBtn from "../../components/FloatingBtn";
 import Edit from "../../assets/Images/edit.png";
 import Delete from "../../assets/Images/deletepost.png";
-
+import { NewContext } from "../../App";
 const Detail = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 변수 선언 //
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   //라우팅 관련 변수선언
+  const serverURL = useContext(NewContext).serverURL;
   const history = useHistory();
   const pathArray = history.location.pathname.split("/");
   const MenuPath = pathArray[1];
@@ -68,7 +64,7 @@ const Detail = () => {
     console.log("getData 통신했음");
     axios
       .get(
-        "http://172.18.3.25:3001/Detail",
+        serverURL + "/Detail",
         {
           params: {
             BoardPath: BoardPath,
@@ -95,7 +91,7 @@ const Detail = () => {
   const isRecommend = () => {
     axios
       .get(
-        "http://172.18.3.25:3001/Recommend",
+        serverURL + "/Recommend",
         {
           params: {
             BoardPath: BoardPath,
@@ -138,7 +134,7 @@ const Detail = () => {
 
   const DeletePost = () => {
     axios
-      .get("http://172.18.3.25:3001/Post_Delete", {
+      .get(serverURL + "/Post_Delete", {
         params: {
           BoardPath: BoardPath,
           PostNum: PostNum,

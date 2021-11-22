@@ -55,7 +55,7 @@ const Login = () => {
           className="SignOut"
           onClick={() => {
             sessionStorage.removeItem("id");
-            axios.post("http://172.18.3.25:3001/SignOut").then(() => {});
+            axios.post("http://172.18.3.24:3001/SignOut").then(() => {});
             document.location.href = history.location.pathname;
           }}
         >
@@ -66,80 +66,87 @@ const Login = () => {
   }
 };
 
+export const NewContext = React.createContext({
+  serverURL: "Default",
+});
+
 const App = () => {
   return (
-    <Router>
-      <div className="header noDrag">
-        <div className="NavMenu">
-          <ul>
-            <li>
-              <NavLink
-                exact
-                className="menuLink"
-                activeClassName="MenuActive"
-                to="/"
-              >
-                <div className="noDrag">HOME</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="menuLink"
-                activeClassName="MenuActive"
-                to="/Info/공지사항"
-              >
-                <div className="noDrag">INFO</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="menuLink"
-                activeClassName="MenuActive"
-                to="/Forum/자유게시판"
-              >
-                <div className="noDrag">FORUM</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="menuLink"
-                activeClassName="MenuActive"
-                to="/Gallery/2021"
-              >
-                <div className="noDrag">GALLERY</div>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="menuLink"
-                activeClassName="MenuActive"
-                to="/Contact/문의하기"
-              >
-                <div>CONTACT</div>
-              </NavLink>
-            </li>
-            <li>
-              <Login />
-            </li>
-          </ul>
+    // 여기에 서버 주소 적으면 전역 URL로 사용가능
+    <NewContext.Provider value={{ serverURL: "http://172.18.3.24:3001" }}>
+      <Router>
+        <div className="header noDrag">
+          <div className="NavMenu">
+            <ul>
+              <li>
+                <NavLink
+                  exact
+                  className="menuLink"
+                  activeClassName="MenuActive"
+                  to="/"
+                >
+                  <div className="noDrag">HOME</div>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="menuLink"
+                  activeClassName="MenuActive"
+                  to="/Info/공지사항"
+                >
+                  <div className="noDrag">INFO</div>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="menuLink"
+                  activeClassName="MenuActive"
+                  to="/Forum/자유게시판"
+                >
+                  <div className="noDrag">FORUM</div>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="menuLink"
+                  activeClassName="MenuActive"
+                  to="/Gallery/2021"
+                >
+                  <div className="noDrag">GALLERY</div>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="menuLink"
+                  activeClassName="MenuActive"
+                  to="/Contact/문의하기"
+                >
+                  <div>CONTACT</div>
+                </NavLink>
+              </li>
+              <li>
+                <Login />
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <main>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/Gallery/" component={Gallery} />
-          <Route path="/Info/" component={Info} />
-          <Route path="/Forum/" component={Forum} />
-          <Route path="/Contact/" component={ContactUs} />
-          <Route path="/SignIn/" component={SignIn} />
-          <Route path="/SignUp/" component={SignUp} />
+        <main>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/Gallery/" component={Gallery} />
+            <Route path="/Info/" component={Info} />
+            <Route path="/Forum/" component={Forum} />
+            <Route path="/Contact/" component={ContactUs} />
+            <Route path="/SignIn/" component={SignIn} />
+            <Route path="/SignUp/" component={SignUp} />
 
-          <Route path="*" component={NotFound} />
-          <Route path="/PleaseLogin" component={PleaseLogin} />
-        </Switch>
-      </main>
-      <Footer />
-    </Router>
+            <Route path="*" component={NotFound} />
+            <Route path="/PleaseLogin" component={PleaseLogin} />
+          </Switch>
+        </main>
+        <Footer />
+      </Router>
+    </NewContext.Provider>
   );
 };
 export default App;

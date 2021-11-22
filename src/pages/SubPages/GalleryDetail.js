@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router";
 import Comment from "../../components/Comment";
 import "../css/GalleryDetail.css";
@@ -8,8 +8,10 @@ import SwiperCore, { Navigation } from "swiper";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/swiper.min.css";
 import FloatingBtn from "../../components/FloatingBtn";
-
+import { NewContext } from "../../App";
 const GalleryDetail = () => {
+  const serverURL = useContext(NewContext).serverURL;
+
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 변수 선언 //
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +62,7 @@ const GalleryDetail = () => {
   const getData = () => {
     axios
       .get(
-        "http://172.18.3.25:3001/Detail",
+        serverURL+"/Detail",
         {
           params: {
             BoardPath: BoardPath,
@@ -87,7 +89,7 @@ const GalleryDetail = () => {
     console.log(sessionStorage.id, isRmdTrue);
     axios
       .get(
-        "http://172.18.3.25:3001/Recommend",
+       serverURL + "/Recommend",
         {
           params: {
             BoardPath: BoardPath,
@@ -190,9 +192,10 @@ const GalleryDetail = () => {
               return (
                 <SwiperSlide>
                   <img
+                    alt=""
                     className="SwiperImg"
                     src={
-                      "http://172.18.3.25:3001/ImageLinking?path=" +
+                      serverURL + "/ImageLinking?path=" +
                       nowImg.path +
                       "&filename=" +
                       nowImg.filename

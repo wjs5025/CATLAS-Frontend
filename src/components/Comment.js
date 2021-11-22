@@ -1,11 +1,14 @@
 import axios from "axios";
 import CommentImg from "../assets/Images/comment2.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import Pencil from "../assets/Images/submit.png";
 import { useHistory } from "react-router";
 import deleteIcon from "../assets/Images/delete.png";
+import { NewContext } from "../App";
 
 const Comment = ({ CommentSet }) => {
+  const serverURL = useContext(NewContext).serverURL;
+
   console.log("댓글 세트 ", CommentSet);
   // 라우팅 관련 변수 선언
   const history = useHistory();
@@ -68,7 +71,7 @@ const Comment = ({ CommentSet }) => {
     } else {
       axios
         .get(
-          "http://172.18.3.25:3001/Comment",
+          serverURL+"/Comment",
           {
             params: {
               BoardPath,
@@ -89,7 +92,7 @@ const Comment = ({ CommentSet }) => {
   // 댓글 삭제 관련 통신
   const cmtDelete = (idx) => {
     axios
-      .get("http://172.18.3.25:3001/Comment_Delete", {
+      .get(serverURL + "/Comment_Delete", {
         params: {
           BoardPath,
           PostNum,

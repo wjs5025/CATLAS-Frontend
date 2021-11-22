@@ -3,10 +3,14 @@ import { useHistory } from "react-router";
 import Check from "../../assets/Images/Check.png";
 import Back from "../../assets/Images/Back.png";
 import axios from "axios";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { NewContext } from "../../App";
+
 //게시판
 
 const Posting = () => {
+  const serverURL = useContext(NewContext).serverURL;
+
   const history = useHistory();
   const pathArray = history.location.pathname.split("/");
 
@@ -35,7 +39,7 @@ const Posting = () => {
     } else {
       axios
         .get(
-          "http://172.18.3.25:3001/Posting",
+          serverURL +"/Posting",
           {
             params: {
               BoardPath,

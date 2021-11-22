@@ -1,4 +1,3 @@
-import { useHistory } from "react-router";
 import Back from "../assets/Images/Back.png";
 import ToTop from "../assets/Images/ToTop.png";
 

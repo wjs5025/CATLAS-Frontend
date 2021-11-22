@@ -3,10 +3,13 @@ import { useHistory } from "react-router";
 import Check from "../../assets/Images/Check.png";
 import Back from "../../assets/Images/Back.png";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
+import { NewContext } from "../../App";
 //게시판
 
 const PostEdit = () => {
+  const serverURL = useContext(NewContext).serverURL;
+
   const history = useHistory();
   const pathArray = history.location.pathname.split("/");
 
@@ -29,7 +32,7 @@ const PostEdit = () => {
     } else {
       axios
         .get(
-          "http://172.18.3.25:3001/Post_Modify",
+          serverURL + "/Post_Modify",
           {
             params: {
               BoardPath,
@@ -49,7 +52,7 @@ const PostEdit = () => {
     }
   };
 
-  useEffect(Init, []);
+  useEffect(Init, [history]);
   return (
     <>
       <div className="Forum_container">
