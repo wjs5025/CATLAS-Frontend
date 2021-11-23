@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
   useHistory,
   BrowserRouter as Router,
@@ -23,8 +23,11 @@ import Footer from "./components/footer";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
+
 axios.defaults.withCredentials = true;
 const Login = () => {
+  const serverURL = useContext(NewContext).serverURL;
+
   const history = useHistory();
   console.log(history.location.pathname);
   if (sessionStorage.id === undefined) {
@@ -55,7 +58,7 @@ const Login = () => {
           className="SignOut"
           onClick={() => {
             sessionStorage.removeItem("id");
-            axios.post("http://172.18.3.24:3001/SignOut").then(() => {});
+            axios.post(serverURL + "/SignOut").then(() => {});
             document.location.href = history.location.pathname;
           }}
         >
@@ -71,9 +74,10 @@ export const NewContext = React.createContext({
 });
 
 const App = () => {
+
   return (
     // 여기에 서버 주소 적으면 전역 URL로 사용가능
-    <NewContext.Provider value={{ serverURL: "http://172.18.3.24:3001" }}>
+    <NewContext.Provider value={{ serverURL: "http://172.18.3.25:3001" }}>
       <Router>
         <div className="header noDrag">
           <div className="NavMenu">
