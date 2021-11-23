@@ -1,6 +1,6 @@
 .swiperStyle {
   position: "releative";
-  width: 100vh;
+  width: 70%;
   height: 60vh;
   margin: 20px;
   display: flex;
@@ -10,7 +10,7 @@
 
 .SwiperImg {
   object-fit: contain;
-  width: 100vh;
+  width: 100%;
   height: 60vh;
   transition: 0.25s;
 }
