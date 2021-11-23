@@ -39,7 +39,7 @@ const GalleryBoard = ({ history, match }) => {
       });
   };
 
-  useEffect(() => getDataset(), []);
+  useEffect(getDataset, [history.location.pathname]);
 
   // 페이징 설정
   const handlePageChange = (page) => {
@@ -62,7 +62,7 @@ const GalleryBoard = ({ history, match }) => {
     } else SetLogin(0);
   };
 
-  useEffect(IconDisabled, []);
+  useEffect(IconDisabled, [sessionStorage.id]);
 
   return (
     <>
@@ -116,9 +116,9 @@ const GalleryBoard = ({ history, match }) => {
           <div style={{ position: "relative" }}>
             <img
               className="PostingBtn"
-              onClick={() =>
-                alert("현재 갤러리 글쓰기 기능은 제공하지 않습니다.")
-              }
+              onClick={() => history.push(match.url + "/글쓰기")}
+                // alert("현재 갤러리 글쓰기 기능은 제공하지 않습니다.")
+              
               // {() => history.push(match.url + "/글쓰기")}
               style={{
                 position: "absolute",

@@ -7,7 +7,7 @@ import {
 import "./css/SideBar.css";
 import GalleryBoard from "./SubPages/GalleryBoard";
 import NotFound from "./SubPages/NotFound";
-import Posting from "./SubPages/Posting";
+import GalleryPosting from "./SubPages/GalleryPosting";
 import GalleryDetail from "./SubPages/GalleryDetail.js";
 import PleaseLogin from "./SubPages/PleaseLogin";
 
@@ -16,7 +16,7 @@ const Gallery = () => {
     if (sessionStorage.id === undefined) {
       return <PleaseLogin />;
     } else {
-      return <Posting />;
+      return <GalleryPosting />;
     }
   };
 

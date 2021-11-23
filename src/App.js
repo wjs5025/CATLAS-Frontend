@@ -77,7 +77,7 @@ const App = () => {
 
   return (
     // 여기에 서버 주소 적으면 전역 URL로 사용가능
-    <NewContext.Provider value={{ serverURL: "http://172.18.3.25:3001" }}>
+    <NewContext.Provider value={{ serverURL: "http://172.18.3.24:3001" }}>
       <Router>
         <div className="header noDrag">
           <div className="NavMenu">

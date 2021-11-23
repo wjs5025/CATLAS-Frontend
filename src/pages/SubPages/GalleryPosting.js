@@ -5,10 +5,11 @@ import Back from "../../assets/Images/Back.png";
 import axios from "axios";
 import { useState,useContext } from "react";
 import { NewContext } from "../../App";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 //게시판
 
-const Posting = () => {
+const GalleryPosting = () => {
   const serverURL = useContext(NewContext).serverURL;
 
   const history = useHistory();
@@ -60,6 +61,29 @@ const Posting = () => {
     }
   };
 
+
+
+  ///////////////파일업로드////////////////
+  const [imgBase64, setImgBase64] = useState(""); // 파일 base64
+  const [imgFile, setImgFile] = useState(null);	//파일
+
+ ///////////////통신////////////////
+  const handleChangeFile = (event) => {
+    let reader = new FileReader();
+
+    reader.onloadend = () => {
+      // 2. 읽기가 완료되면 아래코드가 실행됩니다.
+      const base64 = reader.result;
+      if (base64) {
+        setImgBase64(base64.toString()); // 파일 base64 상태 업데이트
+      }
+    }
+    if (event.target.files[0]) {
+      reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
+      setImgFile(event.target.files[0]); // 파일 상태 업데이트
+    }
+  }
+
   return (
     <>
       <div className="Forum_container">
@@ -86,6 +110,21 @@ const Posting = () => {
           <div style={{ flexBasis: "15%" }}>{today}</div>
           <div style={{ flexBasis: "15%" }}>{sessionStorage.id}</div>
         </div>
+        <Swiper
+          style={{border:"1px solid red", width:"70%"}}
+          className="swiperStyle"
+          navigation={true}
+          pagination={{
+            clickable: true,
+          }}>
+          <SwiperSlide>
+              <input style={{width : "100vw", height:"100%", border:"1px solid red"}} type="file" onChange={handleChangeFile} accept="image/*" multiple/>
+          </SwiperSlide>
+          <SwiperSlide>
+          <input style={{backgroundColor:"yellow", width : "100vw", height:"100%", border:"1px solid red"}} type="file" onChange={handleChangeFile} accept="image/*" multiple/>
+
+          </SwiperSlide>
+        </Swiper>
         <textarea
           value={InputContents}
           onChange={(e) => setContents(e.target.value)}
@@ -126,4 +165,4 @@ const Posting = () => {
   );
 };
 
-export default Posting;
+export default GalleryPosting;
