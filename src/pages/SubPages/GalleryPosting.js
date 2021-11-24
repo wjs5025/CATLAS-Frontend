@@ -64,28 +64,45 @@ const GalleryPosting = () => {
 
 
   ///////////////파일업로드////////////////
-  const [imgBase64, setImgBase64] = useState(""); // 파일 base64
-  const [imgFile, setImgFile] = useState(null);	//파일
+  const [selectedFile, setSelectedFile] = useState(null);
+ 
 
- ///////////////통신////////////////
-  const handleChangeFile = (event) => {
-    let reader = new FileReader();
+  //파일이 바꼈을 때
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files);
+    console.log(event.target.files)
+  };
 
-    reader.onloadend = () => {
-      // 2. 읽기가 완료되면 아래코드가 실행됩니다.
-      const base64 = reader.result;
-      if (base64) {
-        setImgBase64(base64.toString()); // 파일 base64 상태 업데이트
-      }
+  // 파일 전송
+  const handleFileUpload = () => {
+    const formData = new FormData();
+ 
+    // 배열 내부에 있는 모든 요소를 append 해야 하므로
+    for (let i = 0; i < selectedFile.length; i++) {
+      formData.append("myfile", selectedFile[i], selectedFile[i].name);
     }
-    if (event.target.files[0]) {
-      reader.readAsDataURL(event.target.files[0]); // 1. 파일을 읽어 버퍼에 저장합니다.
-      setImgFile(event.target.files[0]); // 파일 상태 업데이트
-    }
-  }
+ 
+    // 여러 개의 파일이므로 multipart type으로
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+ 
+    // config 넣어줌
+    // axios.post("api/uploadfile", formData, config)
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+  };
+
 
   return (
     <>
+      
       <div className="Forum_container">
         {/* 게시글 헤더 */}
         <div className="Detail_info noDrag">
@@ -110,6 +127,9 @@ const GalleryPosting = () => {
           <div style={{ flexBasis: "15%" }}>{today}</div>
           <div style={{ flexBasis: "15%" }}>{sessionStorage.id}</div>
         </div>
+        
+    
+        <input style={{ width: "100vw", height: "100%", border: "1px solid red" }} type="file" onChange ={handleFileChange} accept="image/*" multiple />
         <Swiper
           style={{border:"1px solid red", width:"70%"}}
           className="swiperStyle"
@@ -117,19 +137,18 @@ const GalleryPosting = () => {
           pagination={{
             clickable: true,
           }}>
-          <SwiperSlide>
-              <input style={{width : "100vw", height:"100%", border:"1px solid red"}} type="file" onChange={handleChangeFile} accept="image/*" multiple/>
-          </SwiperSlide>
-          <SwiperSlide>
-          <input style={{backgroundColor:"yellow", width : "100vw", height:"100%", border:"1px solid red"}} type="file" onChange={handleChangeFile} accept="image/*" multiple/>
 
-          </SwiperSlide>
         </Swiper>
         <textarea
           value={InputContents}
           onChange={(e) => setContents(e.target.value)}
           className="Detail_contents borderGray posting"
         ></textarea>
+      
+  
+
+
+
         <div className="Detail_bottom">
           <img
             className="FloatingBtn marginRight2"
